@@ -1,0 +1,687 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+.topbar {
+    display: flex;
+    justify-items: center;
+    padding: 2px;
+    justify-content: space-between;
+    height: 80px;
+    background-color: rgb(240, 240, 240);
+}
+
+.topbar div {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    padding: 2px;
+}
+
+.sidebar {
+    display: flex;
+    min-width: 180px;
+    width: 15%;
+
+    justify-content: center;
+    border-radius: 5px;
+    background-color: rgb(68, 68, 68);
+    color: rgb(212, 212, 212);
+    box-shadow: 0 3px 8px 1px gray;
+    padding-top: 30px;
+}
+
+.sidebar-menu {
+    margin-top: 50px;
+}
+
+.main-content {
+    display: flex;
+    width: 75%;
+    padding: 2px;
+    background-color: rgb(247, 247, 247);
+}
+
+.sidebar-main-content {
+    display: flex;
+    justify-content: center;
+    min-height: 815px;
+}
+
+.footer {
+    font-size: small;
+    color: grey;
+    display: flex;
+    padding: 2px;
+    justify-content: center;
+    justify-items: center;
+    height: 5%;
+    background-color: rgb(240, 240, 240);
+    box-shadow: 0 3px 8px 1px rgb(219, 219, 219);
+}
+
+hr {
+    color: rgb(236, 236, 236);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin: 9px;
+}
+
+.search {
+    width: 250px;
+    height: 30px;
+    border-radius: 4px;
+    border: solid 1px rgb(189, 190, 190);
+    box-shadow: 3px 3px 8px 1px rgb(185, 185, 185);
+}
+
+input:active,
+input:focus {
+    outline: none;
+    border: 2px solid rgb(170, 170, 170);
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.search-button {
+    height: 30px;
+    width: 30px;
+    border-collapse: collapse;
+    outline: none;
+    border: none;
+    background-image: url("/resources/pictures/search.svg");
+    filter: invert(5);
+    background-repeat: no-repeat;
+    background-size: 17px;
+    background-position: center;
+    box-shadow: 3px 3px 8px 1px rgb(151, 151, 151);
+    border-radius: 4px;
+    background-color: rgb(185, 184, 184);
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-size: 18px;
+    background-color: rgb(163, 163, 163);
+}
+
+.search-button:active {
+    background-size: 20px;
+}
+
+.form {
+    display: inline-flex;
+    margin-top: 20px;
+}
+
+.logo {
+    margin-top: 3px;
+    margin-left: 10px;
+    margin-right: 20px;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    box-shadow: 5px 5px 8px 1px rgb(133, 133, 133);
+}
+
+.logo-title {
+    display: float;
+    text-decoration: none;
+    margin-bottom: 3px;
+}
+
+.logo-title:hover {
+    cursor: pointer;
+}
+
+.title {
+    display: flex;
+    color: rgb(48, 48, 48);
+    font-size: x-large;
+    font-weight: bolder;
+    text-shadow: 3px 3px 5px rgb(117, 117, 117);
+    margin-top: 8px;
+}
+
+.search-box {
+    margin-right: 200px;
+}
+
+.user {
+    margin-right: 20px;
+}
+
+.nav-item {
+    margin-top: 30px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: unset;
+}
+
+.nav-link:hover {
+    font-weight: bold;
+}
+
+hr {
+    width: 150px;
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.collapsible {
+    background: transparent;
+    border: none !important;
+    cursor: pointer;
+    font-size: medium;
+    font-weight: bold;
+    color: rgb(120, 120, 120);
+    z-index: 20;
+}
+
+.collapsible:hover{
+    color: rgb(40, 40, 40);
+}
+
+#user-overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(0);
+}
+
+#user-overlay.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+}
+
+.content {
+    position: absolute;
+    margin-right: 5px;
+    margin-top: 60px;
+    font-size: large;
+    width: 150px;
+    z-index: 20;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #b4b4b4;
+    border-radius: 5px;
+
+}
+
+.list-user {
+    text-decoration: none;
+    color: rgb(44, 44, 44);
+}
+
+.list-user:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.collapsible:after {
+    content: "\02795"; /* Unicode character for "plus" sign (+) */
+    font-size: 7px;
+    float: right;
+    margin-left: 10px;
+    margin-top: 7px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.content-content {
+    top: 11%;
+    left: 16%;
+    width: 100%;
+    height: auto;
+    padding: 5px;
+
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.content-title {
+    height: 30px;
+    text-align: left;
+    margin-left: 50px;
+    margin-top: 30px;
+    padding: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: rgb(115, 115, 115);
+}
+
+.content-elements {
+    padding: 5px;
+    margin-top: 5px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    padding: 5px;
+    width: 165px;
+    height: 250px;
+    margin: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.cover-pic {
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 5px 5px 8px 1px rgb(133, 133, 133);
+}
+
+.card-title {
+    margin: 3px 3px 10px;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(54, 54, 54);
+}
+
+.card-options {
+    margin: 10px 3px 3px;
+    height: 20px;
+    display: inline-flex;
+    justify-content: center;
+    padding: 3px;
+}
+
+.option {
+    margin: 10px;
+    color: rgb(48, 48, 48);
+    text-decoration: none !important;
+}
+
+.add {
+    color: green;
+
+}
+
+.add:hover {
+    color: rgb(31, 92, 31);
+}
+
+.add:active {
+    color: rgb(31, 92, 31);
+    font-size: large;
+}
+
+.delete {
+    color: rgb(212, 0, 0);
+}
+
+.delete:active {
+    font-size: large;
+    color: rgb(136, 0, 0);
+}
+
+.delete:hover {
+    color: rgb(136, 0, 0);
+}
+
+/* styling pop up window modal */
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transition: 200ms step-end;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 9px;
+    z-index: 99;
+    background-color: rgb(223, 223, 223);
+    width: 500px;
+    height: 600px;
+    max-width: 80%;
+    min-height: 65%;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(235, 221, 160);
+    border-radius: 9px;
+    border-bottom: 1px solid rgb(150, 150, 150);
+}
+
+.form-title {
+    width: 500px;
+    padding: 5px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(80, 80, 80);
+}
+
+.modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #575757;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* end of styling pop up window modal */
+
+.sidebar-link {
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: large;
+}
+
+.sidebar-link:hover {
+    font-weight: bold;
+}
+
+.form-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+
+
+}
+
+.input {
+    font-size: medium;
+    width: 300px;
+    height: 35px;
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 4px;
+
+}
+
+.button-register {
+    margin: 20px 20px 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: rgb(143, 221, 211);
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 4px;
+    cursor: pointer;
+    color: rgb(51, 51, 51);
+}
+
+.button-register:hover {
+    background-color: aquamarine;
+}
+
+.button-register:active {
+    font-weight: bold;
+}
+
+.modal-login {
+    min-height: 380px;
+    height: 380px;
+}
+
+.modal-contact {
+    min-height: 440px;
+    height: 440px;
+}
+
+.contact-description {
+    text-align: center;
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.google {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: rgb(199, 42, 42);
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
+.google:hover {
+    cursor: pointer;
+}
+
+.markus-contact {
+    text-align: center;
+    color: rgb(80, 80, 80);
+
+}
+
+.markus-contact hr {
+    width: 100%;
+}
+
+.markus-social {
+    margin-top: 30px;
+    margin-bottom: 500px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.modal-about {
+    min-height: 600px;
+    height: 600px;
+    color: rgb(54, 54, 54);
+}
+
+.about-logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.list-user-button {
+    background: none;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    font-size: medium;
+    margin-right: 15px;
+    color: rgb(120, 120, 120);
+    font-weight: bold;
+}
+
+.list-user-button:hover {
+    color: rgb(40, 40, 40);
+    cursor: pointer;
+}
+
+.list-user-button:active {
+    font-size: large;
+}
+
+.register-box {
+    display: flex;
+
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 50px;
+
+}
+
+.cover {
+    width: 800px;
+    height: 550px;
+    opacity: 80%;
+    box-shadow: 5px 5px 8px 1px rgb(133, 133, 133);
+}
+
+.markus-error {
+
+    color: darkred;
+    font-size: small;
+    padding: 3px;
+    text-align: left;
+    min-height: 50px;
+}
+
+.error-input {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 90px;
+
+
+}
+
+.input-login {
+    margin: 20px;
+    font-size: medium;
+    width: 300px;
+    height: 40px;
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 4px;
+}
+
+.select-box {
+    border: solid 0px white;
+    background-color: rgb(240, 240, 240);
+    color: rgb(120, 120, 120);
+    font-weight: bold;
+    width: 80px;
+    font-size: small;
+}
+
+.select-box:hover {
+    color: rgb(40, 40, 40);
+    cursor: pointer;
+}
+
+
+.list-user-button-small {
+    background: none;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    font-size: small;
+    margin-right: 15px;
+    color: rgb(120, 120, 120);
+    font-weight: bold;
+}
+
+.list-user-button-small:hover {
+    color: rgb(40, 40, 40);
+    cursor: pointer;
+}
+
+.list-user-button-small:active {
+    font-size: medium;
+}
+
+
+.sidebar-main-content {
+    background-color: rgb(247, 247, 247);
+}
+
+.menu {
+    background-color: #5b5b5b;
+    height: 5%;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.inner-menu {
+    display: flex;
+    justify-content: space-evenly;
+    height: 90%;
+    width: 70%;
+}
+
+.menu-button {
+    border-collapse: collapse;
+    border: none;
+    outline: none;
+    background-color: #5b5b5b;
+}
+.menu-button-link:hover{
+    color: rgba(255, 202, 49, 0.79);
+}
+
+.menu-button-link:active{
+    font-size: large;
+}
+
+.menu-button-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: medium;
+}
