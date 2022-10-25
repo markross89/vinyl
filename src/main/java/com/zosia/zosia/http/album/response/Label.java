@@ -12,7 +12,7 @@ public class Label
 	
 	private String catno;
 	
-	private String labelName;
+	private String name;
 	
 	
 
@@ -27,14 +27,14 @@ public class Label
 		this.catno = catno;
 	}
 	
-	public String getLabelName ()
+	public String getName ()
 	{
-		return labelName;
+		return name;
 	}
 	
-	public void setLabelName (String labelName)
+	public void setName (String name)
 	{
-		this.labelName = labelName;
+		this.name = name;
 	}
 	
 

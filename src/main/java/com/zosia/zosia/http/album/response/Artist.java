@@ -9,19 +9,19 @@ public class Artist {
 	
 
 	
-	private String artistName;
+	private String name;
 	
 
 
 	
-	public String getArtistName ()
+	public String getName ()
 	{
-		return artistName;
+		return name;
 	}
 	
-	public void setArtistName (String artistName)
+	public void setName (String name)
 	{
-		this.artistName = artistName;
+		this.name = name;
 	}
 	
 }

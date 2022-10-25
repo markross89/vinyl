@@ -10,7 +10,7 @@ public class Track {
 	
 	private String position;
 	
-	private String trackTitle;
+	private String title;
 	
 	
 	public String getDuration () {
@@ -35,12 +35,12 @@ public class Track {
 	
 	public String getTrackTitle () {
 		
-		return trackTitle;
+		return title;
 	}
 	
-	public void setTrackTitle (String trackTitle) {
+	public void setTitle (String title) {
 		
-		this.trackTitle = trackTitle;
+		this.title = title;
 	}
 	
 	
