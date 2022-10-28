@@ -85,7 +85,7 @@ li {
 input:active,
 input:focus {
     outline: none;
-    border: 2px solid rgb(170, 170, 170);
+    border: 1px solid rgba(239,175,0,0.8);
 }
 
 * {
@@ -195,7 +195,7 @@ ul {
     z-index: 20;
 }
 
-.collapsible:hover{
+.collapsible:hover {
     color: rgb(40, 40, 40);
 }
 
@@ -239,7 +239,7 @@ ul {
 }
 
 .collapsible:after {
-    content: "\02795"; /* Unicode character for "plus" sign (+) */
+    /*content: "\02795"; !* Unicode character for "plus" sign (+) *!*/
     font-size: 7px;
     float: right;
     margin-left: 10px;
@@ -247,7 +247,7 @@ ul {
 }
 
 .active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
+    /*content: "\2796"; !* Unicode character for "minus" sign (-) *!*/
 }
 
 .content-content {
@@ -269,12 +269,13 @@ ul {
     padding: 5px;
     font-size: large;
     font-weight: bold;
-    color: rgb(115, 115, 115);
+    color: #494949;
 }
 
 .content-elements {
     padding: 5px;
     margin-top: 5px;
+    margin-left: 30px;
     height: auto;
     display: flex;
     flex-wrap: wrap;
@@ -303,6 +304,13 @@ ul {
     text-align: center;
     text-decoration: none;
     color: rgb(54, 54, 54);
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #494949;
+    font-weight: bold;
+
+
 }
 
 .card-options {
@@ -448,7 +456,8 @@ ul {
     align-items: center;
     text-align: center;
     padding: 10px;
-    margin-top: 30px;
+    margin-top: 50px;
+    height: 600px;
 
 
 }
@@ -573,7 +582,7 @@ ul {
 }
 
 .cover {
-    width: 800px;
+    width: 600px;
     height: 550px;
     opacity: 80%;
     box-shadow: 5px 5px 8px 1px rgb(133, 133, 133);
@@ -586,6 +595,7 @@ ul {
     padding: 3px;
     text-align: left;
     min-height: 50px;
+    z-index: 55;
 }
 
 .error-input {
@@ -649,7 +659,7 @@ ul {
 }
 
 .menu {
-    background-color: #5b5b5b;
+    background-color: #4d4d4d;
     height: 5%;
     padding: 2px;
     display: flex;
@@ -669,13 +679,14 @@ ul {
     border-collapse: collapse;
     border: none;
     outline: none;
-    background-color: #5b5b5b;
+    background-color: #4d4d4d;
 }
-.menu-button-link:hover{
+
+.menu-button-link:hover {
     color: rgba(255, 202, 49, 0.79);
 }
 
-.menu-button-link:active{
+.menu-button-link:active {
     font-size: large;
 }
 
@@ -684,4 +695,75 @@ ul {
     text-decoration: none;
     font-weight: bold;
     font-size: medium;
+}
+
+.thumbs-description {
+
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.error-message {
+
+    color: darkred;
+    font-size: small;
+    padding: 3px;
+    display: none;
+}
+
+.pagination {
+
+    height: 20px;
+    width: 500px;
+    float: right;
+    margin-right: 50px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pagInfo{
+    color:  #5e5e5e;
+    font-size: small;
+    margin-top: 2px;
+}
+
+
+.pagButton {
+font-size: medium;
+    font-weight: bolder;
+    border: none;
+    background-color: transparent;
+    color: #4d4d4d;
+    text-decoration: none;
+}
+
+.pagButton:hover{
+    cursor: pointer;
+     color: #be8700;
+}
+.pagSelect{
+    border: none;
+    background-color: transparent;
+    color:  #5e5e5e;
+
+}
+
+.pagButtons{
+    display: flex;
+    justify-content: space-evenly;
+    width: 300px;
+}
+.pageInfo{
+    margin-top: 2px;
+    color: #5e5e5e;
+    font-size: small;
+}
+
+.pagButtonDisabled{
+    cursor: auto;
+    color: #8a8a8a;
+    text-decoration: none;
 }
