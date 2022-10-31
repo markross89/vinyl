@@ -6,7 +6,11 @@ import com.zosia.zosia.http.service.HttpService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Date;
 
 
 @Controller
@@ -14,23 +18,23 @@ public class ThumbsController {
 	
 	private final HttpService httpService;
 	private final MessageService messageService;
+	private final ThumbsService thumbsService;
 	
-	public ThumbsController (HttpService httpService, MessageService messageService) {
+	
+	public ThumbsController (HttpService httpService, MessageService messageService, ThumbsService thumbsService) {
 		
 		this.httpService = httpService;
 		this.messageService = messageService;
+		this.thumbsService = thumbsService;
 	}
 	
 	
 	@GetMapping("/")
-	public String displayThumbs (Model model, @RequestParam(defaultValue = "1") String page, @RequestParam(defaultValue = "48") String size) throws JsonProcessingException {
+	public String displaySearchThumbs (Model model, @RequestParam(defaultValue = "1") String page, @RequestParam(defaultValue = "48") String size,
+									   @RequestParam(defaultValue = "#{T(java.time.LocalDate).now()}") String search) throws JsonProcessingException {
 		
-		Thumbs thumbs = httpService.mapRequestData(String.join("", messageService.getMessage("api.link.discogs.new.release"),
-				java.time.LocalDate.now().toString(), "&",
-				messageService.getMessage("api.link.discogs.key.secret"), "&page="+page+"&per_page="+size), Thumbs.class);
-		
-		model.addAttribute("thumbs", thumbs);
-		
+		model.addAttribute("thumbs", thumbsService.requestBuilder(Thumbs.class, search, page, size));
+		model.addAttribute("search", search);
 		return "home";
 	}
 	

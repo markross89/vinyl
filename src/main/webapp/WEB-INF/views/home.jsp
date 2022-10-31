@@ -5,7 +5,7 @@
     <!-- main content start -->
     <div class="main-content">
         <div class="content-content">
-            <div class="content-title">Najnowsze Albumy :</div>
+            <div class="content-title">${search} :</div>
 
             <jsp:include page="pagination.jsp"/>
 

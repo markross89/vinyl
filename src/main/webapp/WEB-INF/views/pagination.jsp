@@ -10,9 +10,10 @@
                 <a href="" class="pagButtonDisabled" type="button"> << </a>
             </c:when>
             <c:otherwise>
-                <a href="<c:url value="/?page=1&size=${thumbs.pagination.per_page}"/>" class="pagButton"
+                <a href="<c:url value="/?page=1&size=${thumbs.pagination.per_page}&search=${search}"/>"
+                   class="pagButton"
                    style="font-size: small; margin-top: 2px" type="button">First</a>
-                <a href="<c:url value="/?page=${thumbs.pagination.page-1}&size=${thumbs.pagination.per_page}"/>"
+                <a href="<c:url value="/?page=${thumbs.pagination.page-1}&size=${thumbs.pagination.per_page}&search=${search}"/>"
                    class="pagButton" type="button"> << </a>
             </c:otherwise>
         </c:choose>
@@ -26,9 +27,9 @@
                 <a href="" class="pagButtonDisabled" style="font-size: small; margin-top: 2px" type="button">Last</a>
             </c:when>
             <c:otherwise>
-                <a href="<c:url value="/?page=${thumbs.pagination.page+1}&size=${thumbs.pagination.per_page}"/>"
+                <a href="<c:url value="/?page=${thumbs.pagination.page+1}&size=${thumbs.pagination.per_page}&search=${search}"/>"
                    class="pagButton" type="button"> >> </a>
-                <a href="<c:url value="/?page=${thumbs.pagination.pages}&size=${thumbs.pagination.per_page}"/>"
+                <a href="<c:url value="/?page=${thumbs.pagination.pages}&size=${thumbs.pagination.per_page}&search=${search}"/>"
                    class="pagButton" style="font-size: small; margin-top: 2px" type="button">Last</a>
             </c:otherwise>
         </c:choose>
@@ -42,6 +43,7 @@
                 <option value="48">48</option>
                 <option value="96">96</option>
             </select>
+            <input type="hidden" name="search" value="${search}">
         </form>
     </div>
 </div>

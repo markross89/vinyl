@@ -32,8 +32,8 @@
     </div>
 
     <div class="search-box">
-        <form class="form">
-            <input class="search" type="text" placeholder="Search for records"/>
+        <form class="form" method="get" action="/">
+            <input class="search" type="text" placeholder="Search for records" name="search"/>
             <button class="search-button"></button>
         </form>
     </div>
@@ -133,7 +133,6 @@
 
     <!-- pop up window js start -->
     <div class="" id="overlay"></div>
-
 
 
     <!-- contact start -->

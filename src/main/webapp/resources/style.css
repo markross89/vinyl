@@ -85,7 +85,7 @@ li {
 input:active,
 input:focus {
     outline: none;
-    border: 1px solid rgba(239,175,0,0.8);
+    border: 1px solid rgba(206, 152, 0, 0.8);
 }
 
 * {
@@ -380,9 +380,9 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(235, 221, 160);
+    background-color: rgb(54, 54, 54);
     border-radius: 9px;
-    border-bottom: 1px solid rgb(150, 150, 150);
+    border-bottom: 3px solid rgba(255, 187, 34, 0.79);
 }
 
 .form-title {
@@ -391,10 +391,11 @@ ul {
     font-size: 1.25rem;
     font-weight: bold;
     text-decoration: none;
-    color: rgb(80, 80, 80);
+    color: rgb(232, 232, 232);
 }
 
 .modal-header .close-button {
+    color: rgb(232, 232, 232);
     cursor: pointer;
     border: none;
     outline: none;
@@ -623,7 +624,7 @@ ul {
     background-color: rgb(240, 240, 240);
     color: rgb(120, 120, 120);
     font-weight: bold;
-    width: 80px;
+    width: 90px;
     font-size: small;
 }
 
@@ -732,11 +733,11 @@ ul {
 
 
 .pagButton {
-font-size: medium;
+font-size: large;
     font-weight: bolder;
     border: none;
     background-color: transparent;
-    color: #4d4d4d;
+    color: #2c6fa8;
     text-decoration: none;
 }
 
