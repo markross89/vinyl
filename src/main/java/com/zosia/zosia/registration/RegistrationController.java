@@ -34,7 +34,7 @@ public class RegistrationController {
 		
 		if (!result.hasErrors()) {
 			model.addAttribute("message", registrationService.registerUser(user));
-			return "/";
+			return "/info_page";
 		}
 		return "/register";
 	}
@@ -43,7 +43,7 @@ public class RegistrationController {
 	public String emailConfirmation (@RequestParam String token, Model model) {
 		
 		model.addAttribute("message", registrationService.emailConfirmation(token));
-		return "/";
+		return "/info_page";
 	}
 	
 }

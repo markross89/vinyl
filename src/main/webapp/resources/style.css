@@ -606,6 +606,7 @@ ul {
     min-width: 300px;
     max-width: 300px;
     min-height: 90px;
+    margin-bottom: 10px;
 
 
 }
@@ -767,4 +768,51 @@ font-size: large;
     cursor: auto;
     color: #8a8a8a;
     text-decoration: none;
+}
+
+.error-info{
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+    color: #595959;
+    line-height: 1.5em;
+    width: 300px;
+    padding: 30px 30px 70px;
+}
+.pass-forgot{
+    color: #494949;
+    margin-top: 40%;
+    text-decoration: none;
+}
+.pass-forgot:hover{
+    cursor: pointer;
+    color: blue;
+}
+.pass-forgot:active{
+    font-weight: bold;
+
+}
+.email-reminder{
+
+    padding: 30px;
+    margin: 75px 10px 75px;
+    width: 300px;
+    height: 500px;
+
+}
+.email-message{
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -50px;
+    color: #595959;
+
+
+}
+.password-update{
+
+    padding: 30px;
+    margin: 75px 10px 75px;
+    width: 300px;
+    height: 500px;
 }

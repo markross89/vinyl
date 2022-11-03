@@ -54,6 +54,7 @@
                                        placeholder="${passwordRepeatPlaceholder}"/>
 
                         <form:errors path="passwordRepeat" Class="markus-error"/>
+
                     </div>
 
                     <div class="form-group form-group--buttons">

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -24,8 +25,7 @@ public class UserController {
 	private final TokenService tokenService;
 	private final RoleRepository roleRepository;
 	
-	public UserController (UserService userService, UserRepository userRepository,
-						   TokenService tokenService, RoleRepository roleRepository) {
+	public UserController (UserService userService, UserRepository userRepository, TokenService tokenService, RoleRepository roleRepository) {
 		
 		this.userService = userService;
 		this.userRepository = userRepository;
@@ -76,11 +76,11 @@ public class UserController {
 		return userService.updateUserCredentials(user);
 	}
 	
-	@PostMapping("/changePassword")
+	@PostMapping("/change_password")
 	public String sendLink (@RequestParam String username, Model model) {
 		
 		model.addAttribute("message", userService.verifyUserExists(username));
-		return "login/messageRegistration";
+		return "/info_page";
 	}
 	
 	@GetMapping("/password")
@@ -88,19 +88,19 @@ public class UserController {
 		
 		if (userService.passwordChangeConfirmation(token).equals(token)) {
 			model.addAttribute("user", tokenService.findByToken(token).getUser());
-			return "/login/passwordUpdate";
+			return "/password_update";
 		}
 		model.addAttribute("message", userService.passwordChangeConfirmation(token));
-		return "login/messageRegistration";
+		return "/info_page";
 	}
 	
 	@PostMapping("/password")
 	public String passwordReset (@Valid User user, BindingResult result, Model model) {
 		
-		if (result.hasErrors()) {
+		if (!result.hasErrors()) {
 			model.addAttribute("message", userService.updateUserPassword(user));
-			return "login/messageRegistration";
+			return "/info_page";
 		}
-		return "/login/passwordUpdate";
+		return "/password_update";
 	}
 }

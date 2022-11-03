@@ -66,6 +66,7 @@ function closeModal(modal) {
 
 // login validation
 
+
 let form = document.querySelector('.markus-form')
 
 function checkValid() {
@@ -97,9 +98,26 @@ function checkValid() {
 }
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     checkValid();
 })
 
 // login validation end
+
+
+// email validation
+
+function validate() {
+    const form = document.querySelector('.markus-email-form');
+    const emailValue = document.getElementById("email-verification").value;
+    const emailError = document.getElementById("email-verification-error");
+    const regex = /^\S+@\S+\.\S+$/;
+    if (regex.test(emailValue)) {
+        emailError.style.display="none";
+        form.submit();
+    }
+    else {
+        emailError.style.display="block";
+    }
+}

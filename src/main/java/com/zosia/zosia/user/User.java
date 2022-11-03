@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 
@@ -32,14 +33,17 @@ public class User {
 	@NotBlank
 	private String lastName;
 	@StrongPassword
+	@NotBlank
 	private String password;
-	@Transient
+	@NotBlank
+	@StrongPassword
 	private String passwordRepeat;
 	private int enabled;
+	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
 	
-	
+
 }

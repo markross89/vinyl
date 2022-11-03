@@ -43,6 +43,7 @@ public class UserService {
 	public void saveUser (User user, boolean enable) {
 		
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setPasswordRepeat(passwordEncoder.encode(user.getPasswordRepeat()));
 		enableUser(user, enable);
 		Role userRole = roleRepository.findByName("ROLE_USER");
 		user.setRoles(new HashSet<>(List.of(userRole)));
@@ -101,6 +102,8 @@ public class UserService {
 		
 		if (user.getPassword().equals(user.getPasswordRepeat())) {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			user.setPasswordRepeat(passwordEncoder.encode(user.getPasswordRepeat()));
+			user.setRoles(userRepository.findById(user.getId()).get().getRoles());
 			userRepository.save(user);
 			return messageService.getMessage("message.verification.success");
 		}
@@ -113,7 +116,8 @@ public class UserService {
 		return "redirect:/admin";
 	}
 	
-	public Set<Role> getUserRoles(User user){
+	public Set<Role> getUserRoles (User user) {
+		
 		return userRepository.findById(user.getId()).get().getRoles();
 	}
 }
