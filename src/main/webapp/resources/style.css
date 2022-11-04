@@ -217,14 +217,16 @@ ul {
 
 .content {
     position: absolute;
-    margin-right: 5px;
-    margin-top: 60px;
+    display: flex;
+    justify-content: right;
+    margin-top: 70px;
     font-size: large;
-    width: 150px;
+    width: 120px;
     z-index: 20;
     background-color: rgb(255, 255, 255);
-    border: 1px solid #b4b4b4;
+
     border-radius: 5px;
+    box-shadow: 0 0 3px #868686;
 
 }
 
@@ -276,6 +278,7 @@ ul {
     padding: 5px;
     margin-top: 5px;
     margin-left: 30px;
+    min-height: 630px;
     height: auto;
     display: flex;
     flex-wrap: wrap;
@@ -562,6 +565,7 @@ ul {
     margin-right: 15px;
     color: rgb(120, 120, 120);
     font-weight: bold;
+
 }
 
 .list-user-button:hover {
@@ -632,6 +636,7 @@ ul {
 .select-box:hover {
     color: rgb(40, 40, 40);
     cursor: pointer;
+
 }
 
 
@@ -726,15 +731,15 @@ ul {
     justify-content: space-evenly;
 }
 
-.pagInfo{
-    color:  #5e5e5e;
+.pagInfo {
+    color: #5e5e5e;
     font-size: small;
     margin-top: 2px;
 }
 
 
 .pagButton {
-font-size: large;
+    font-size: large;
     font-weight: bolder;
     border: none;
     background-color: transparent;
@@ -742,35 +747,37 @@ font-size: large;
     text-decoration: none;
 }
 
-.pagButton:hover{
+.pagButton:hover {
     cursor: pointer;
-     color: #be8700;
+    color: #be8700;
 }
-.pagSelect{
+
+.pagSelect {
     border: none;
     background-color: transparent;
-    color:  #5e5e5e;
+    color: #5e5e5e;
 
 }
 
-.pagButtons{
+.pagButtons {
     display: flex;
     justify-content: space-evenly;
     width: 300px;
 }
-.pageInfo{
+
+.pageInfo {
     margin-top: 2px;
     color: #5e5e5e;
     font-size: small;
 }
 
-.pagButtonDisabled{
+.pagButtonDisabled {
     cursor: auto;
     color: #8a8a8a;
     text-decoration: none;
 }
 
-.error-info{
+.error-info {
     font-size: x-large;
     font-weight: bold;
     text-align: center;
@@ -779,20 +786,24 @@ font-size: large;
     width: 300px;
     padding: 30px 30px 70px;
 }
-.pass-forgot{
+
+.pass-forgot {
     color: #494949;
     margin-top: 40%;
     text-decoration: none;
 }
-.pass-forgot:hover{
+
+.pass-forgot:hover {
     cursor: pointer;
     color: blue;
 }
-.pass-forgot:active{
+
+.pass-forgot:active {
     font-weight: bold;
 
 }
-.email-reminder{
+
+.email-reminder {
 
     padding: 30px;
     margin: 75px 10px 75px;
@@ -800,7 +811,8 @@ font-size: large;
     height: 500px;
 
 }
-.email-message{
+
+.email-message {
     font-size: x-large;
     font-weight: bold;
     text-align: center;
@@ -809,10 +821,209 @@ font-size: large;
 
 
 }
-.password-update{
+
+.password-update {
 
     padding: 30px;
     margin: 75px 10px 75px;
     width: 300px;
     height: 500px;
+}
+
+.list-element {
+    float: left;
+
+
+}
+
+.list-link {
+    text-decoration: none;
+    text-align: right;
+    color: #414141;
+    border: none;
+    outline: none;
+    background-color: white;
+    font-size: medium;
+
+}
+
+.list-link:hover {
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.list-link:active {
+    color: blue;
+}
+
+.markus-login-register {
+    background: none;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    font-size: medium;
+    margin-right: 15px;
+    color: rgb(63, 63, 63);
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.markus-login-register:hover {
+    color: rgb(40, 40, 40);
+    cursor: pointer;
+}
+
+.markus-login-register:active {
+    font-size: large;
+}
+
+.input-logout {
+
+    border: none;
+    outline: none;
+    text-decoration: none;
+    text-align: right;
+    color: #414141;
+    background-color: white;
+    font-size: medium;
+}
+
+.input-logout:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.input-logout:active,
+.input-logout:focus {
+    border: none;
+    outline: none;
+    text-decoration: none;
+    color: blue;
+    background-color: white;
+    font-size: medium;
+}
+
+.card-body {
+    width: 100%;
+}
+
+td {
+    text-align: center;
+    height: 40px;
+}
+
+th {
+    height: 50px;
+    background-color: #cbcbcb;
+    min-width: 40px;
+}
+
+.markus-inline {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+
+
+}
+
+.radiobutton {
+    margin: 10px;
+
+}
+
+.login-page {
+
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    margin-top: 50px;
+
+}
+
+.users-pic {
+    margin-top: 50px;
+    width: 60%;
+    height: 100%;
+}
+
+/* Customize the label (the container) */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 60px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 10px;
+
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #ccc;
+
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #b2e2ff;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.title{
+
+    text-decoration: none;
+    text-shadow: none;
+    font-size: large;
 }

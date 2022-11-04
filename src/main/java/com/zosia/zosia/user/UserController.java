@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import javax.validation.Valid;
-import java.util.List;
 
 
 @Controller
@@ -37,7 +36,7 @@ public class UserController {
 	public String showProfile (Model model, @AuthenticationPrincipal CurrentUser customUser) {
 		
 		model.addAttribute("user", customUser.getUser());
-		return "/login/userDataUpdate";
+		return "/user_data_update";
 	}
 	
 	@PostMapping("/profile")
@@ -45,35 +44,36 @@ public class UserController {
 		
 		if (!result.hasErrors()) {
 			model.addAttribute("message", userService.updateUser(user));
-			return "login/messageRegistration";
+			
+			return "info_page";
 		}
-		return "/login/userDataUpdate";
+		return "/user_data_update";
 	}
 	
-	@GetMapping("/admin")
-	public String userIndex (Model model, @AuthenticationPrincipal CurrentUser customUser) {
+	@GetMapping("/users_index")
+	public String userIndex (Model model) {
 		
-		model.addAttribute("user", customUser.getUser());
 		model.addAttribute("users", userRepository.findAll());
-		return "/user/admin";
+		return "/users_index";
 	}
 	
-	@GetMapping("/editCredentials/{id}")
+	@GetMapping("/edit_credentials/{id}")
 	public String editCredentials (@PathVariable Long id, Model model) {
 		
 		model.addAttribute("user", userRepository.findById(id).get());
 		model.addAttribute("roles", roleRepository.findAll());
-		return "/user/editCredentials";
+		return "/edit_credentials";
 	}
 	
-	@PostMapping("/editCredentials")
+	@PostMapping("/edit_credentials")
 	public String saveCredentials (@Valid User user, BindingResult result, Model model) {
 		
 		if (result.hasErrors()) {
 			model.addAttribute("roles", roleRepository.findAll());
-			return "/user/editCredentials";
+			return "/edit_credentials";
 		}
-		return userService.updateUserCredentials(user);
+		userRepository.save(user);
+		return "redirect:/users_index";
 	}
 	
 	@PostMapping("/change_password")
@@ -98,7 +98,7 @@ public class UserController {
 	public String passwordReset (@Valid User user, BindingResult result, Model model) {
 		
 		if (!result.hasErrors()) {
-			model.addAttribute("message", userService.updateUserPassword(user));
+			model.addAttribute("message", userService.updateUser(user));
 			return "/info_page";
 		}
 		return "/password_update";

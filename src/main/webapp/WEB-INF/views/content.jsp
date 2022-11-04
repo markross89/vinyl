@@ -40,7 +40,7 @@
 
     <div class="custom-select">
         <select id="locales" class="select-box">
-            <option value="" disabled selected hidden><fmt:message key="lang.change"/></option>
+            <option  value="" disabled selected hidden><fmt:message key="lang.change"/></option>
             <option value="en"><fmt:message key="lang.eng"/></option>
             <option value="pl"><fmt:message key="lang.pl"/></option>
         </select>
@@ -50,7 +50,7 @@
     <div class="user" style="width: 250px">
         <sec:authorize access="isAnonymous()">
             <div>
-                <button class="list-user-button">
+                <button class="list-user-button ">
                     <a class="list-user-button" href="/login">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Login</span>
@@ -59,8 +59,8 @@
                 </button>
             </div>
             <div>
-                <button data-modal-target="#modal" class="list-user-button">
-                    <a class="list-user-button" href="/register">
+                <button  class="list-user-button ">
+                    <a class="list-user-button " href="/register">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Register</span></a
                     >
@@ -72,25 +72,28 @@
             <button type="button" class="collapsible"><sec:authentication
                     property="principal.username"/></button>
             <div class="content" style="display: none">
-                <ul>
+                <ul style=" margin: 0;padding: 0; justify-content: right ">
 
                     <li>
-                        <div>
+                        <div class="list-element">
+                            <a href="<c:url value="/profile"/>" class="list-link">My profile</a>
+                        </div>
+                    </li>
+                    <sec:authorize access="hasRole('ADMIN')">
+                    <li>
+                        <div class="list-element">
+                            <a href="<c:url value="/users_index"/>" class="list-link">Users</a>
+                        </div>
+                    </li>
+                    </sec:authorize>
+                    <li>
+                        <div class="list-element">
                             <form action="<c:url value="/logout"/>" method="post">
-                                <button class="list-user-button" type="submit">
-                                    <span>Logout</span>
-                                </button>
+                                    <input class="input-logout" type="submit" class="list-link" value="Logout" style="margin-right: 20px"/>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             </form>
                         </div>
                     </li>
-
-
-                    </a></li>
-                    <sec:authorize access="hasRole('ADMIN')">
-                        <li><a class="list-user" href=""> <span>Users</span></a></li>
-                    </sec:authorize>
-
                 </ul>
             </div>
         </sec:authorize>

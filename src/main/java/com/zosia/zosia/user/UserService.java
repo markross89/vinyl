@@ -58,12 +58,13 @@ public class UserService {
 		if (enable) {user.setEnabled(1);}
 		else {user.setEnabled(0);}
 	}
-	
+
 	public String updateUser (User user) {
 		
 		if (user.getPassword().equals(user.getPasswordRepeat())) {
 			user.setRoles(getUserRoles(user));
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			user.setPasswordRepeat(passwordEncoder.encode(user.getPasswordRepeat()));
 			userRepository.save(user);
 			return messageService.getMessage("message.verification.success");
 		}
@@ -96,24 +97,6 @@ public class UserService {
 			return messageService.getMessage("message.token.expired");
 		}
 		return token;
-	}
-	
-	public String updateUserPassword (User user) {
-		
-		if (user.getPassword().equals(user.getPasswordRepeat())) {
-			user.setPassword(passwordEncoder.encode(user.getPassword()));
-			user.setPasswordRepeat(passwordEncoder.encode(user.getPasswordRepeat()));
-			user.setRoles(userRepository.findById(user.getId()).get().getRoles());
-			userRepository.save(user);
-			return messageService.getMessage("message.verification.success");
-		}
-		return messageService.getMessage("message.verification.failed");
-	}
-	
-	public String updateUserCredentials (User user) {
-		
-		userRepository.save(user);
-		return "redirect:/admin";
 	}
 	
 	public Set<Role> getUserRoles (User user) {
