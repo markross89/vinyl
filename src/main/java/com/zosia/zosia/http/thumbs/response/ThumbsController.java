@@ -33,7 +33,7 @@ public class ThumbsController {
 	public String displaySearchThumbs (Model model, @RequestParam(defaultValue = "1") String page, @RequestParam(defaultValue = "48") String size,
 									   @RequestParam(defaultValue = "#{T(java.time.LocalDate).now()}") String search) throws JsonProcessingException {
 		
-		model.addAttribute("thumbs", thumbsService.requestBuilder(Thumbs.class, search, page, size));
+		model.addAttribute("thumbs", thumbsService.requestThumbBuilder(Thumbs.class, search, page, size));
 		model.addAttribute("search", search);
 		return "home";
 	}

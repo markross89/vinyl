@@ -65,7 +65,7 @@
                     </div>
 
                 </form:form>
-                <img src="/resources/pictures/americana.jpg" class="cover" alt="americana">
+                <img src="/resources/pictures/moon.jpeg" class="cover" alt="americana">
             </div>
             <hr
                     style="

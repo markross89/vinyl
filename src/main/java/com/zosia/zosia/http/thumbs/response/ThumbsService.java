@@ -18,7 +18,7 @@ public class ThumbsService {
 		this.messageService = messageService;
 	}
 	
-	public <T>T requestBuilder(Class<T> type, String search,  String page, String size) throws JsonProcessingException {
+	public <T>T requestThumbBuilder(Class<T> type, String search,  String page, String size) throws JsonProcessingException {
 		
 		return httpService.mapRequestData(String.join("", messageService.getMessage("api.link.discogs.new.release"), search.replaceAll(" ", "+"), "&",
 				messageService.getMessage("api.link.discogs.key.secret"), "&page="+page+"&per_page="+size), type);

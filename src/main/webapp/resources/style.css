@@ -1021,9 +1021,101 @@ th {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-.title{
+
+.title {
 
     text-decoration: none;
     text-shadow: none;
     font-size: large;
+}
+
+.markus-info-pic {
+
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: space-evenly;
+}
+
+.pictures, .album-details {
+    padding: 10px;
+}
+
+.album-details-title {
+    font-size: larger;
+    font-weight: bold;
+    color: #414141;
+    margin: 10px;
+    display: flex;
+
+
+}
+
+.details-element {
+    font-size: larger;
+    color: #414141;
+}
+
+.tracks {
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;;
+}
+
+.tracklist-table {
+    width: 100%;
+    margin: 10px;
+}
+
+.tracklist-table tr {
+    background-color: rgba(224, 224, 224, 0.44);
+    font-size: larger;
+    color: #4d4d4d;
+
+}
+
+.album-options {
+
+    padding: 5px;
+    margin: 5px 30px 5px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+
+
+}
+
+.butt {
+
+    padding: 5px;
+    margin: 5px;
+    height: 30px;
+    width: 80px;
+    border-radius: 6px;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.add-button {
+
+    text-align: center;
+    text-decoration: none;
+    color: rgba(0, 108, 4, 0.88);
+}
+
+.delete-button {
+
+    text-align: center;
+    text-decoration: none;
+    color: rgba(141, 11, 11, 0.87);
+}
+
+.discogs-button {
+
+    text-align: center;
+    text-decoration: none;
+    color: rgba(86, 86, 86, 0.93);
 }

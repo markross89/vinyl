@@ -20,7 +20,7 @@
 
 
                 <c:forEach items="${thumbs.results}" var="e">
-                    <a href="" style="text-decoration: none"
+                    <a href="<c:url value="/details/${e.id}"/>" style="text-decoration: none"
                     >
                         <div class="card">
                             <div class="title-pic" title="${e.title}">

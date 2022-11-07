@@ -9,6 +9,8 @@ public class Album {
 	
 	private String year;
 	
+	private String artists_sort;
+	
 	private String title;
 	
 	private Artist[] artists;
@@ -24,7 +26,18 @@ public class Album {
 	private String uri;
 	
 	private Label[] labels;
+	private String thumb;
 	
+	
+	public String getThumb () {
+		
+		return thumb;
+	}
+	
+	public void setThumb (String thumb) {
+		
+		this.thumb = thumb;
+	}
 	
 	public String getYear () {
 		
@@ -118,6 +131,15 @@ public class Album {
 	public void setLabels (Label[] labels) {
 		
 		this.labels = labels;
+	}
+	public String getArtists_sort () {
+		
+		return artists_sort;
+	}
+	
+	public void setArtists_sort (String artists_sort) {
+		
+		this.artists_sort = artists_sort;
 	}
 	
 	

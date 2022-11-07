@@ -33,7 +33,7 @@ public class Track {
 		this.position = position;
 	}
 	
-	public String getTrackTitle () {
+	public String getTitle () {
 		
 		return title;
 	}
