@@ -73,23 +73,23 @@
                     property="principal.username"/></button>
             <div class="content" style="display: none">
                 <ul style=" margin: 0;padding: 0; justify-content: right ">
-
-                    <li>
-                        <div class="list-element">
-                            <a href="<c:url value="/profile"/>" class="list-link">My profile</a>
-                        </div>
-                    </li>
                     <sec:authorize access="hasRole('ADMIN')">
-                    <li>
-                        <div class="list-element">
-                            <a href="<c:url value="/users_index"/>" class="list-link">Users</a>
-                        </div>
-                    </li>
+                        <li>
+                            <div class="list-element">
+                                <a href="<c:url value="/users_index"/>" class="list-link"> Users</a>
+                            </div>
+                        </li>
                     </sec:authorize>
                     <li>
                         <div class="list-element">
+                            <a href="<c:url value="/profile"/>" class="list-link"> My profile</a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="list-element">
                             <form action="<c:url value="/logout"/>" method="post">
-                                    <input class="input-logout" type="submit" class="list-link" value="Logout" style="margin-right: 20px"/>
+                                    <input class="input-logout" type="submit" class="list-link" style="margin-left: -3px" value="Logout" style="margin-right: 20px"/>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             </form>
                         </div>
