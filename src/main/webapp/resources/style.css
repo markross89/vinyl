@@ -1089,33 +1089,37 @@ th {
 }
 
 .butt {
-
+    background-color: rgba(208, 208, 208, 0.65);
     padding: 5px;
     margin: 5px;
-    height: 30px;
-    width: 80px;
+    height: 35px;
+    width: 100px;
     border-radius: 6px;
     font-weight: bolder;
     font-size: larger;
+    box-shadow: 2px 2px 2px rgba(166, 166, 166, 0.84);
+
+}
+.butt:hover{
+    background-color: rgba(178, 178, 178, 0.65);
+}
+.butt:active{
+    box-shadow: none;
 }
 
 .add-button {
 
     text-align: center;
     text-decoration: none;
-    color: rgba(0, 108, 4, 0.88);
+    background-color: rgb(66, 168, 77);
+    color: white;
 }
 
 .delete-button {
 
     text-align: center;
     text-decoration: none;
-    color: rgba(141, 11, 11, 0.87);
+    background-color: rgb(222, 81, 67);
+    color: white;
 }
 
-.discogs-button {
-
-    text-align: center;
-    text-decoration: none;
-    color: rgba(86, 86, 86, 0.93);
-}

@@ -42,9 +42,9 @@
                 </div>
             </div>
             <div class="album-options">
-                <a href="" class="butt add-button">add</a>
-                <a href="" class="butt delete-button">delete</a>
-                <a href="" class="butt discogs-button">discogs</a>
+                <a href="" class="butt add-button">Add</a>
+                <a href="" class="butt delete-button">Delete</a>
+
 
             </div>
         </div>
