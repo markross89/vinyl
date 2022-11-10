@@ -6,6 +6,7 @@
 </footer>
 <!-- footer end -->
 <script defer src="<c:url value="/resources/script.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/lightbox-plus-jquery.min.js" />"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
 </script>
 <script type="text/javascript">

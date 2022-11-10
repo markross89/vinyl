@@ -9,7 +9,7 @@
     <div class="content-content">
         <div class="content-title">Users :</div>
 
-        <jsp:include page="pagination.jsp"/>
+
 
         <hr
                 style="
@@ -72,7 +72,7 @@
               border-top: 1px solid rgba(239,175,0,0.8);
             "
         />
-        <jsp:include page="pagination.jsp"/>
+
     </div>
 </div>
 

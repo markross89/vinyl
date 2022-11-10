@@ -6,6 +6,9 @@ import com.zosia.zosia.MessageService;
 import com.zosia.zosia.http.service.HttpService;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Entity;
+
+
 
 @Service
 public class AlbumService {

@@ -9,36 +9,39 @@
 <!-- main content start -->
 <div class="main-content">
     <div class="content-content">
-        <div class="content-title">${album.artists_sort} - ${album.title}:</div>
+        <div class="content-title">Details:</div>
         <hr
                 style="
               width: 95%;
-              margin-right: 50px;
+              margin-right: 35px;
               border-top: 1px solid rgba(239,175,0,0.8);
             "
         />
-        <div class="markus-info-pic">
+        <div class="markus-info">
             <div class="markus-info-pic">
-                <div class="pictures">
-                    <a href="<c:url value=""/>"><img src="${album.thumb}" alt="${album.thumb}" width="170" height="170"></a>
+                <div class="pictures gallery">
+                        <a href="<c:url value="${album.images[0].resource_url}" />" data-lightbox="mygallery" title="Gallery"><img src="${album.images[0].resource_url}" alt="${album.thumb}" width="300" height="300"></a>
+                    <c:forEach items="${album.images}" var="i">
+                        <a href="<c:url value="${i.resource_url}"/>" data-lightbox="mygallery" ></a>
+                    </c:forEach>
                 </div>
 
                 <div class="album-details">
-                    <div class="album-details-title">Details:</div>
-
-                    <div class="details-element">id: ${album.id}</div>
-                    <div class="details-element">year: ${album.year}</div>
-                    <div class="details-element">genres:
+                    <div class="details-element">Artist: <div class="bold-description">${album.artists_sort}</div></div>
+                    <div class="details-element">Title: <div class="bold-description">${album.title}</div></div>
+                    <div class="details-element">Id: <div class="bold-description">${album.id}</div></div>
+                    <div class="details-element">Year: <div class="bold-description">${album.year}</div></div>
+                    <div class="details-element">Genres:
                         <c:forEach items="${album.genres}" var="g">
-                            ${g}
+                        <div class="bold-description">${g}</div>
                         </c:forEach>
                     </div>
-                    <div class="details-element">labels:
+                    <div class="details-element">Label:
                         <c:forEach items="${album.labels}" var="l">
-                            ${l.name}(${l.catno})
+                        <div class="bold-description">${l.name}(${l.catno})</div>
                         </c:forEach>
                     </div>
-                    <div class="details-element"><a href="<c:url value="${album.uri}" />">see on discogs</a></div>
+                    <div class="details-element"><a href="<c:url value="${album.uri}" />">See on Discogs</a></div>
                 </div>
             </div>
             <div class="album-options">
@@ -68,7 +71,8 @@
         <hr
                 style="
               width: 95%;
-              margin-right: 50px;
+              margin-right: 40px;
+              margin-bottom: 50px;
               border-top: 1px solid rgba(239,175,0,0.8);
             "
         />

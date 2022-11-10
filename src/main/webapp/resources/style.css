@@ -1035,6 +1035,16 @@ th {
     flex-direction: row;
     padding: 5px;
     justify-content: space-evenly;
+
+}
+
+.markus-info {
+    margin: 20px 15px 0px 15px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: space-between;
+    background-color: rgba(224, 224, 224, 0.44);
 }
 
 .pictures, .album-details {
@@ -1042,18 +1052,24 @@ th {
 }
 
 .album-details-title {
+    text-align: center;
+    vertical-align: center;
     font-size: larger;
     font-weight: bold;
     color: #414141;
     margin: 10px;
-    display: flex;
+    width: 100%;
+    background-color: rgba(232, 212, 165, 0.59);
+    padding: 5px;
+
 
 
 }
 
 .details-element {
-    font-size: larger;
-    color: #414141;
+    font-size: x-large;
+    color: #4d4d4d;
+
 }
 
 .tracks {
@@ -1100,10 +1116,8 @@ th {
     box-shadow: 2px 2px 2px rgba(166, 166, 166, 0.84);
 
 }
-.butt:hover{
-    background-color: rgba(178, 178, 178, 0.65);
-}
-.butt:active{
+
+.butt:active {
     box-shadow: none;
 }
 
@@ -1115,6 +1129,10 @@ th {
     color: white;
 }
 
+.add-button:hover {
+    background-color: rgb(52, 131, 59);
+}
+
 .delete-button {
 
     text-align: center;
@@ -1123,3 +1141,18 @@ th {
     color: white;
 }
 
+.delete-button:hover {
+    background-color: rgb(171, 68, 50);
+}
+
+.bold-description {
+    font-weight: bold;
+    display: inline-flex;
+    color: #505050;
+
+}
+
+.album-details {
+    line-height: 35px;
+
+}

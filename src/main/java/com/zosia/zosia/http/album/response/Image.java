@@ -2,9 +2,17 @@ package com.zosia.zosia.http.album.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.*;
 
+
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Image {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
+	private Long id;
 	
 	private String resource_url;
 	
@@ -15,6 +23,16 @@ public class Image {
 	private String uri150;
 	
 	private String height;
+	
+	public Long getId () {
+		
+		return id;
+	}
+	
+	public void setId (Long id) {
+		
+		this.id = id;
+	}
 	
 	public String getResource_url () {
 		

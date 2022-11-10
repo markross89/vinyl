@@ -2,31 +2,48 @@ package com.zosia.zosia.http.album.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.*;
 
+
+@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Album {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
+	private Long album_id;
 	
 	private String year;
 	
 	private String artists_sort;
 	
 	private String title;
-	
+	@ManyToOne
 	private Artist[] artists;
-	
+	@ManyToOne
 	private String[] genres;
 	
 	private String id;
-	
+	@ManyToOne
 	private Track[] tracklist;
-	
+	@ManyToOne
 	private Image[] images;
 	
 	private String uri;
-	
+	@ManyToOne
 	private Label[] labels;
 	private String thumb;
+	
+	public Long getAlbum_id () {
+		
+		return album_id;
+	}
+	
+	public void setAlbum_id (Long album_id) {
+		
+		this.album_id = album_id;
+	}
 	
 	
 	public String getThumb () {
