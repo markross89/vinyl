@@ -1,8 +1,13 @@
-package com.zosia.zosia.http.album.response;
+package com.zosia.zosia.http.album.response.album;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.zosia.zosia.http.album.response.artist.Artist;
+import com.zosia.zosia.http.album.response.image.Image;
+import com.zosia.zosia.http.album.response.label.Label;
+import com.zosia.zosia.http.album.response.track.Track;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -10,30 +15,30 @@ import javax.persistence.*;
 public class Album {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long album_id;
-	
-	private String year;
-	
-	private String artists_sort;
-	
-	private String title;
-	@ManyToOne
-	private Artist[] artists;
-	@ManyToOne
-	private String[] genres;
-	
+	@Column(name = "discogs_id")
 	private String id;
-	@ManyToOne
-	private Track[] tracklist;
-	@ManyToOne
-	private Image[] images;
-	
+	private String year;
+	private String artists_sort;
+	private String title;
 	private String uri;
-	@ManyToOne
-	private Label[] labels;
-	private String thumb;
+	@ElementCollection
+	private List<String> genres;
+	@ManyToMany
+	@JoinTable(
+			name = "album_artist",
+			joinColumns = @JoinColumn(name = "album_id"),
+			inverseJoinColumns = @JoinColumn(name = "artist_id"))
+	private List<Artist> artists;
+	@OneToMany
+	private List<Track> tracklist;
+	@OneToMany
+	private List<Image> images;
+	@ManyToMany
+	private List<Label> labels;
+	
 	
 	public Long getAlbum_id () {
 		
@@ -45,16 +50,6 @@ public class Album {
 		this.album_id = album_id;
 	}
 	
-	
-	public String getThumb () {
-		
-		return thumb;
-	}
-	
-	public void setThumb (String thumb) {
-		
-		this.thumb = thumb;
-	}
 	
 	public String getYear () {
 		
@@ -78,22 +73,22 @@ public class Album {
 	}
 	
 	
-	public Artist[] getArtists () {
+	public List<Artist> getArtists () {
 		
 		return artists;
 	}
 	
-	public void setArtists (Artist[] artists) {
+	public void setArtists (List<Artist> artists) {
 		
 		this.artists = artists;
 	}
 	
-	public String[] getGenres () {
+	public List<String> getGenres () {
 		
 		return genres;
 	}
 	
-	public void setGenres (String[] genres) {
+	public void setGenres (List<String> genres) {
 		
 		this.genres = genres;
 	}
@@ -110,22 +105,22 @@ public class Album {
 	}
 	
 	
-	public Track[] getTracklist () {
+	public List<Track> getTracklist () {
 		
 		return tracklist;
 	}
 	
-	public void setTracklist (Track[] tracklist) {
+	public void setTracklist (List<Track> tracklist) {
 		
 		this.tracklist = tracklist;
 	}
 	
-	public Image[] getImages () {
+	public List<Image> getImages () {
 		
 		return images;
 	}
 	
-	public void setImages (Image[] images) {
+	public void setImages (List<Image> images) {
 		
 		this.images = images;
 	}
@@ -140,12 +135,12 @@ public class Album {
 		this.uri = uri;
 	}
 	
-	public Label[] getLabels () {
+	public List<Label> getLabels () {
 		
 		return labels;
 	}
 	
-	public void setLabels (Label[] labels) {
+	public void setLabels (List<Label> labels) {
 		
 		this.labels = labels;
 	}

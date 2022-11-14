@@ -1,8 +1,10 @@
-package com.zosia.zosia.http.album.response;
+package com.zosia.zosia.http.album.response.label;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.zosia.zosia.http.album.response.album.Album;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -11,13 +13,23 @@ public class Label
 {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column( nullable = false)
 	private Long id;
-	
 	private String catno;
-	
 	private String name;
+	@ManyToMany
+	private List<Album> albums;
+	
+	public List<Album> getAlbums () {
+		
+		return albums;
+	}
+	
+	public void setAlbums (List<Album> albums) {
+		
+		this.albums = albums;
+	}
 	
 	public Long getId () {
 		

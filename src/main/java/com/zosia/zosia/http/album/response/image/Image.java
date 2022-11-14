@@ -1,6 +1,7 @@
-package com.zosia.zosia.http.album.response;
+package com.zosia.zosia.http.album.response.image;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.zosia.zosia.http.album.response.album.Album;
 
 import javax.persistence.*;
 
@@ -10,19 +11,26 @@ import javax.persistence.*;
 public class Image {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column( nullable = false)
 	private Long id;
-	
 	private String resource_url;
-	
 	private String width;
-	
 	private String type;
-	
 	private String uri150;
-	
 	private String height;
+	@ManyToOne
+	private Album album;
+	
+	public Album getAlbum () {
+		
+		return album;
+	}
+	
+	public void setAlbum (Album album) {
+		
+		this.album = album;
+	}
 	
 	public Long getId () {
 		

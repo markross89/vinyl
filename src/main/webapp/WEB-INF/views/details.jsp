@@ -20,7 +20,7 @@
         <div class="markus-info">
             <div class="markus-info-pic">
                 <div class="pictures gallery">
-                        <a href="<c:url value="${album.images[0].resource_url}" />" data-lightbox="mygallery" title="Gallery"><img src="${album.images[0].resource_url}" alt="${album.thumb}" width="300" height="300"></a>
+                        <a href="<c:url value="${album.images[0].resource_url}" />" data-lightbox="mygallery" title="Gallery"><img src="${album.images[0].resource_url}" alt="${album.images[0].resource_url}" width="300" height="300"></a>
                     <c:forEach items="${album.images}" var="i">
                         <a href="<c:url value="${i.resource_url}"/>" data-lightbox="mygallery" ></a>
                     </c:forEach>
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="album-options">
-                <a href="" class="butt add-button">Add</a>
+                <a href="<c:url value="/save/${album.id}" />" class="butt add-button">Add</a>
                 <a href="" class="butt delete-button">Delete</a>
 
 

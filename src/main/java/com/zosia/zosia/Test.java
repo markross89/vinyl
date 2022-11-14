@@ -2,18 +2,23 @@ package com.zosia.zosia;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zosia.zosia.http.album.response.Album;
+import com.zosia.zosia.http.album.response.album.Album;
+import com.zosia.zosia.http.album.response.album.AlbumService;
+import com.zosia.zosia.http.service.HttpService;
 import com.zosia.zosia.http.thumbs.response.Thumbs;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Arrays;
 
 
 public class Test {
+	
+
 	
 	public static <T> T mapRequestData (String requestAddress, Class<T> type) throws JsonProcessingException {
 		
@@ -32,11 +37,9 @@ public class Test {
 	
 	public static void main (String[] args) throws JsonProcessingException {
 		
-		Thumbs mietek = mapRequestData("https://api.discogs.com/database/search?type=release&q=tiesto&key=RqgTChKtuwVLyeWqVgFL&secret" +
-				"=sTkBKTNnXoSjWCnVRIOabYoBZUsDgzmY&page=2&per_page=12", Thumbs.class);
-		System.out.println(mietek.getPagination().getUrls().getNext());
+	
 		
-
+	
 	}
 }
 
