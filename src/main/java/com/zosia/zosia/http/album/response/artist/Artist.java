@@ -14,21 +14,26 @@ import java.util.List;
 public class Artist {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
 	private Long id;
 	private String name;
 	@ManyToMany(mappedBy = "artists")
-	private List<Album> album;
+	private List<Album> albums;
 	
 	public List<Album> getAlbum () {
 		
-		return album;
+		return albums;
 	}
 	
-	public void setAlbum (List<Album> album) {
+	public void setAlbum (List<Album> albums) {
 		
-		this.album = album;
+		this.albums = albums;
+	}
+	
+	public void addAlbum (Album album) {
+		
+		album.addArtist(this);
+		this.albums.add(album);
 	}
 	
 	public Long getId () {

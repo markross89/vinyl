@@ -17,18 +17,7 @@ public class Track {
 	private String duration;
 	private String position;
 	private String title;
-	@ManyToOne
-	private Album album;
-	
-	public Album getAlbum () {
-		
-		return album;
-	}
-	
-	public void setAlbum (Album album) {
-		
-		this.album = album;
-	}
+
 	
 	public Long getId () {
 		

@@ -4,12 +4,15 @@ package com.zosia.zosia.http.album.response.album;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.zosia.zosia.MessageService;
 
+
 import com.zosia.zosia.http.album.response.artist.ArtistRepository;
 import com.zosia.zosia.http.album.response.image.ImageRepository;
 import com.zosia.zosia.http.album.response.label.LabelRepository;
 import com.zosia.zosia.http.album.response.track.TrackRepository;
 import com.zosia.zosia.http.service.HttpService;
 import org.springframework.stereotype.Service;
+
+
 
 
 @Service
@@ -46,10 +49,9 @@ public class AlbumService {
 	public void saveAlbum (String id) throws JsonProcessingException {
 		
 		Album album = requestAlbumBuilder(Album.class, id);
-	
-		albumRepository.save(album);
 		
-		;
+	
+		albumRepository.delete(album);
 		
 		
 	}

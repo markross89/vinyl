@@ -1,5 +1,6 @@
 package com.zosia.zosia.http.album.response.label;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zosia.zosia.http.album.response.album.Album;
 
@@ -13,12 +14,13 @@ public class Label
 {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column( nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonIgnore
 	private Long id;
 	private String catno;
 	private String name;
-	@ManyToMany
+	@ManyToMany(mappedBy = "labels")
 	private List<Album> albums;
 	
 	public List<Album> getAlbums () {

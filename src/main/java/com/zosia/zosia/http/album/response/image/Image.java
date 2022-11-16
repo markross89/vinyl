@@ -19,18 +19,7 @@ public class Image {
 	private String type;
 	private String uri150;
 	private String height;
-	@ManyToOne
-	private Album album;
-	
-	public Album getAlbum () {
-		
-		return album;
-	}
-	
-	public void setAlbum (Album album) {
-		
-		this.album = album;
-	}
+
 	
 	public Long getId () {
 		

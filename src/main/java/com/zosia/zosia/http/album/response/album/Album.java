@@ -15,40 +15,38 @@ import java.util.List;
 public class Album {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
-	private Long album_id;
-	@Column(name = "discogs_id")
+	@Column(nullable = false)
 	private String id;
 	private String year;
 	private String artists_sort;
 	private String title;
 	private String uri;
+	
 	@ElementCollection
+	@JoinTable(name = "albums_genres", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"))
 	private List<String> genres;
-	@ManyToMany
-	@JoinTable(
-			name = "album_artist",
-			joinColumns = @JoinColumn(name = "album_id"),
-			inverseJoinColumns = @JoinColumn(name = "artist_id"))
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "albums_artists", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "artist_id", referencedColumnName = "id"))
 	private List<Artist> artists;
-	@OneToMany
-	private List<Track> tracklist;
-	@OneToMany
-	private List<Image> images;
-	@ManyToMany
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "albums_labels", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "label_id", referencedColumnName = "id"))
 	private List<Label> labels;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "albums_tracks", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"))
+	private List<Track> tracklist;
 	
-	public Long getAlbum_id () {
-		
-		return album_id;
-	}
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "albums_images", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "image_id", referencedColumnName = "id"))
+	private List<Image> images;
 	
-	public void setAlbum_id (Long album_id) {
-		
-		this.album_id = album_id;
-	}
+
 	
 	
 	public String getYear () {
@@ -81,6 +79,12 @@ public class Album {
 	public void setArtists (List<Artist> artists) {
 		
 		this.artists = artists;
+	}
+	
+	public void addArtist (Artist artist) {
+		
+		artist.addAlbum(this);
+		this.artists.add(artist);
 	}
 	
 	public List<String> getGenres () {
@@ -144,6 +148,7 @@ public class Album {
 		
 		this.labels = labels;
 	}
+	
 	public String getArtists_sort () {
 		
 		return artists_sort;
