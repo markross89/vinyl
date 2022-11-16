@@ -16,7 +16,9 @@ public class Artist {
 	@Id
 	@Column(nullable = false)
 	private Long id;
+	
 	private String name;
+	
 	@ManyToMany(mappedBy = "artists")
 	private List<Album> albums;
 	

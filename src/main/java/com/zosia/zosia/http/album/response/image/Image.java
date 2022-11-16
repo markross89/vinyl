@@ -1,5 +1,6 @@
 package com.zosia.zosia.http.album.response.image;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zosia.zosia.http.album.response.album.Album;
 
@@ -13,6 +14,7 @@ public class Image {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column( nullable = false)
+	@JsonIgnore
 	private Long id;
 	private String resource_url;
 	private String width;

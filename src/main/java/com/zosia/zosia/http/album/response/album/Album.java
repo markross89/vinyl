@@ -36,12 +36,12 @@ public class Album {
 			inverseJoinColumns = @JoinColumn(name = "label_id", referencedColumnName = "id"))
 	private List<Label> labels;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinTable(name = "albums_tracks", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"))
 	private List<Track> tracklist;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinTable(name = "albums_images", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "image_id", referencedColumnName = "id"))
 	private List<Image> images;
