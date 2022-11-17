@@ -1,5 +1,6 @@
 package com.zosia.zosia.user;
 
+import com.zosia.zosia.http.album.response.album.Album;
 import com.zosia.zosia.role.Role;
 import com.zosia.zosia.validator.StrongPassword;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -40,10 +42,9 @@ public class User {
 	private String passwordRepeat;
 	private int enabled;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
-	
 
 }

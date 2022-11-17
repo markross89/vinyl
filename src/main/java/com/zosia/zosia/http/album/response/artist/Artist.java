@@ -22,12 +22,12 @@ public class Artist {
 	@ManyToMany(mappedBy = "artists")
 	private List<Album> albums;
 	
-	public List<Album> getAlbum () {
+	public List<Album> getAlbums () {
 		
 		return albums;
 	}
 	
-	public void setAlbum (List<Album> albums) {
+	public void setAlbums (List<Album> albums) {
 		
 		this.albums = albums;
 	}
@@ -36,6 +36,12 @@ public class Artist {
 		
 		album.addArtist(this);
 		this.albums.add(album);
+	}
+	
+	public void removeAlbum(Album album){
+		
+		this.getAlbums().remove(this);
+		album.getArtists().remove(this);
 	}
 	
 	public Long getId () {

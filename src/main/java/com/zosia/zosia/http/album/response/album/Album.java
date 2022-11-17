@@ -1,13 +1,17 @@
 package com.zosia.zosia.http.album.response.album;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zosia.zosia.http.album.response.artist.Artist;
 import com.zosia.zosia.http.album.response.image.Image;
 import com.zosia.zosia.http.album.response.label.Label;
 import com.zosia.zosia.http.album.response.track.Track;
+import com.zosia.zosia.user.User;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -16,7 +20,7 @@ public class Album {
 	
 	@Id
 	@Column(nullable = false)
-	private String id;
+	private Long id;
 	private String year;
 	private String artists_sort;
 	private String title;
@@ -26,15 +30,21 @@ public class Album {
 	@JoinTable(name = "albums_genres", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"))
 	private List<String> genres;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "albums_artists", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "artist_id", referencedColumnName = "id"))
-	private List<Artist> artists;
+	private Set<Artist> artists = new HashSet<>();
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "albums_labels", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "label_id", referencedColumnName = "id"))
-	private List<Label> labels;
+	private Set<Label> labels = new HashSet<>();
+	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name = "albums_users", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+	@JsonIgnore
+	private Set<User> users = new HashSet<>();
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinTable(name = "albums_tracks", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
@@ -46,8 +56,16 @@ public class Album {
 			inverseJoinColumns = @JoinColumn(name = "image_id", referencedColumnName = "id"))
 	private List<Image> images;
 	
-
 	
+	public Set<User> getUsers () {
+		
+		return users;
+	}
+	
+	public void setUsers (Set<User> users) {
+		
+		this.users = users;
+	}
 	
 	public String getYear () {
 		
@@ -71,12 +89,12 @@ public class Album {
 	}
 	
 	
-	public List<Artist> getArtists () {
+	public Set<Artist> getArtists () {
 		
 		return artists;
 	}
 	
-	public void setArtists (List<Artist> artists) {
+	public void setArtists (Set<Artist> artists) {
 		
 		this.artists = artists;
 	}
@@ -85,6 +103,30 @@ public class Album {
 		
 		artist.addAlbum(this);
 		this.artists.add(artist);
+	}
+	
+	public void removeArtist () {
+		
+		this.artists.forEach(artist -> artist.getAlbums().removeIf(album -> album == this));
+		this.artists.clear();
+	}
+	public void addUser (User user) {
+		this.users.add(user);
+	}
+	public void removeUser (User user) {
+		this.users.remove(user);
+	}
+	
+	public void addLabel (Label label) {
+		
+		label.addAlbum(this);
+		this.labels.add(label);
+	}
+	
+	public void removeLabel () {
+		
+		this.labels.forEach(label -> label.getAlbums().removeIf(album -> album == this));
+		this.labels.clear();
 	}
 	
 	public List<String> getGenres () {
@@ -98,12 +140,12 @@ public class Album {
 	}
 	
 	
-	public String getId () {
+	public Long getId () {
 		
 		return id;
 	}
 	
-	public void setId (String id) {
+	public void setId (Long id) {
 		
 		this.id = id;
 	}
@@ -139,12 +181,12 @@ public class Album {
 		this.uri = uri;
 	}
 	
-	public List<Label> getLabels () {
+	public Set<Label> getLabels () {
 		
 		return labels;
 	}
 	
-	public void setLabels (List<Label> labels) {
+	public void setLabels (Set<Label> labels) {
 		
 		this.labels = labels;
 	}

@@ -3,6 +3,7 @@ package com.zosia.zosia.http.album.response.label;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zosia.zosia.http.album.response.album.Album;
+import com.zosia.zosia.http.album.response.artist.Artist;
 
 import javax.persistence.*;
 import java.util.List;
@@ -31,6 +32,16 @@ public class Label
 	public void setAlbums (List<Album> albums) {
 		
 		this.albums = albums;
+	}
+	public void addAlbum (Album album) {
+		
+		album.addLabel(this);
+		this.albums.add(album);
+	}
+	
+	public void removeAlbum(Album album){
+		album.getLabels().remove(this);
+		this.albums.remove(album);
 	}
 	
 	public Long getId () {
