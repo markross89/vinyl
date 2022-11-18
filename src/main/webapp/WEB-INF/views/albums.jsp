@@ -1,13 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="content.jsp"/>
 
     <!-- main content start -->
     <div class="main-content">
         <div class="content-content">
-            <div class="content-title">${search} :</div>
+            <div class="content-title">My albums :</div>
 
-            <jsp:include page="pagination.jsp"/>
+            <jsp:include page="albumPagination.jsp"/>
 
             <hr
                     style="
@@ -19,16 +20,16 @@
             <div class="content-elements">
 
 
-                <c:forEach items="${thumbs.results}" var="e">
+                <c:forEach items="${albums.content}" var="e">
                     <a href="<c:url value="/details/${e.id}"/>" style="text-decoration: none"
                     >
                         <div class="card">
-                            <div class="title-pic" title="${e.title}">
+                            <div class="title-pic" title="${e.artists_sort} - ${e.title}">
                                 <div class="card-title">
-                                        ${e.title}
+                                        ${e.artists_sort} - ${e.title}
                                 </div>
                                 <div class="cover-pic">
-                                    <img src="${e.cover_image}"
+                                    <img src="${e.images[0].resource_url}"
                                          style="width: 160px; height: 160px"/>
                                 </div>
                             </div>
@@ -53,7 +54,7 @@
               border-top: 1px solid rgba(239,175,0,0.8);
             "
             />
-            <jsp:include page="pagination.jsp"/>
+            <jsp:include page="albumPagination.jsp"/>
         </div>
     </div>
 

@@ -108,7 +108,7 @@
     <div class="menu inner-menu">
         <div>
             <button class="menu-button">
-                <a href="" class="menu-button-link">Albums</a>
+                <a href="<c:url value="/albums"/>" class="menu-button-link">Albums</a>
             </button>
         </div>
         <div>

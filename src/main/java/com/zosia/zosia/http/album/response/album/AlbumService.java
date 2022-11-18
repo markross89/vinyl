@@ -87,4 +87,14 @@ public class AlbumService {
 		}
 	}
 	
+	public void displayAlbum(String id, User user, String option) throws JsonProcessingException {
+		
+		if(option.equals("delete")){
+			deleteAlbum(id, user);
+		}else if(option.equals("save")){
+			saveAlbum(id, user);
+		}
+		
+	}
+	
 }
