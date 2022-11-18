@@ -12,8 +12,6 @@ import java.util.Set;
 @Repository
 public interface AlbumRepository extends JpaRepository<Album, Long> {
 	
-	Set<Album> findAlbumsByUsers(User users);
-	
 	Page<Album> findAlbumsByUsers(User user, Pageable pageable);
 
 }

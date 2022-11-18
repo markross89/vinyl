@@ -20,7 +20,7 @@
             <div class="content-elements">
 
 
-                <c:forEach items="${albums.content}" var="e">
+                <c:forEach items="${list.content}" var="e">
                     <a href="<c:url value="/details/${e.id}"/>" style="text-decoration: none"
                     >
                         <div class="card">
@@ -35,10 +35,10 @@
                             </div>
                             <div class="card-options">
                                 <div>
-                                    <a href="<c:url value="albums?id=${e.id}&option=save" />" class="option add">Add</a>
+                                    <a href="<c:url value="/save/${e.id}" />" class="option add">Add</a>
                                 </div>
                                 <div>
-                                    <a href="<c:url value="albums?id=${e.id}&option=delete" />" class="option delete">Delete</a>
+                                    <a href="<c:url value="/delete/${e.id}" />" class="option delete">Delete</a>
                                 </div>
                             </div>
                         </div>

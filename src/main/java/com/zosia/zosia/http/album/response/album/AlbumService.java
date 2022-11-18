@@ -14,7 +14,9 @@ import com.zosia.zosia.user.User;
 import com.zosia.zosia.user.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
+import java.sql.Date;
+import java.time.LocalDate;
+
 
 
 @Service
@@ -38,7 +40,6 @@ public class AlbumService {
 		this.imageRepository = imageRepository;
 		this.labelRepository = labelRepository;
 		this.trackRepository = trackRepository;
-		
 		this.artistRepository = artistRepository;
 		this.albumRepository = albumRepository;
 		this.userRepository = userRepository;
@@ -56,6 +57,8 @@ public class AlbumService {
 		
 		if (albumRepository.findById(Long.parseLong(id)).isEmpty()) {
 			Album album = requestAlbumBuilder(Album.class, id);
+			album.saveImage();
+			album.saveTrack();
 			album.addUser(user);
 			albumRepository.save(album);
 		}
@@ -66,7 +69,7 @@ public class AlbumService {
 		}
 	}
 	
-	public void deleteAlbum (String id, User user) throws JsonProcessingException {
+	public void deleteAlbum (String id, User user){
 		
 		Album album = albumRepository.findById(Long.parseLong(id)).get();
 		album.removeUser(userRepository.findById(user.getId()).get());
@@ -86,15 +89,4 @@ public class AlbumService {
 			});
 		}
 	}
-	
-	public void displayAlbum(String id, User user, String option) throws JsonProcessingException {
-		
-		if(option.equals("delete")){
-			deleteAlbum(id, user);
-		}else if(option.equals("save")){
-			saveAlbum(id, user);
-		}
-		
-	}
-	
 }

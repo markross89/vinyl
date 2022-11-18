@@ -45,8 +45,8 @@
                 </div>
             </div>
             <div class="album-options">
-                <a href="<c:url value="albums?id=${album.id}&option=save" />" class="butt add-button">Add</a>
-                <a href="<c:url value="albums?id=${album.id}&option=delete" />" class="butt delete-button">Delete</a>
+                <a href="<c:url value="/save/${album.id}" />" class="butt add-button">Add</a>
+                <a href="<c:url value="/delete/${album.id}" />" class="butt delete-button">Delete</a>
 
 
             </div>

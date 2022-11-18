@@ -113,12 +113,12 @@
         </div>
         <div>
             <button class="menu-button">
-                <a href="" class="menu-button-link">Songs</a>
+                <a href="<c:url value="/songs"/>" class="menu-button-link">Songs</a>
             </button>
         </div>
         <div>
             <button class="menu-button">
-                <a href="" class="menu-button-link">Track Lists</a>
+                <a href="" class="menu-button-link">Playlists</a>
             </button>
         </div>
         <div>

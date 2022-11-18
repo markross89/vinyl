@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.stream.Collectors;
+
 
 @Controller
 public class AlbumController {
@@ -34,15 +36,26 @@ public class AlbumController {
 		return "/details";
 	}
 	
+	@GetMapping("/save/{id}")
+	public String saveAlbum (@PathVariable String id, @AuthenticationPrincipal CurrentUser customUser) throws JsonProcessingException {
+		
+		albumService.saveAlbum(id, userRepository.findById(customUser.getUser().getId()).get());
+		return "redirect:/albums";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteAlbum (@PathVariable String id, @AuthenticationPrincipal CurrentUser customUser) throws JsonProcessingException {
+		
+		albumService.deleteAlbum(id, userRepository.findById(customUser.getUser().getId()).get());
+		return "redirect:/albums";
+	}
 	
 	@GetMapping("/albums")
-	public String displayAlbums (Model model, @AuthenticationPrincipal CurrentUser customUser, @RequestParam(defaultValue = "") String id,
-								 @RequestParam(defaultValue = "0") String page,
-								 @RequestParam(defaultValue = "48") String size, @RequestParam(defaultValue = "") String option) throws JsonProcessingException {
+	public String displayAlbums (Model model, @AuthenticationPrincipal CurrentUser customUser, @RequestParam(defaultValue = "0") String page,
+								 @RequestParam(defaultValue = "48") String size) {
 		
-		albumService.displayAlbum(id, userRepository.findById(customUser.getUser().getId()).get(), option);
 		PageRequest pr = PageRequest.of(Integer.parseInt(page), Integer.parseInt(size));
-		model.addAttribute("albums", albumRepository.findAlbumsByUsers(userRepository.findById(customUser.getUser().getId()).get(), pr));
+		model.addAttribute("list", albumRepository.findAlbumsByUsers(customUser.getUser(), pr));
 		return "/albums";
 	}
 }

@@ -7,14 +7,22 @@ import com.zosia.zosia.http.album.response.image.Image;
 import com.zosia.zosia.http.album.response.label.Label;
 import com.zosia.zosia.http.album.response.track.Track;
 import com.zosia.zosia.user.User;
+import lombok.*;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 
+@Getter
+@Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Album {
 	
@@ -25,6 +33,7 @@ public class Album {
 	private String artists_sort;
 	private String title;
 	private String uri;
+
 	
 	@ElementCollection
 	@JoinTable(name = "albums_genres", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"))
@@ -46,58 +55,14 @@ public class Album {
 	@JsonIgnore
 	private Set<User> users = new HashSet<>();
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinTable(name = "albums_tracks", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"))
+	@OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Track> tracklist;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinTable(name = "albums_images", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "image_id", referencedColumnName = "id"))
-	private List<Image> images;
+	@OneToMany(mappedBy = "album" ,cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Image> images = new ArrayList<>();
 	
 	
-	public Set<User> getUsers () {
-		
-		return users;
-	}
-	
-	public void setUsers (Set<User> users) {
-		
-		this.users = users;
-	}
-	
-	public String getYear () {
-		
-		return year;
-	}
-	
-	public void setYear (String year) {
-		
-		this.year = year;
-	}
-	
-	
-	public String getTitle () {
-		
-		return title;
-	}
-	
-	public void setTitle (String title) {
-		
-		this.title = title;
-	}
-	
-	
-	public Set<Artist> getArtists () {
-		
-		return artists;
-	}
-	
-	public void setArtists (Set<Artist> artists) {
-		
-		this.artists = artists;
-	}
+
 	
 	public void addArtist (Artist artist) {
 		
@@ -110,10 +75,14 @@ public class Album {
 		this.artists.forEach(artist -> artist.getAlbums().removeIf(album -> album == this));
 		this.artists.clear();
 	}
+	
 	public void addUser (User user) {
+		
 		this.users.add(user);
 	}
+	
 	public void removeUser (User user) {
+		
 		this.users.remove(user);
 	}
 	
@@ -128,78 +97,11 @@ public class Album {
 		this.labels.forEach(label -> label.getAlbums().removeIf(album -> album == this));
 		this.labels.clear();
 	}
-	
-	public List<String> getGenres () {
-		
-		return genres;
+	public void saveImage (){
+		this.images.forEach(image -> image.setAlbum(this));
 	}
-	
-	public void setGenres (List<String> genres) {
-		
-		this.genres = genres;
+	public void saveTrack (){
+		this.tracklist.forEach(track-> track.setAlbum(this));
 	}
-	
-	
-	public Long getId () {
-		
-		return id;
-	}
-	
-	public void setId (Long id) {
-		
-		this.id = id;
-	}
-	
-	
-	public List<Track> getTracklist () {
-		
-		return tracklist;
-	}
-	
-	public void setTracklist (List<Track> tracklist) {
-		
-		this.tracklist = tracklist;
-	}
-	
-	public List<Image> getImages () {
-		
-		return images;
-	}
-	
-	public void setImages (List<Image> images) {
-		
-		this.images = images;
-	}
-	
-	public String getUri () {
-		
-		return uri;
-	}
-	
-	public void setUri (String uri) {
-		
-		this.uri = uri;
-	}
-	
-	public Set<Label> getLabels () {
-		
-		return labels;
-	}
-	
-	public void setLabels (Set<Label> labels) {
-		
-		this.labels = labels;
-	}
-	
-	public String getArtists_sort () {
-		
-		return artists_sort;
-	}
-	
-	public void setArtists_sort (String artists_sort) {
-		
-		this.artists_sort = artists_sort;
-	}
-	
 	
 }
