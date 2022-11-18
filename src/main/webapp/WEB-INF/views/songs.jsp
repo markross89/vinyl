@@ -26,12 +26,12 @@
                 <thead>
                 <tr>
 
-                    <th><a href="<c:url value="/track/sortBy/title"/>" style="color: grey">Nr</a></th>
-                    <th><a href="<c:url value="/track/sortBy/artist"/>" style="color: grey">Title</a></th>
-                    <th><a href="<c:url value="/track/sortBy/album"/>" style="color: grey">Album</a></th>
-                    <th><a href="<c:url value="/track/sortBy/label"/>" style="color: grey">Artist</a></th>
-                    <th><a href="<c:url value="/track/sortBy/date"/>" style="color: grey">Position</a></th>
-                    <th><a href="<c:url value="/track/sortBy/duration"/>" style="color: grey">Duration</a></th>
+                    <th><a href="<c:url value="/track/sortBy/title"/>" class="album-link">Nr</a></th>
+                    <th><a href="<c:url value="/track/sortBy/artist"/>" class="album-link">Title</a></th>
+                    <th><a href="<c:url value="/track/sortBy/album"/>" class="album-link">Album</a></th>
+                    <th><a href="<c:url value="/track/sortBy/label"/>" class="album-link">Artist</a></th>
+                    <th><a href="<c:url value="/track/sortBy/date"/>" class="album-link">Position</a></th>
+                    <th><a href="<c:url value="/track/sortBy/duration"/>" class="album-link">Duration</a></th>
                     <th>Option</th>
                 </tr>
                 </thead>
@@ -40,7 +40,7 @@
                     <tr style="border: #2196F3 solid 1px">
                         <td>${counter}</td>
                         <td>${s.title}</td>
-                        <td>${s.album.title}</td>
+                        <td><a href="<c:url value="/details/${s.album.id}"/>" class="album-link">${s.album.title}</a></td>
                         <td>${s.album.artists_sort}</td>
                         <td>${s.position}</td>
                         <td>${s.duration}</td>
