@@ -10,7 +10,7 @@
 <div class="main-content">
     <div class="content-content">
         <div class="content-title">Songs:</div>
-        <jsp:include page="albumPagination.jsp"/>
+        <jsp:include page="songPagination.jsp"/>
         <hr
                 style="
               width: 95%;
@@ -35,7 +35,7 @@
                     <th>Option</th>
                 </tr>
                 </thead>
-                <c:forEach items="${list.content}" var="s">
+                <c:forEach items="${songs.content}" var="s">
                         <c:set var="counter" value="${counter + 1}" scope="request"/>
                     <tr style="border: #2196F3 solid 1px">
                         <td>${counter}</td>
@@ -61,7 +61,7 @@
               border-top: 1px solid rgba(239,175,0,0.8);
             "
         />
-        <jsp:include page="albumPagination.jsp"/>
+        <jsp:include page="songPagination.jsp"/>
     </div>
 </div>
 

@@ -20,7 +20,7 @@
             <div class="content-elements">
 
 
-                <c:forEach items="${list.content}" var="e">
+                <c:forEach items="${albums.content}" var="e">
                     <a href="<c:url value="/details/${e.id}"/>" style="text-decoration: none"
                     >
                         <div class="card">

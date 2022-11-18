@@ -1,6 +1,6 @@
 package com.zosia.zosia.http.album.response.track;
 
-import com.zosia.zosia.http.album.response.album.Album;
+
 import com.zosia.zosia.http.album.response.album.AlbumRepository;
 import com.zosia.zosia.user.CurrentUser;
 import org.springframework.data.domain.PageRequest;
@@ -10,8 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 @Controller
@@ -32,10 +31,10 @@ public class TrackController {
 								 @RequestParam(defaultValue = "48") String size) {
 		
 		PageRequest pr = PageRequest.of(Integer.parseInt(page), Integer.parseInt(size));
-		model.addAttribute("list", trackRepository.findTracksByUser(customUser.getUser().getId(), pr));
+		model.addAttribute("songs", trackRepository.findByAlbum_Users(customUser.getUser(), pr));
 		return "/songs";
 		
-		
+
 	}
 	
 }

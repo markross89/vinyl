@@ -55,7 +55,7 @@ public class AlbumController {
 								 @RequestParam(defaultValue = "48") String size) {
 		
 		PageRequest pr = PageRequest.of(Integer.parseInt(page), Integer.parseInt(size));
-		model.addAttribute("list", albumRepository.findAlbumsByUsers(customUser.getUser(), pr));
+		model.addAttribute("albums", albumRepository.findAlbumsByUsers(customUser.getUser(), pr));
 		return "/albums";
 	}
 }
