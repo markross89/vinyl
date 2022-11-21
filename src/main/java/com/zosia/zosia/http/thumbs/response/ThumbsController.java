@@ -16,18 +16,13 @@ import java.util.Date;
 @Controller
 public class ThumbsController {
 	
-	private final HttpService httpService;
-	private final MessageService messageService;
+	
 	private final ThumbsService thumbsService;
 	
-	
-	public ThumbsController (HttpService httpService, MessageService messageService, ThumbsService thumbsService) {
+	public ThumbsController (ThumbsService thumbsService) {
 		
-		this.httpService = httpService;
-		this.messageService = messageService;
 		this.thumbsService = thumbsService;
 	}
-	
 	
 	@GetMapping("/")
 	public String displaySearchThumbs (Model model, @RequestParam(defaultValue = "1") String page, @RequestParam(defaultValue = "48") String size,

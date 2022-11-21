@@ -26,12 +26,12 @@
                 <thead>
                 <tr>
 
-                    <th><a href="<c:url value="/track/sortBy/title"/>" class="album-link">Nr</a></th>
-                    <th><a href="<c:url value="/track/sortBy/artist"/>" class="album-link">Title</a></th>
-                    <th><a href="<c:url value="/track/sortBy/album"/>" class="album-link">Album</a></th>
-                    <th><a href="<c:url value="/track/sortBy/label"/>" class="album-link">Artist</a></th>
-                    <th><a href="<c:url value="/track/sortBy/date"/>" class="album-link">Position</a></th>
-                    <th><a href="<c:url value="/track/sortBy/duration"/>" class="album-link">Duration</a></th>
+                    <th>Nr</th>
+                    <th><a href="<c:url value="songs?field=title"/>" class="album-link">Title</a></th>
+                    <th><a href="<c:url value="songs?field=album.title&direction=desc"/>" class="album-link">Album</a></th>
+                    <th><a href="<c:url value="songs?field=album.artists.name"/>" class="album-link">Artist</a></th>
+                    <th><a href="<c:url value="songs?field=position"/>" class="album-link">Position</a></th>
+                    <th><a href="<c:url value="songs?field=duration"/>" class="album-link">Duration</a></th>
                     <th>Option</th>
                 </tr>
                 </thead>
@@ -57,7 +57,7 @@
                 style="
               width: 95%;
               margin-right: 40px;
-              margin-bottom: 50px;
+              margin-bottom: 10px;
               border-top: 1px solid rgba(239,175,0,0.8);
             "
         />

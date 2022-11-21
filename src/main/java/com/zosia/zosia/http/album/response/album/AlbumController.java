@@ -44,7 +44,7 @@ public class AlbumController {
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String deleteAlbum (@PathVariable String id, @AuthenticationPrincipal CurrentUser customUser) throws JsonProcessingException {
+	public String deleteAlbum (@PathVariable String id, @AuthenticationPrincipal CurrentUser customUser) {
 		
 		albumService.deleteAlbum(id, userRepository.findById(customUser.getUser().getId()).get());
 		return "redirect:/albums";
