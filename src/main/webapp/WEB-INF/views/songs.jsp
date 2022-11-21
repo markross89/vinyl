@@ -27,7 +27,7 @@
                 <tr>
 
                     <th>Nr</th>
-                    <th><a href="<c:url value="songs?field=title"/>" class="album-link">Title</a></th>
+                    <th><a href="<c:url value="songs?field=title"/>" class="album-link" >Title</a></th>
                     <th><a href="<c:url value="songs?field=album.title&direction=desc"/>" class="album-link">Album</a></th>
                     <th><a href="<c:url value="songs?field=album.artists.name"/>" class="album-link">Artist</a></th>
                     <th><a href="<c:url value="songs?field=position"/>" class="album-link">Position</a></th>

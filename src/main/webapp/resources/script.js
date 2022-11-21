@@ -121,3 +121,9 @@ function validate() {
         emailError.style.display="block";
     }
 }
+
+const link= document.querySelector('.album-link');
+
+link.addEventListener("click", function (){
+    $(this).attr('href',$(this).attr('href') === 'songs?field=title&sort=asc' ? 'songs?field=title&sort=asc' : 'songs?field=title&sort=desc');
+})

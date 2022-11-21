@@ -27,10 +27,10 @@ public class TrackController {
 	@GetMapping("/songs")
 	public String displayAlbums (Model model, @AuthenticationPrincipal CurrentUser customUser, @RequestParam(defaultValue = "0") String page,
 								 @RequestParam(defaultValue = "48") String size,
-								 @RequestParam(defaultValue = "id") String field, @RequestParam(defaultValue = "asc") String direction) {
+								 @RequestParam(defaultValue = "id") String field, @RequestParam(defaultValue = "desc") String sort) {
 		
 		Sort.Direction dr;
-		if (direction.equals("desc")) {
+		if (sort.equals("desc")) {
 			dr = Sort.Direction.DESC;
 		}
 		else {
