@@ -114,16 +114,14 @@ function validate() {
     const emailError = document.getElementById("email-verification-error");
     const regex = /^\S+@\S+\.\S+$/;
     if (regex.test(emailValue)) {
-        emailError.style.display="none";
+        emailError.style.display = "none";
         form.submit();
-    }
-    else {
-        emailError.style.display="block";
+    } else {
+        emailError.style.display = "block";
     }
 }
 
-const link= document.querySelector('.album-link');
-
-link.addEventListener("click", function (){
-    $(this).attr('href',$(this).attr('href') === 'songs?field=title&sort=asc' ? 'songs?field=title&sort=asc' : 'songs?field=title&sort=desc');
-})
+function sortToggle() {
+    const input = document.querySelector(".direction");
+    input.toggleAttribute("disabled");
+}

@@ -27,17 +27,14 @@ public class TrackController {
 	@GetMapping("/songs")
 	public String displayAlbums (Model model, @AuthenticationPrincipal CurrentUser customUser, @RequestParam(defaultValue = "0") String page,
 								 @RequestParam(defaultValue = "48") String size,
-								 @RequestParam(defaultValue = "id") String field, @RequestParam(defaultValue = "desc") String sort) {
+								 @RequestParam(defaultValue = "id") String field, @RequestParam(defaultValue = "DESC") String direction) {
 		
-		Sort.Direction dr;
-		if (sort.equals("desc")) {
-			dr = Sort.Direction.DESC;
-		}
-		else {
-			dr = Sort.Direction.ASC;
-		}
-		PageRequest pr = PageRequest.of(Integer.parseInt(page), Integer.parseInt(size), Sort.by(dr, field));
+	
+		
+		String drToSend = direction.equals("DESC") ? "ASC" : "DESC";
+		PageRequest pr = PageRequest.of(Integer.parseInt(page), Integer.parseInt(size), Sort.by(Sort.Direction.valueOf(direction), field));
 		model.addAttribute("songs", trackRepository.findByAlbum_Users(customUser.getUser(), pr));
+		model.addAttribute("direction", drToSend);
 		return "/songs";
 		
 	}

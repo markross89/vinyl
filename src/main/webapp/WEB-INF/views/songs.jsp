@@ -27,20 +27,21 @@
                 <tr>
 
                     <th>Nr</th>
-                    <th><a href="<c:url value="songs?field=title"/>" class="album-link" >Title</a></th>
-                    <th><a href="<c:url value="songs?field=album.title&direction=desc"/>" class="album-link">Album</a></th>
-                    <th><a href="<c:url value="songs?field=album.artists.name"/>" class="album-link">Artist</a></th>
-                    <th><a href="<c:url value="songs?field=position"/>" class="album-link">Position</a></th>
-                    <th><a href="<c:url value="songs?field=duration"/>" class="album-link">Duration</a></th>
+                    <th><a href="<c:url value="songs?field=title&direction=${direction}"/>" class="album-link">Title</a></th>
+                    <th><a href="<c:url value="songs?field=album.title&direction=${direction}"/>" class="album-link">Album</a></th>
+                    <th><a href="<c:url value="songs?field=album.artists.name&direction=${direction}"/>" class="album-link">Artist</a></th>
+                    <th><a href="<c:url value="songs?field=position&direction=${direction}"/>" class="album-link">Position</a></th>
+                    <th><a href="<c:url value="songs?field=duration&direction=${direction}"/>" class="album-link">Duration</a></th>
                     <th>Option</th>
                 </tr>
                 </thead>
                 <c:forEach items="${songs.content}" var="s">
-                        <c:set var="counter" value="${counter + 1}" scope="request"/>
+                    <c:set var="counter" value="${counter + 1}" scope="request"/>
                     <tr style="border: #2196F3 solid 1px">
                         <td>${counter}</td>
                         <td>${s.title}</td>
-                        <td><a href="<c:url value="/details/${s.album.id}"/>" class="album-link">${s.album.title}</a></td>
+                        <td><a href="<c:url value="/details/${s.album.id}"/>" class="album-link">${s.album.title}</a>
+                        </td>
                         <td>${s.album.artists_sort}</td>
                         <td>${s.position}</td>
                         <td>${s.duration}</td>
