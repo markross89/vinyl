@@ -15,12 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class TrackController {
 	
-	private final AlbumRepository albumRepository;
+	
 	private final TrackRepository trackRepository;
 	
-	public TrackController (AlbumRepository albumRepository, TrackRepository trackRepository) {
+	public TrackController (TrackRepository trackRepository) {
 		
-		this.albumRepository = albumRepository;
 		this.trackRepository = trackRepository;
 	}
 	
@@ -29,7 +28,6 @@ public class TrackController {
 								 @RequestParam(defaultValue = "48") String size,
 								 @RequestParam(defaultValue = "id") String field, @RequestParam(defaultValue = "DESC") String direction) {
 		
-	
 		
 		String drToSend = direction.equals("DESC") ? "ASC" : "DESC";
 		PageRequest pr = PageRequest.of(Integer.parseInt(page), Integer.parseInt(size), Sort.by(Sort.Direction.valueOf(direction), field));

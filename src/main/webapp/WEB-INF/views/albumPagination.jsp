@@ -10,10 +10,10 @@
                 <a href="" class="pagButtonDisabled" type="button"> << </a>
             </c:when>
             <c:otherwise>
-                <a href="<c:url value="albums?page=0&size=${albums.numberOfElements}"/>"
+                <a href="<c:url value="albums?page=0&size=${albums.pageable.pageSize}"/>"
                    class="pagButton"
                    style="font-size: small; margin-top: 2px" type="button">First</a>
-                <a href="<c:url value="albums?page=${albums.number-1}&size=${albums.numberOfElements}"/>"
+                <a href="<c:url value="albums?page=${albums.number-1}&size=${albums.pageable.pageSize}"/>"
                    class="pagButton" type="button"> << </a>
             </c:otherwise>
         </c:choose>
@@ -27,18 +27,18 @@
                 <a href="" class="pagButtonDisabled" style="font-size: small; margin-top: 2px" type="button">Last</a>
             </c:when>
             <c:otherwise>
-                <a href="<c:url value="albums?page=${albums.number+1}&size=${albums.numberOfElements}"/>"
+                <a href="<c:url value="albums?page=${albums.number+1}&size=${albums.pageable.pageSize}"/>"
                    class="pagButton" type="button"> >> </a>
-                <a href="<c:url value="albums?page=${albums.totalPages-1}&size=${albums.numberOfElements}"/>"
+                <a href="<c:url value="albums?page=${albums.totalPages-1}&size=${albums.pageable.pageSize}"/>"
                    class="pagButton" style="font-size: small; margin-top: 2px" type="button">Last</a>
             </c:otherwise>
         </c:choose>
 
     </div>
     <div class="pagSelect">
-        <form action="songs" method="get">
+        <form action="albums" method="get">
             <select class="pagSelect" name="size" onchange="this.form.submit()">
-                <option value="" disabled selected hidden>${albums.numberOfElements}</option>
+                <option value="" disabled selected hidden>${albums.pageable.pageSize}</option>
                 <option value="24">24</option>
                 <option value="48">48</option>
                 <option value="96">96</option>
