@@ -19,7 +19,7 @@
         </c:choose>
 
 
-        <div class="pageInfo">page ${boxes.number+1} of ${boxes.totalPages+1}</div>
+        <div class="pageInfo">page ${boxes.number+1} of ${boxes.totalPages}</div>
 
         <c:choose>
             <c:when test="${boxes.number==boxes.totalPages-1}">
