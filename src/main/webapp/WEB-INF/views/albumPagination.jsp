@@ -36,7 +36,7 @@
 
     </div>
     <div class="pagSelect">
-        <form action="albums" method="get">
+        <form method="get">
             <select class="pagSelect" name="size" onchange="this.form.submit()">
                 <option value="" disabled selected hidden>${albums.pageable.pageSize}</option>
                 <option value="24">24</option>

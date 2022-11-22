@@ -1,6 +1,5 @@
 package com.zosia.zosia.user;
 
-import com.zosia.zosia.http.album.response.album.Album;
 import com.zosia.zosia.role.Role;
 import com.zosia.zosia.validator.StrongPassword;
 import lombok.Getter;
@@ -12,7 +11,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import java.util.List;
 import java.util.Set;
 
 

@@ -118,12 +118,12 @@
         </div>
         <div>
             <button class="menu-button">
-                <a href="" class="menu-button-link">Playlists</a>
+                <a href="<c:url value="/playlists"/>" class="menu-button-link">Playlists</a>
             </button>
         </div>
         <div>
             <button class="menu-button">
-                <a href="" class="menu-button-link">Boxes</a>
+                <a href="<c:url value="/boxes"/>" class="menu-button-link">Boxes</a>
             </button>
         </div>
     </div>

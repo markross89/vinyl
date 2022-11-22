@@ -21,7 +21,7 @@
 
 
         <div class="tracks">
-            <div class="album-details-title">Songs:</div>
+            <div class="album-details-title">My songs:</div>
             <table class="tracklist-table">
                 <thead>
                 <tr>
