@@ -20,25 +20,25 @@
             <div class="content-elements">
 
 
-                <c:forEach items="${albums.content}" var="e">
-                    <a href="<c:url value="/details/${e.id}"/>" style="text-decoration: none"
+                <c:forEach items="${playlists.content}" var="e">
+                    <a href="<c:url value="/playlist_details/${e.id}"/>" style="text-decoration: none"
                     >
                         <div class="card">
-                            <div class="title-pic" title="${e.artists_sort} - ${e.title}">
+                            <div class="title-pic" title="${e.name} - ${e.date}">
                                 <div class="card-title">
-                                        ${e.artists_sort} - ${e.title}
+                                        ${e.name} - ${e.date}
                                 </div>
                                 <div class="cover-pic">
-                                    <img src="${e.images[0].resource_url}"
+                                    <img src="<c:url value="/resources/pictures/playlist.png" />"
                                          style="width: 160px; height: 160px"/>
                                 </div>
                             </div>
                             <div class="card-options">
                                 <div>
-                                    <a href="<c:url value="/save/${e.id}" />" class="option add">Add</a>
+                                    <a href="<c:url value="/playlist_save/${e.id}" />" class="option add">Add</a>
                                 </div>
                                 <div>
-                                    <a href="<c:url value="/delete/${e.id}" />" class="option delete">Delete</a>
+                                    <a href="<c:url value="/playlist_delete/${e.id}" />" class="option delete">Delete</a>
                                 </div>
                             </div>
                         </div>

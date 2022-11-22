@@ -1,12 +1,15 @@
 package com.zosia.zosia.playlist;
 
+
 import com.zosia.zosia.track.Track;
 import com.zosia.zosia.user.User;
 import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -23,8 +26,10 @@ public class Playlist {
 	private String name;
 	private Date date;
 	
-	@ManyToMany
-	private List<Track> tracks;
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name = "playlists_tracks", joinColumns = @JoinColumn(name = "playlist_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"))
+	private Set<Track> tracks = new HashSet<>();
 	
 	@ManyToOne
 	private User user;

@@ -2,9 +2,14 @@ package com.zosia.zosia.track;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zosia.zosia.album.Album;
+import com.zosia.zosia.box.Box;
+import com.zosia.zosia.playlist.Playlist;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Builder
 @Getter
@@ -24,5 +29,8 @@ public class Track {
 	private String title;
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Album album;
+	
+	@ManyToMany(mappedBy = "tracks")
+	private Set<Playlist> playlists = new HashSet<>();
 
 }

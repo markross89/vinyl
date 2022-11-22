@@ -66,6 +66,8 @@ public class Album {
 	private Set<Box> boxes;
 	
 	
+	
+	
 
 	
 	public void addArtist (Artist artist) {
