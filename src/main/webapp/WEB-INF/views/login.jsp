@@ -47,7 +47,7 @@
 
                 <a href="<c:url value="/password_reminder" />" class="pass-forgot">Zapomniałem hasła</a>
             </form>
-            <img src="/resources/pictures/beatles.jpg" style="opacity: 0.7" class="cover" alt="Abbey Road">
+            <img src="<c:url value="/resources/pictures/beatles.jpg" />" style="opacity: 0.7" class="cover" alt="Abbey Road">
         </div>
         <hr
                 style="

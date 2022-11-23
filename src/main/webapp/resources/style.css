@@ -703,6 +703,9 @@ ul {
     text-decoration: none;
     font-weight: bold;
     font-size: medium;
+    border-collapse: collapse;
+    border: none;
+    background-color: transparent;
 
 }
 
@@ -1193,3 +1196,16 @@ th {
     border-radius: 3px;
 }
 
+.modal-body-addPlaylist {
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    color: #575757;
+}
+
+.modal-addPlaylist {
+    height: 650px;
+    width: 500px;
+}

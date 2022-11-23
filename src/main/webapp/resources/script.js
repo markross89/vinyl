@@ -137,7 +137,29 @@ function validate() {
     }
 }
 
-function sortToggle() {
-    const input = document.querySelector(".direction");
-    input.toggleAttribute("disabled");
+function validatePlaylist() {
+    const form = document.getElementById("playlist-form");
+    const emailValue = document.getElementById("playlistName").value;
+    const emailError = document.getElementById("playlistError");
+    const regex = /\S+/;
+    if (regex.test(emailValue)) {
+        emailError.style.display = "none";
+        form.submit();
+    } else {
+        emailError.style.display = "block";
+    }
 }
+
+function validateBox() {
+    const form = document.getElementById("box-form");
+    const emailValue = document.getElementById("box-input").value;
+    const emailError = document.getElementById("error-message");
+    const regex = /\S+/;
+    if (regex.test(emailValue)) {
+        emailError.style.display = "none";
+        form.submit();
+    } else {
+        emailError.style.display = "block";
+    }
+}
+

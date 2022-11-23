@@ -42,7 +42,7 @@
 
     <div class="custom-select">
         <select id="locales" class="select-box">
-            <option  value="" disabled selected hidden><fmt:message key="lang.change"/></option>
+            <option value="" disabled selected hidden><fmt:message key="lang.change"/></option>
             <option value="en"><fmt:message key="lang.eng"/></option>
             <option value="pl"><fmt:message key="lang.pl"/></option>
         </select>
@@ -61,7 +61,7 @@
                 </button>
             </div>
             <div>
-                <button  class="list-user-button ">
+                <button class="list-user-button ">
                     <a class="list-user-button " href="/register">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Register</span></a
@@ -91,7 +91,8 @@
                     <li>
                         <div class="list-element">
                             <form action="<c:url value="/logout"/>" method="post">
-                                    <input class="input-logout" type="submit" class="list-link" style="margin-left: -3px" value="Logout" style="margin-right: 20px"/>
+                                <input class="input-logout" type="submit" class="list-link" style="margin-left: -3px"
+                                       value="Logout" style="margin-right: 20px"/>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             </form>
                         </div>
@@ -122,16 +123,21 @@
             <button class="menu-button add-remove">
                 <a href="<c:url value="/playlists"/>" class="menu-button-link">Playlists</a>
             </button>
-                <div class="add-remove-content" style="display: none">
-                     <a href="<c:url value=""/>" class="menu-button-link" style="font-weight: normal">Add</a>
-                </div>
+            <div class="add-remove-content" style="display: none">
+                <button data-modal-target="#modal-addPlaylist" class="menu-button-link">
+                    <span>Add</span>
+                </button>
+
+            </div>
         </div>
         <div>
             <button class="menu-button add-remove">
                 <a href="<c:url value="/boxes"/>" class="menu-button-link" style="margin-left: 7px">Boxes</a>
             </button>
             <div class="add-remove-content" style="display: none">
-                <a href="<c:url value=""/>" class="menu-button-link" style="font-weight: normal">Add</a>
+                <button data-modal-target="#modal-addBox" class="menu-button-link">
+                    <span>Add</span>
+                </button>
             </div>
         </div>
     </div>
@@ -181,6 +187,69 @@
     </div>
 
     <!-- contact end -->
+    <%--    add playlist--%>
+    <div class="modal modal-addPlaylist" id="modal-addPlaylist">
+        <div class="modal-header">
+            <div class="form-title" style="text-decoration: none">New playlist</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body-addPlaylist">
+            <img src="<c:url value="resources/pictures/playlist.png" />"
+                 style="height: 300px;width: 300px;margin-top: 30px" class="cover" alt="Abbey Road">
+            <form class="form-form markus-name-form" action="<c:url value="playlist_save"/>" method="get" id="playlist-form"
+                  onsubmit="event.preventDefault(); validatePlaylist();">
+                <div class="error-input">
+                    <input
+                            id="playlistName"
+                            class="input"
+                            type="text"
+                            placeholder="Playlist name"
+                            name="name"
+                    />
+                    <div id="playlistError" class="error-message">Empty field</div>
+                </div>
+                <div class="form-group form-group--buttons">
+                    <button class="button-register" type="submit"><fmt:message key="admin.table.add"/></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <%--    add playlist end--%>
+
+    <%--    add box--%>
+    <div class="modal modal-addPlaylist" id="modal-addBox">
+        <div class="modal-header">
+            <div class="form-title" style="text-decoration: none">New box</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body-addPlaylist">
+            <img src="<c:url value="resources/pictures/box.png" />"
+                 style="height: 300px;width: 300px;margin-top: 30px" class="cover" alt="box">
+            <form class="form-form markus-name-form" action="<c:url value="box_save"/>" method="get" id="box-form"
+                  onsubmit="event.preventDefault(); validateBox();">
+                <div class="error-input">
+                    <input
+                            id="box-input"
+                            class="input input-name"
+                            type="text"
+                            placeholder="Box name"
+                            name="name"
+                    />
+                    <div id="error-message" class="error-message">Empty field</div>
+                </div>
+
+
+                <div class="form-group form-group--buttons">
+                    <button class="button-register" type="submit"><fmt:message key="admin.table.add"/></button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+    <%--    add box end--%>
 
     <!-- about us -->
 
