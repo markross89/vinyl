@@ -687,6 +687,7 @@ ul {
     border: none;
     outline: none;
     background-color: #4d4d4d;
+
 }
 
 .menu-button-link:hover {
@@ -702,6 +703,7 @@ ul {
     text-decoration: none;
     font-weight: bold;
     font-size: medium;
+
 }
 
 .thumbs-description {
@@ -1063,7 +1065,6 @@ th {
     padding: 5px;
 
 
-
 }
 
 .details-element {
@@ -1156,13 +1157,39 @@ th {
     line-height: 35px;
 
 }
-.album-link{
+
+.album-link {
     color: #414141;
     text-decoration: none;
 }
-.album-link:hover{
+
+.album-link:hover {
     color: rgba(0, 0, 255, 0.76);
 }
-.album-link:active{
+
+.album-link:active {
     color: black;
 }
+
+.add-remove {
+    background: transparent;
+
+    cursor: pointer;
+    z-index: 30;
+
+
+}
+
+.add-remove-content {
+    position: absolute;
+    justify-content: center;
+    background-color: #4d4d4d;
+    padding: 10px;
+    margin-top: 2px;
+    margin-left: -25px;
+    font-size: large;
+    width: 120px;
+    z-index: 20;
+    border-radius: 3px;
+}
+

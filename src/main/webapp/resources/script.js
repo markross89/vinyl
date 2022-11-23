@@ -16,11 +16,27 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
+const elements = document.getElementsByClassName("add-remove");
+const menus = document.getElementsByClassName("add-remove-content");
+
+
+for (i = 0; i < elements.length; i++) {
+    elements[i].addEventListener("mouseover", function () {
+        this.nextElementSibling.style.display = "flex";
+    },);
+}
+for (i = 0; i < menus.length; i++) {
+    menus[i].addEventListener("mouseleave", function () {
+        this.style.display = "none";
+    });
+}
 userOverlay.addEventListener("click", () => {
     userOverlay.classList.remove("active");
     coll[0].nextElementSibling.style.display = "none";
     coll[0].classList.remove("active");
 });
+
+
 
 // user menu expand list end
 

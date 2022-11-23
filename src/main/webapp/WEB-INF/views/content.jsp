@@ -108,8 +108,10 @@
     <div class="menu inner-menu">
         <div>
             <button class="menu-button">
+
                 <a href="<c:url value="/albums"/>" class="menu-button-link">Albums</a>
             </button>
+
         </div>
         <div>
             <button class="menu-button">
@@ -117,14 +119,20 @@
             </button>
         </div>
         <div>
-            <button class="menu-button">
+            <button class="menu-button add-remove">
                 <a href="<c:url value="/playlists"/>" class="menu-button-link">Playlists</a>
             </button>
+                <div class="add-remove-content" style="display: none">
+                     <a href="<c:url value=""/>" class="menu-button-link" style="font-weight: normal">Add</a>
+                </div>
         </div>
         <div>
-            <button class="menu-button">
-                <a href="<c:url value="/boxes"/>" class="menu-button-link">Boxes</a>
+            <button class="menu-button add-remove">
+                <a href="<c:url value="/boxes"/>" class="menu-button-link" style="margin-left: 7px">Boxes</a>
             </button>
+            <div class="add-remove-content" style="display: none">
+                <a href="<c:url value=""/>" class="menu-button-link" style="font-weight: normal">Add</a>
+            </div>
         </div>
     </div>
 </div>

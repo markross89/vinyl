@@ -34,7 +34,7 @@ public class Album {
 	private String artists_sort;
 	private String title;
 	private String uri;
-
+	
 	
 	@ElementCollection
 	@JoinTable(name = "albums_genres", joinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"))
@@ -59,16 +59,12 @@ public class Album {
 	@OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Track> tracklist;
 	
-	@OneToMany(mappedBy = "album" ,cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Image> images = new ArrayList<>();
 	
 	@ManyToMany(mappedBy = "albums")
 	private Set<Box> boxes;
 	
-	
-	
-	
-
 	
 	public void addArtist (Artist artist) {
 		
@@ -103,11 +99,25 @@ public class Album {
 		this.labels.forEach(label -> label.getAlbums().removeIf(album -> album == this));
 		this.labels.clear();
 	}
-	public void saveImage (){
+	public void removeBox () {
+		
+		this.boxes.forEach(box -> box.getAlbums().removeIf(album -> album == this));
+		this.boxes.clear();
+	}
+	public void removeTracksFromPlaylists () {
+		
+		this.labels.forEach(label -> label.getAlbums().removeIf(album -> album == this));
+		this.labels.clear();
+	}
+	
+	public void saveImage () {
+		
 		this.images.forEach(image -> image.setAlbum(this));
 	}
-	public void saveTrack (){
-		this.tracklist.forEach(track-> track.setAlbum(this));
+	
+	public void saveTrack () {
+		
+		this.tracklist.forEach(track -> track.setAlbum(this));
 	}
 	
 }

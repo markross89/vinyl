@@ -32,4 +32,11 @@ public class Box {
 	
 	@ManyToOne
 	private User user;
+	
+	public void removeAlbum (Album album) {
+		
+		this.albums.remove(album);
+		
+	}
 }
+

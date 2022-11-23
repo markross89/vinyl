@@ -8,6 +8,7 @@ import com.zosia.zosia.MessageService;
 import com.zosia.zosia.artist.ArtistRepository;
 import com.zosia.zosia.image.ImageRepository;
 import com.zosia.zosia.label.LabelRepository;
+import com.zosia.zosia.track.Track;
 import com.zosia.zosia.track.TrackRepository;
 import com.zosia.zosia.HttpService;
 import com.zosia.zosia.user.User;
@@ -66,10 +67,12 @@ public class AlbumService {
 		}
 	}
 	
-	public void deleteAlbum (long id, User user){
+	public void deleteAlbum (long id, User user) {
 		
 		Album album = albumRepository.findById(id).get();
-		album.removeUser(userRepository.findById(user.getId()).get());
+		album.removeUser(user);
+		album.removeBox();
+		album.getTracklist().forEach(Track::removeTracksFromPlaylists);
 		albumRepository.save(album);
 		
 		if (album.getUsers().isEmpty()) {

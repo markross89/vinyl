@@ -32,5 +32,11 @@ public class Track {
 	
 	@ManyToMany(mappedBy = "tracks")
 	private Set<Playlist> playlists = new HashSet<>();
+	
+	public void removeTracksFromPlaylists () {
+		
+		this.playlists.forEach(playlist -> playlist.getTracks().removeIf(track -> track == this));
+		this.playlists.clear();
+	}
 
 }
