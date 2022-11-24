@@ -15,4 +15,6 @@ import org.springframework.stereotype.Repository;
 public interface BoxRepository extends JpaRepository<Box, Long> {
 	
 	Page<Box> findBoxesByUser(User user, Pageable pageable);
+	
+	boolean existsByName(String name);
 }

@@ -692,6 +692,7 @@ ul {
 
 .menu-button-link:hover {
     color: rgba(255, 202, 49, 0.79);
+    cursor: pointer;
 }
 
 .menu-button-link:active {
@@ -1209,3 +1210,4 @@ th {
     height: 650px;
     width: 500px;
 }
+

@@ -1,5 +1,6 @@
 package com.zosia.zosia.box;
 
+import com.zosia.zosia.MessageService;
 import com.zosia.zosia.album.AlbumRepository;
 import com.zosia.zosia.user.CurrentUser;
 import org.springframework.data.domain.PageRequest;
@@ -17,12 +18,14 @@ public class BoxController {
 	private final BoxRepository boxRepository;
 	private final AlbumRepository albumRepository;
 	private final BoxService boxService;
+	private final MessageService messageService;
 	
-	public BoxController (BoxRepository boxRepository, AlbumRepository albumRepository, BoxService boxService) {
+	public BoxController (BoxRepository boxRepository, AlbumRepository albumRepository, BoxService boxService, MessageService messageService) {
 		
 		this.boxRepository = boxRepository;
 		this.albumRepository = albumRepository;
 		this.boxService = boxService;
+		this.messageService = messageService;
 	}
 	
 	
@@ -34,13 +37,17 @@ public class BoxController {
 		return "/albums";
 	}
 	
-		@GetMapping("/box_save")
-	public String saveBox ( @AuthenticationPrincipal CurrentUser customUser, @RequestParam String name) {
-
+	@GetMapping("/box_save")
+	public String saveBox (Model model, @AuthenticationPrincipal CurrentUser customUser, @RequestParam String name) {
+		
+		if (boxRepository.existsByName(name)) {
+			model.addAttribute("message", messageService.getMessage("name.in.use.error"));
+			return "info_page";
+		}
 		boxService.addBox(name, customUser.getUser());
 		return "redirect:/boxes";
 	}
-
+	
 	@GetMapping("/box_delete/{id}")
 	public String deleteBox (@PathVariable Long id) {
 		

@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
 	
 	Page<Playlist> findPlaylistsByUser (User user, Pageable pageable);
+	
+	boolean existsByName (String name);
+	
 }

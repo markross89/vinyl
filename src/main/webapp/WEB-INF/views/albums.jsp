@@ -30,12 +30,12 @@
                                 </div>
                                 <div class="cover-pic">
                                     <img src="${e.images[0].resource_url}"
-                                         style="width: 160px; height: 160px"/>
+                                         style="width: 160px; height: 160px" alt="${e.images[0].resource_url}"/>
                                 </div>
                             </div>
                             <div class="card-options">
                                 <div>
-                                    <a href="<c:url value="/save/${e.id}" />" class="option add">Add</a>
+                                    <a href="<c:url value="/save/${e.id}" />" class="option add">Box it</a>
                                 </div>
                                 <div>
                                     <a href="<c:url value="/delete/${e.id}" />" class="option delete">Delete</a>

@@ -1,5 +1,6 @@
 package com.zosia.zosia.playlist;
 
+import com.zosia.zosia.MessageService;
 import com.zosia.zosia.track.TrackRepository;
 import com.zosia.zosia.user.CurrentUser;
 import org.springframework.data.domain.PageRequest;
@@ -18,41 +19,49 @@ public class PlaylistController {
 	private final TrackRepository trackRepository;
 	private final PlaylistService playlistService;
 	
-	public PlaylistController (PlaylistRepository playlistRepository, TrackRepository trackRepository, PlaylistService playlistService) {
+	private final MessageService messageService;
+	
+	public PlaylistController (PlaylistRepository playlistRepository, TrackRepository trackRepository, PlaylistService playlistService,
+							   MessageService messageService) {
 		
 		this.playlistRepository = playlistRepository;
 		this.trackRepository = trackRepository;
 		this.playlistService = playlistService;
+		this.messageService = messageService;
 	}
-
+	
 	@GetMapping("/playlist_details/{id}")
 	public String playlistDetails (@PathVariable long id, Model model, @RequestParam(defaultValue = "0") int page,
-							  @RequestParam(defaultValue = "48") int size) {
-
+								   @RequestParam(defaultValue = "48") int size) {
+		
 		model.addAttribute("songs", trackRepository.findTracksByPlaylists(playlistRepository.findById(id).get(), PageRequest.of(page, size)));
 		return "/songs";
 	}
-
+	
 	@GetMapping("/playlist_save")
-	public String savePlaylist (@AuthenticationPrincipal CurrentUser customUser, @RequestParam String name) {
-
+	public String savePlaylist (Model model, @AuthenticationPrincipal CurrentUser customUser, @RequestParam String name) {
+		
+		if (playlistRepository.existsByName(name)) {
+			model.addAttribute("message", messageService.getMessage("name.in.use.error"));
+			return "info_page";
+		}
 		playlistService.addPlaylist(name, customUser.getUser());
 		return "redirect:/playlists";
 	}
-
+	
 	@GetMapping("/playlist_delete/{id}")
 	public String deletePlaylist (@PathVariable Long id) {
-
+		
 		playlistRepository.deleteById(id);
 		return "redirect:/playlists";
 	}
-
+	
 	@GetMapping("/playlists")
 	public String displayPlaylists (Model model, @AuthenticationPrincipal CurrentUser customUser, @RequestParam(defaultValue = "0") int page,
-								@RequestParam(defaultValue = "48") int size) {
-
+									@RequestParam(defaultValue = "48") int size) {
+		
 		model.addAttribute("playlists", playlistRepository.findPlaylistsByUser(customUser.getUser(), PageRequest.of(page, size)));
 		return "/playlists";
 	}
-
+	
 }

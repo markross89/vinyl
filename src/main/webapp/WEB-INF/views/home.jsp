@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="cover-pic">
                                     <img src="${e.cover_image}"
-                                         style="width: 160px; height: 160px"/>
+                                         style="width: 160px; height: 160px" alt="${e.cover_image}"/>
                                 </div>
                             </div>
                             <div class="card-options">
