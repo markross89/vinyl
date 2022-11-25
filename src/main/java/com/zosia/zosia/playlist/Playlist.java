@@ -33,4 +33,11 @@ public class Playlist {
 	
 	@ManyToOne
 	private User user;
+	
+	public void addTrack(Track track){
+		this.tracks.add(track);
+		track.getPlaylists().add(this);
+	}
 }
+
+

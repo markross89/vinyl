@@ -38,5 +38,7 @@ public class Track {
 		this.playlists.forEach(playlist -> playlist.getTracks().removeIf(track -> track == this));
 		this.playlists.clear();
 	}
+	
+	
 
 }

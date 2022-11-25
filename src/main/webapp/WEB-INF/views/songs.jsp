@@ -45,7 +45,9 @@
                         <td>${s.album.artists_sort}</td>
                         <td>${s.position}</td>
                         <td>${s.duration}</td>
-                        <td>option</td>
+                        <td>  <button data-modal-target="#modal-addToPlaylist" class="songs-button-link" title="Add to playlist">
+                            <span>Add</span>
+                        </button></td>
                     </tr>
 
                 </c:forEach>

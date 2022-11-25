@@ -196,7 +196,8 @@
         <div class="modal-body-addPlaylist">
             <img src="<c:url value="resources/pictures/playlist.png" />"
                  style="height: 300px;width: 300px;margin-top: 30px" class="cover" alt="Abbey Road">
-            <form class="form-form markus-name-form" action="<c:url value="playlist_save"/>" method="get" id="playlist-form"
+            <form class="form-form markus-name-form" action="<c:url value="playlist_save"/>" method="get"
+                  id="playlist-form"
                   onsubmit="event.preventDefault(); validatePlaylist();">
                 <div class="error-input">
                     <input
@@ -250,6 +251,37 @@
         </div>
     </div>
     <%--    add box end--%>
+
+    <%--    add to playlist--%>
+    <div class="modal modal-about" id="modal-addToPlaylist" style="width: 400px">
+        <div class="modal-header">
+            <div class="form-title" style="text-decoration: none">Dodaj do...</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body" >
+            <div>
+                <form method="get" action="<c:url value="add_to_playlist" />" class="add-to-playlist-form">
+                    <div class="add-to-playlist">
+                        <c:forEach items="${songlists}" var="p">
+                            <label class="container-for-checkbox">${p.name}
+                                <input type="checkbox" value="${p.id}" id="${p.name}" name="playlist">
+                                <span class="checkmark-for-checkbox"></span>
+                            </label>
+                        </c:forEach>
+                    </div>
+                    <input type="text" class="input input-checkmark" name="playlist" placeholder="Add new playlist"/>
+                    <div class="form-group form-group--buttons">
+                        <button class="button-add" type="submit"><fmt:message key="admin.table.add"/></button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    <%--    add to playlist end--%>
+
 
     <!-- about us -->
 

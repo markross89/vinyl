@@ -1211,3 +1211,124 @@ th {
     width: 500px;
 }
 
+.songs-button-link {
+    color: #018c01;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: medium;
+    border-collapse: collapse;
+    border: none;
+    background-color: transparent;
+}
+
+.songs-button-link:hover {
+    cursor: pointer;
+    color: #015901;
+}
+
+.songs-button-link:active {
+
+    color: #003d00;
+}
+
+.add-to-playlist {
+    /*border: black 1px solid;*/
+    width: 100%;
+    height: 370px;
+    overflow: scroll;
+
+}
+
+.add-to-playlist-form {
+    /*border: black 1px solid;*/
+    margin: 2px;
+    overflow: scroll;
+}
+
+/* Customize the label (the container) */
+.container-for-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 30px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container-for-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark-for-checkbox {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container-for-checkbox:hover input ~ .checkmark-for-checkbox {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-for-checkbox input:checked ~ .checkmark-for-checkbox {
+    background-color: #e0a62e;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark-for-checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+
+}
+
+/* Show the checkmark when checked */
+.container-for-checkbox input:checked ~ .checkmark-for-checkbox:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-for-checkbox .checkmark-for-checkbox:after {
+    left: 10px;
+    top: 7px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.input-checkmark {
+    padding-left: 5px;
+    margin-top: 20px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.button-add {
+    border-collapse: collapse;
+    border: solid #727171 1px;
+    color: #414141;
+    margin-top: 10px;
+    margin-left: 2px;
+    border-radius: 3px;
+    background-color: #e0a62e;
+    height: 30px;
+    width: 300px;
+
+}
