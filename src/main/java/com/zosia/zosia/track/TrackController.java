@@ -1,6 +1,7 @@
 package com.zosia.zosia.track;
 
 
+import com.zosia.zosia.playlist.Playlist;
 import com.zosia.zosia.playlist.PlaylistRepository;
 import com.zosia.zosia.user.CurrentUser;
 import org.springframework.data.domain.PageRequest;
@@ -8,8 +9,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -32,21 +38,28 @@ public class TrackController {
 								 @RequestParam(defaultValue = "48") int size,
 								 @RequestParam(defaultValue = "id") String field, @RequestParam(defaultValue = "DESC") String direction) {
 		
-		
 		String drToSend = direction.equals("DESC") ? "ASC" : "DESC";
 		PageRequest pr = PageRequest.of(page, size, Sort.by(Sort.Direction.valueOf(direction), field));
 		model.addAttribute("songs", trackRepository.findByAlbum_Users(customUser.getUser(), pr));
 		model.addAttribute("songlists", playlistRepository.findPlaylistsByUser(customUser.getUser()));
 		model.addAttribute("direction", drToSend);
+		model.addAttribute("track", new Track());
 		return "/songs";
 	}
 	
-	@GetMapping("/add_to_playlist")
-	public String addAlbumToPlaylist(@RequestParam("playlist") long[] playlists){
+	@ModelAttribute("playlists")
+	public List<Playlist> playlists (@AuthenticationPrincipal CurrentUser customUser) {
 		
-		trackService.addTrackToPlaylist(playlists);
+		return playlistRepository.findPlaylistsByUser(customUser.getUser());
+	}
+	
+	@PostMapping("/add_to_playlist/{id}")
+	public String addAlbumToPlaylist (@ModelAttribute Track track, @PathVariable long id) {
 		
-		return "redirect:/songs" ;
+		track.getPlaylists().forEach(playlist -> playlist.addTrack(trackRepository.findById(id).get()));
+		trackRepository.save(track);
+		
+		return "redirect:/songs";
 	}
 }
 

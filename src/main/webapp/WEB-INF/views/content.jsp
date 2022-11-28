@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -253,32 +254,7 @@
     <%--    add box end--%>
 
     <%--    add to playlist--%>
-    <div class="modal modal-about" id="modal-addToPlaylist" style="width: 400px">
-        <div class="modal-header">
-            <div class="form-title" style="text-decoration: none">Dodaj do...</div>
-            <button data-close-button class="close-button">&times;</button>
-        </div>
-        <div class="modal-body" >
-            <div>
-                <form method="get" action="<c:url value="add_to_playlist" />" class="add-to-playlist-form">
-                    <div class="add-to-playlist">
-                        <c:forEach items="${songlists}" var="p">
-                            <label class="container-for-checkbox">${p.name}
-                                <input type="checkbox" value="${p.id}" id="${p.name}" name="playlist">
-                                <span class="checkmark-for-checkbox"></span>
-                            </label>
-                        </c:forEach>
-                    </div>
-                    <input type="text" class="input input-checkmark" name="playlist" placeholder="Add new playlist"/>
-                    <div class="form-group form-group--buttons">
-                        <button class="button-add" type="submit"><fmt:message key="admin.table.add"/></button>
-                    </div>
-                </form>
 
-            </div>
-
-        </div>
-    </div>
 
     <%--    add to playlist end--%>
 

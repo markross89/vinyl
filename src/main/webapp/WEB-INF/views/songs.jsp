@@ -6,7 +6,9 @@
 
 
 <jsp:include page="content.jsp"/>
+
 <!-- main content start -->
+
 <div class="main-content">
     <div class="content-content">
         <div class="content-title">Songs:</div>
@@ -49,6 +51,43 @@
                             <span>Add</span>
                         </button></td>
                     </tr>
+                    <div class="modal modal-about" id="modal-addToPlaylist" style="width: 400px">
+                        <div class="modal-header">
+                            <div class="form-title" style="text-decoration: none">Dodaj do...</div>
+                            <button data-close-button class="close-button">&times;</button>
+                        </div>
+                        <div class="modal-body" >
+                            <div>
+                                <form:form class="add-to-playlist-form" modelAttribute="track" method="post" action="add_to_playlist/${s.id}">
+                                    <%--                <form method="get" action="<c:url value="add_to_playlist" />" class="add-to-playlist-form">--%>
+                                    <%--                    <div class="add-to-playlist">--%>
+                                    <form:checkboxes items="${playlists}" path="playlists" itemLabel="name"  delimiter="<br/>"/>
+                                    <%--                <c:forEach items="${songlists}" var="p">--%>
+                                    <%--                <form:checkbox  path="playlists" itemLabel="${p.name}" itemValue="${p.id}" delimiter="<br/>"/>--%>
+                                    <%--                </c:forEach>--%>
+
+                                    <%--                        <c:forEach items="${songlists}" var="p">--%>
+                                    <%--                            <label class="container-for-checkbox">${p.name}--%>
+                                    <%--                                <input type="checkbox" value="${p.id}" id="${p.name}" name="playlist">--%>
+                                    <%--                                <span class="checkmark-for-checkbox"></span>--%>
+                                    <%--                            </label>--%>
+                                    <%--                        </c:forEach>--%>
+                                    <%--                    </div>--%>
+                                    <%--                    <input type="text" class="input input-checkmark" name="playlist" placeholder="Add new playlist"/>--%>
+                                    <%--                    <div class="form-group form-group--buttons">--%>
+                                    <%--                        <button class="button-add" type="submit"><fmt:message key="admin.table.add"/></button>--%>
+                                    <%--                    </div>--%>
+                                    <%--               --%>
+                                    <%--                </form>--%>
+                                    <div class="form-group form-group--buttons">
+                                        <button class="button-register" type="submit"><fmt:message key="users.add"/></button>
+                                    </div>
+                                </form:form>
+
+                            </div>
+
+                        </div>
+                    </div>
 
                 </c:forEach>
             </table>

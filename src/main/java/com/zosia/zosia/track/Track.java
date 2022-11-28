@@ -39,6 +39,11 @@ public class Track {
 		this.playlists.clear();
 	}
 	
+	public void addTracksToPlaylists (Playlist playlist) {
+		
+		playlist.getTracks().add(this);
+		this.playlists.add(playlist);
+	}
 	
 
 }
