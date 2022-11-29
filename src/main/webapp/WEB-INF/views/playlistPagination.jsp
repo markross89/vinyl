@@ -10,10 +10,10 @@
                 <a href="" class="pagButtonDisabled" type="button"> << </a>
             </c:when>
             <c:otherwise>
-                <a href="<c:url value="playlists?page=0&size=${playlists.pageable.pageSize}"/>"
+                <a href="<c:url value="playlists?id=${playlist.id}&page=0&size=${playlists.pageable.pageSize}"/>"
                    class="pagButton"
                    style="font-size: small; margin-top: 2px" type="button">First</a>
-                <a href="<c:url value="playlists?page=${playlists.number-1}&size=${playlists.pageable.pageSize}"/>"
+                <a href="<c:url value="playlists?id=${playlist.id}&page=${playlists.number-1}&size=${playlists.pageable.pageSize}"/>"
                    class="pagButton" type="button"> << </a>
             </c:otherwise>
         </c:choose>
@@ -27,9 +27,9 @@
                 <a href="" class="pagButtonDisabled" style="font-size: small; margin-top: 2px" type="button">Last</a>
             </c:when>
             <c:otherwise>
-                <a href="<c:url value="playlists?page=${playlists.number+1}&size=${playlists.pageable.pageSize}"/>"
+                <a href="<c:url value="playlists?id=${playlist.id}&page=${playlists.number+1}&size=${playlists.pageable.pageSize}"/>"
                    class="pagButton" type="button"> >> </a>
-                <a href="<c:url value="playlists?page=${playlists.totalPages-1}&size=${playlists.pageable.pageSize}"/>"
+                <a href="<c:url value="playlists?id=${playlist.id}&page=${playlists.totalPages-1}&size=${playlists.pageable.pageSize}"/>"
                    class="pagButton" style="font-size: small; margin-top: 2px" type="button">Last</a>
             </c:otherwise>
         </c:choose>
@@ -43,6 +43,7 @@
                 <option value="48">48</option>
                 <option value="96">96</option>
             </select>
+            <input type="hidden" value="${playlist.id}" name="id">
         </form>
     </div>
 </div>

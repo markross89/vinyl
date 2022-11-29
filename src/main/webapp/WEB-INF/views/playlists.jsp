@@ -21,7 +21,7 @@
 
 
                 <c:forEach items="${playlists.content}" var="e">
-                    <a href="<c:url value="/playlist_details/${e.id}"/>" style="text-decoration: none"
+                    <a href="<c:url value="/playlist_details?id=${e.id}"/>" style="text-decoration: none"
                     >
                         <div class="card">
                             <div class="title-pic" title="${e.name} - ${e.date}">

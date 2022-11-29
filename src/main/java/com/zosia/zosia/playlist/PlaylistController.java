@@ -30,12 +30,13 @@ public class PlaylistController {
 		this.messageService = messageService;
 	}
 	
-	@GetMapping("/playlist_details/{id}")
-	public String playlistDetails (@PathVariable long id, Model model, @RequestParam(defaultValue = "0") int page,
+	@GetMapping("/playlist_details")
+	public String playlistDetails (@RequestParam long id, Model model, @RequestParam(defaultValue = "0") int page,
 								   @RequestParam(defaultValue = "48") int size) {
-		
+		Playlist playlist = playlistRepository.findById(id).get();
 		model.addAttribute("songs", trackRepository.findTracksByPlaylists(playlistRepository.findById(id).get(), PageRequest.of(page, size)));
-		return "/songs";
+		model.addAttribute("playlist", playlist);
+		return "/playlist_details";
 	}
 	
 	@GetMapping("/playlist_save")
