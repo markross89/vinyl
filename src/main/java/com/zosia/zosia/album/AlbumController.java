@@ -1,15 +1,18 @@
 package com.zosia.zosia.album;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.zosia.zosia.box.Box;
+import com.zosia.zosia.box.BoxRepository;
+import com.zosia.zosia.box.BoxService;
 import com.zosia.zosia.user.CurrentUser;
 import com.zosia.zosia.user.UserRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -18,13 +21,18 @@ public class AlbumController {
 	private final AlbumService albumService;
 	private final AlbumRepository albumRepository;
 	private final UserRepository userRepository;
+	private final BoxService boxService;
+	private final BoxRepository boxRepository;
 	
 	
-	public AlbumController (AlbumService albumService, AlbumRepository albumRepository, UserRepository userRepository) {
+	public AlbumController (AlbumService albumService, AlbumRepository albumRepository, UserRepository userRepository, BoxService boxService,
+							BoxRepository boxRepository) {
 		
 		this.albumService = albumService;
 		this.albumRepository = albumRepository;
 		this.userRepository = userRepository;
+		this.boxService = boxService;
+		this.boxRepository = boxRepository;
 	}
 	
 	@GetMapping("/details/{id}")
@@ -54,7 +62,19 @@ public class AlbumController {
 		
 
 		model.addAttribute("albums", albumRepository.findAlbumsByUsers(customUser.getUser(), PageRequest.of(page, size)));
+		model.addAttribute("album", new Album());
+		model.addAttribute("boxes", boxRepository.findBoxesByUser(customUser.getUser()));
 		return "/albums";
+	}
+
+	
+	@PostMapping("/add_to_box")
+	public String addAlbumToBox (@AuthenticationPrincipal CurrentUser customUser, @ModelAttribute Album album, @RequestParam Long id,
+									  @RequestParam(defaultValue = "") String name) {
+		
+		albumService.addAlbumToMultipleBoxes(name, customUser.getUser(), id, album);
+		
+		return "redirect:/albums";
 	}
 }
 

@@ -4,7 +4,7 @@
     <div class="pagInfo">results: ${albums.totalElements}</div>
     <div class="pagButtons">
         <c:choose>
-            <c:when test="${albums.number==0}">
+            <c:when test="${albums.first==true}">
                 <a href="" class="pagButtonDisabled" style="font-size: small; margin-top: 2px"
                    type="button">First</a>
                 <a href="" class="pagButtonDisabled" type="button"> << </a>
@@ -18,11 +18,11 @@
             </c:otherwise>
         </c:choose>
 
-
         <div class="pageInfo">page ${albums.number+1} of ${albums.totalPages}</div>
 
+
         <c:choose>
-            <c:when test="${albums.number==albums.totalPages-1}">
+            <c:when test="${albums.last==true}">
                 <a href="" class="pagButtonDisabled" type="button"> >> </a>
                 <a href="" class="pagButtonDisabled" style="font-size: small; margin-top: 2px" type="button">Last</a>
             </c:when>

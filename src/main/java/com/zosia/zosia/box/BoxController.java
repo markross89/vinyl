@@ -29,12 +29,14 @@ public class BoxController {
 	}
 	
 	
-	@GetMapping("/box_details/{id}")
-	public String boxDetails (@PathVariable long id, Model model, @RequestParam(defaultValue = "0") int page,
+	@GetMapping("/box_details")
+	public String boxDetails ( @RequestParam long id, Model model,
+							  @RequestParam(defaultValue = "0") int page,
 							  @RequestParam(defaultValue = "48") int size) {
-		
-		model.addAttribute("albums", albumRepository.findAlbumsByBoxes(boxRepository.findById(id).get(), PageRequest.of(page, size)));
-		return "/albums";
+		Box box = boxRepository.findById(id).get();
+		model.addAttribute("albums", albumRepository.findAlbumsByBoxes(box, PageRequest.of(page, size)));
+		model.addAttribute("box", box);
+		return "box_details";
 	}
 	
 	@GetMapping("/box_save")

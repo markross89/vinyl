@@ -6,9 +6,9 @@
     <!-- main content start -->
     <div class="main-content">
         <div class="content-content">
-            <div class="content-title">My albums :</div>
+            <div class="content-title">My playlists :</div>
 
-            <jsp:include page="albumPagination.jsp"/>
+            <jsp:include page="playlistPagination.jsp"/>
 
             <hr
                     style="
@@ -34,9 +34,7 @@
                                 </div>
                             </div>
                             <div class="card-options">
-                                <div>
-                                    <a href="<c:url value="/playlist_save/${e.id}" />" class="option add">Add</a>
-                                </div>
+
                                 <div>
                                     <a href="<c:url value="/playlist_delete/${e.id}" />" class="option delete">Delete</a>
                                 </div>
@@ -54,7 +52,7 @@
               border-top: 1px solid rgba(239,175,0,0.8);
             "
             />
-            <jsp:include page="albumPagination.jsp"/>
+            <jsp:include page="playlistPagination.jsp"/>
         </div>
     </div>
 

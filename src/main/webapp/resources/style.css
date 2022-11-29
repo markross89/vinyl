@@ -328,6 +328,7 @@ ul {
     margin: 10px;
     color: rgb(48, 48, 48);
     text-decoration: none !important;
+    font-weight: bold;
 }
 
 .add {
@@ -1330,5 +1331,19 @@ th {
     background-color: #e0a62e;
     height: 30px;
     width: 300px;
+
+}
+
+.checkboxes{
+    height: 25px;
+    width: 25px;
+    margin: 7px;
+
+
+}
+
+.playlists-list{
+    height: 380px;
+    overflow: scroll;
 
 }

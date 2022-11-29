@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashSet;
 
 
 @Service
@@ -23,7 +24,9 @@ public class PlaylistService {
 		Playlist playlist = Playlist.builder()
 				.name(name)
 				.date(Date.valueOf(LocalDate.now()))
-				.user(user).build();
+				.user(user)
+				.tracks(new HashSet<>())
+				.build();
 		playlistRepository.save(playlist);
 	}
 }

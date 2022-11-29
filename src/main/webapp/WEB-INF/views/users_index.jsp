@@ -14,7 +14,7 @@
         <hr
                 style="
               width: 95%;
-              margin-right: 50px;
+              margin-right: 25px;
               border-top: 1px solid rgba(239,175,0,0.8);
             "
         />
@@ -68,7 +68,7 @@
         <hr
                 style="
               width: 95%;
-              margin-right: 50px;
+              margin-right: 25px;
               border-top: 1px solid rgba(239,175,0,0.8);
             "
         />

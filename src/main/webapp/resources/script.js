@@ -37,7 +37,6 @@ userOverlay.addEventListener("click", () => {
 });
 
 
-
 // user menu expand list end
 
 // pop up window for login register etc.
@@ -162,4 +161,11 @@ function validateBox() {
         emailError.style.display = "block";
     }
 }
+
+function ggg() {
+    document.getElementById('song-id').value = event.currentTarget.id
+}
+
+
+
 

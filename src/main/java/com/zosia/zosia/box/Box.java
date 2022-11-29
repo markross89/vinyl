@@ -38,5 +38,10 @@ public class Box {
 		this.albums.remove(album);
 		
 	}
+	
+	public void addAlbum(Album album){
+		this.albums.add(album);
+		album.getBoxes().add(this);
+	}
 }
 

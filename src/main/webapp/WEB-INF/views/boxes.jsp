@@ -21,7 +21,7 @@
 
 
                 <c:forEach items="${boxes.content}" var="e">
-                    <a href="<c:url value="/box_details/${e.id}"/>" style="text-decoration: none"
+                    <a href="<c:url value="/box_details?id=${e.id}" />"  style="text-decoration: none"
                     >
                         <div class="card">
                             <div class="title-pic" title="${e.name} - ${e.date}">
@@ -34,9 +34,7 @@
                                 </div>
                             </div>
                             <div class="card-options">
-                                <div>
-                                    <a href="<c:url value="/save/${e.id}" />" class="option add">Add</a>
-                                </div>
+
                                 <div>
                                     <a href="<c:url value="/box_delete/${e.id}" />" class="option delete">Delete</a>
                                 </div>

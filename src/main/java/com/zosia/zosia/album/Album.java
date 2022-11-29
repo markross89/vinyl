@@ -104,6 +104,12 @@ public class Album {
 		this.boxes.forEach(box -> box.getAlbums().removeIf(album -> album == this));
 		this.boxes.clear();
 	}
+	
+	public void addBox(Box box){
+		this.boxes.add(box);
+		box.getAlbums().add(this);
+		
+	}
 	public void removeTracksFromPlaylists () {
 		
 		this.labels.forEach(label -> label.getAlbums().removeIf(album -> album == this));

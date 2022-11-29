@@ -6,14 +6,16 @@ import com.zosia.zosia.MessageService;
 
 
 import com.zosia.zosia.artist.ArtistRepository;
-import com.zosia.zosia.image.ImageRepository;
+import com.zosia.zosia.box.Box;
+import com.zosia.zosia.box.BoxRepository;
+import com.zosia.zosia.box.BoxService;
 import com.zosia.zosia.label.LabelRepository;
 import com.zosia.zosia.track.Track;
-import com.zosia.zosia.track.TrackRepository;
 import com.zosia.zosia.HttpService;
 import com.zosia.zosia.user.User;
-import com.zosia.zosia.user.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
 
 
 @Service
@@ -21,25 +23,24 @@ public class AlbumService {
 	
 	private final HttpService httpService;
 	private final MessageService messageService;
-	private final ImageRepository imageRepository;
+	private final BoxService boxService;
 	private final LabelRepository labelRepository;
-	private final TrackRepository trackRepository;
+	private final BoxRepository boxRepository;
 	private final ArtistRepository artistRepository;
 	private final AlbumRepository albumRepository;
-	private final UserRepository userRepository;
+
 	
-	public AlbumService (HttpService httpService, MessageService messageService, ImageRepository imageRepository, LabelRepository labelRepository,
-						 TrackRepository trackRepository, ArtistRepository artistRepository, AlbumRepository albumRepository,
-						 UserRepository userRepository) {
+	public AlbumService (HttpService httpService, MessageService messageService, LabelRepository labelRepository,
+						 ArtistRepository artistRepository, AlbumRepository albumRepository,
+						 BoxService boxService, BoxRepository boxRepository) {
 		
 		this.httpService = httpService;
 		this.messageService = messageService;
-		this.imageRepository = imageRepository;
+		this.boxService = boxService;
 		this.labelRepository = labelRepository;
-		this.trackRepository = trackRepository;
 		this.artistRepository = artistRepository;
 		this.albumRepository = albumRepository;
-		this.userRepository = userRepository;
+		this.boxRepository = boxRepository;
 	}
 	
 	public <T> T requestAlbumBuilder (Class<T> type, long id) throws JsonProcessingException {
@@ -58,6 +59,7 @@ public class AlbumService {
 			album.saveImage();
 			album.saveTrack();
 			album.addUser(user);
+			album.setBoxes(new HashSet<>());
 			albumRepository.save(album);
 		}
 		else {
@@ -88,5 +90,16 @@ public class AlbumService {
 				if (label.getAlbums().isEmpty()) {labelRepository.delete(label);}
 			});
 		}
+	}
+	public void addAlbumToMultipleBoxes (String name, User user, Long id, Album album) {
+
+		Album a = albumRepository.findById(id).get();
+		if (!name.equals("")) {
+			boxService.addBox(name, user);
+			Box newBox = boxRepository.findByName(name);
+			a.addBox(newBox);
+		}
+		album.getBoxes().forEach(a::addBox);
+		albumRepository.save(a);
 	}
 }

@@ -29,11 +29,16 @@
                 <tr>
 
                     <th>Nr</th>
-                    <th><a href="<c:url value="songs?field=title&direction=${direction}"/>" class="album-link">Title</a></th>
-                    <th><a href="<c:url value="songs?field=album.title&direction=${direction}"/>" class="album-link">Album</a></th>
-                    <th><a href="<c:url value="songs?field=album.artists.name&direction=${direction}"/>" class="album-link">Artist</a></th>
-                    <th><a href="<c:url value="songs?field=position&direction=${direction}"/>" class="album-link">Position</a></th>
-                    <th><a href="<c:url value="songs?field=duration&direction=${direction}"/>" class="album-link">Duration</a></th>
+                    <th><a href="<c:url value="songs?field=title&direction=${direction}"/>" class="album-link">Title</a>
+                    </th>
+                    <th><a href="<c:url value="songs?field=album.title&direction=${direction}"/>" class="album-link">Album</a>
+                    </th>
+                    <th><a href="<c:url value="songs?field=album.artists.name&direction=${direction}"/>"
+                           class="album-link">Artist</a></th>
+                    <th><a href="<c:url value="songs?field=position&direction=${direction}"/>" class="album-link">Position</a>
+                    </th>
+                    <th><a href="<c:url value="songs?field=duration&direction=${direction}"/>" class="album-link">Duration</a>
+                    </th>
                     <th>Option</th>
                 </tr>
                 </thead>
@@ -47,53 +52,60 @@
                         <td>${s.album.artists_sort}</td>
                         <td>${s.position}</td>
                         <td>${s.duration}</td>
-                        <td>  <button data-modal-target="#modal-addToPlaylist" class="songs-button-link" title="Add to playlist">
-                            <span>Add</span>
-                        </button></td>
+                        <td>
+                            <button data-modal-target="#modal-addToPlaylist" class="songs-button-link"
+                                    id="${s.id}" title="Add to playlist" onclick="ggg()">
+                                <span>Add</span>
+                            </button>
+                        </td>
                     </tr>
-                    <div class="modal modal-about" id="modal-addToPlaylist" style="width: 400px">
-                        <div class="modal-header">
-                            <div class="form-title" style="text-decoration: none">Dodaj do...</div>
-                            <button data-close-button class="close-button">&times;</button>
-                        </div>
-                        <div class="modal-body" >
-                            <div>
-                                <form:form class="add-to-playlist-form" modelAttribute="track" method="post" action="add_to_playlist/${s.id}">
-                                    <%--                <form method="get" action="<c:url value="add_to_playlist" />" class="add-to-playlist-form">--%>
-                                    <%--                    <div class="add-to-playlist">--%>
-                                    <form:checkboxes items="${playlists}" path="playlists" itemLabel="name"  delimiter="<br/>"/>
-                                    <%--                <c:forEach items="${songlists}" var="p">--%>
-                                    <%--                <form:checkbox  path="playlists" itemLabel="${p.name}" itemValue="${p.id}" delimiter="<br/>"/>--%>
-                                    <%--                </c:forEach>--%>
 
-                                    <%--                        <c:forEach items="${songlists}" var="p">--%>
-                                    <%--                            <label class="container-for-checkbox">${p.name}--%>
-                                    <%--                                <input type="checkbox" value="${p.id}" id="${p.name}" name="playlist">--%>
-                                    <%--                                <span class="checkmark-for-checkbox"></span>--%>
-                                    <%--                            </label>--%>
-                                    <%--                        </c:forEach>--%>
-                                    <%--                    </div>--%>
-                                    <%--                    <input type="text" class="input input-checkmark" name="playlist" placeholder="Add new playlist"/>--%>
-                                    <%--                    <div class="form-group form-group--buttons">--%>
-                                    <%--                        <button class="button-add" type="submit"><fmt:message key="admin.table.add"/></button>--%>
-                                    <%--                    </div>--%>
-                                    <%--               --%>
-                                    <%--                </form>--%>
-                                    <div class="form-group form-group--buttons">
-                                        <button class="button-register" type="submit"><fmt:message key="users.add"/></button>
-                                    </div>
-                                </form:form>
-
-                            </div>
-
-                        </div>
-                    </div>
 
                 </c:forEach>
             </table>
 
         </div>
+        <div class="modal modal-about" id="modal-addToPlaylist" style="width: 400px">
+            <div class="modal-header">
+                <div class="form-title" style="text-decoration: none">Dodaj do...</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form:form class="add-to-playlist-form" modelAttribute="track" method="post"
+                               action="add_to_playlist">
+                        <hr
+                                style="
+              width: 98%;
+            margin-top: 10px ;
+              border-top: 1px solid rgba(183,134,2,0.99);
+            "
+                        />
+                        <div class="playlists-list">
+                            <form:checkboxes class="checkboxes" items="${playlists}" path="playlists" itemLabel="name"
+                                             delimiter="<br/>"/>
+                            <input id="song-id" type="hidden" name="id">
+                            <br/>
 
+                        </div>
+                        <hr
+                                style="
+              width: 98%;
+            margin: 5px 5px 20px;
+              border-top: 1px solid rgba(183,134,2,0.99);
+            "
+                        />
+                        <input class="input" type="text" name="name" placeholder="Add new playlist">
+
+                        <div class="form-group form-group--buttons">
+                            <button class="button-add" type="submit"><fmt:message key="admin.table.add"/></button>
+                        </div>
+                    </form:form>
+
+                </div>
+
+            </div>
+        </div>
 
         <hr
                 style="

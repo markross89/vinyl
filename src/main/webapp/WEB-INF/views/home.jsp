@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="content.jsp"/>
 
@@ -33,12 +34,12 @@
                                 </div>
                             </div>
                             <div class="card-options">
+                                <sec:authorize access="isAuthenticated()">
                                 <div>
-                                    <a href="<c:url value="/save/${e.id}" />" class="option add">Add</a>
+                                    <a href="<c:url value="/save/${e.id}" />" class="option add" title="Add to albums">Add</a>
                                 </div>
-                                <div>
-                                    <a href="<c:url value="/delete/${e.id}" />" class="option delete">Delete</a>
-                                </div>
+                                </sec:authorize>
+
                             </div>
                         </div>
                     </a>
