@@ -16,7 +16,7 @@
 <!-- topbar start -->
 <div class="topbar">
     <a href="<c:url value="/"/>" class="logo-title">
-        <div>
+        <div class="logo-blurred">
             <div class="logo"><img src="<c:url value="/resources/pictures/logo.png" />"/></div>
             <div class="title">VINYL <br/>COLLECTION</div>
         </div>

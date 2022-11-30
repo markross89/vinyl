@@ -1298,3 +1298,8 @@ th {
     font-size: x-large;
     color: black;
 }
+
+.logo-blurred{
+    opacity: 70%;
+
+}
