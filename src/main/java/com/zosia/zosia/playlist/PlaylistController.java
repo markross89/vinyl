@@ -4,6 +4,7 @@ import com.zosia.zosia.MessageService;
 import com.zosia.zosia.track.TrackRepository;
 import com.zosia.zosia.user.CurrentUser;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,6 @@ public class PlaylistController {
 	private final PlaylistRepository playlistRepository;
 	private final TrackRepository trackRepository;
 	private final PlaylistService playlistService;
-	
 	private final MessageService messageService;
 	
 	public PlaylistController (PlaylistRepository playlistRepository, TrackRepository trackRepository, PlaylistService playlistService,
@@ -32,10 +32,16 @@ public class PlaylistController {
 	
 	@GetMapping("/playlist_details")
 	public String playlistDetails (@RequestParam long id, Model model, @RequestParam(defaultValue = "0") int page,
-								   @RequestParam(defaultValue = "48") int size) {
+								   @RequestParam(defaultValue = "id") String field,
+								   @RequestParam(defaultValue = "48") int size, @RequestParam(defaultValue = "DESC") String direction) {
+		
 		Playlist playlist = playlistRepository.findById(id).get();
-		model.addAttribute("songs", trackRepository.findTracksByPlaylists(playlistRepository.findById(id).get(), PageRequest.of(page, size)));
+		String drToSend = direction.equals("DESC") ? "ASC" : "DESC";
+		PageRequest pr = PageRequest.of(page, size, Sort.by(Sort.Direction.valueOf(direction), field));
+		model.addAttribute("direction", drToSend);
+		model.addAttribute("songs", trackRepository.findTracksByPlaylists(playlist, pr));
 		model.addAttribute("playlist", playlist);
+		model.addAttribute("field", field);
 		return "/playlist_details";
 	}
 	
@@ -64,5 +70,4 @@ public class PlaylistController {
 		model.addAttribute("playlists", playlistRepository.findPlaylistsByUser(customUser.getUser(), PageRequest.of(page, size)));
 		return "/playlists";
 	}
-	
 }

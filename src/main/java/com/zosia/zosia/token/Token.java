@@ -21,6 +21,7 @@ public class Token {
 	private Long id;
 	private String token;
 	private LocalDateTime expireTime;
+	
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private User user;
 	

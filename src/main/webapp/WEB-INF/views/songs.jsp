@@ -29,15 +29,75 @@
                 <tr>
 
                     <th>Nr</th>
-                    <th><a href="<c:url value="songs?field=title&direction=${direction}"/>" class="album-link">Title</a>
+                    <th><a href="<c:url value="songs?field=title&direction=${direction}"/>" class="album-link"
+                           title="Sort by title"> Title </a>
+                        <c:if test="${field=='title'}">
+                        <span class="arrow-span" >
+                        <c:choose>
+                            <c:when test="${direction=='DESC'}">
+                                ↑
+                            </c:when>
+                            <c:otherwise>
+                                ↓
+                            </c:otherwise>
+                        </c:choose>
+                        </span></c:if>
                     </th>
-                    <th><a href="<c:url value="songs?field=album.title&direction=${direction}"/>" class="album-link">Album</a>
+                    <th><a href="<c:url value="songs?field=album&direction=${direction}"/>" class="album-link"
+                           title="Sort by album">Album</a>
+                        <c:if test="${field=='album'}">
+                        <span class="arrow-span">
+                        <c:choose>
+                            <c:when test="${direction=='DESC'}">
+                                ↑
+                            </c:when>
+                            <c:otherwise>
+                                ↓
+                            </c:otherwise>
+                        </c:choose>
+                        </span></c:if>
                     </th>
                     <th><a href="<c:url value="songs?field=album.artists.name&direction=${direction}"/>"
-                           class="album-link">Artist</a></th>
-                    <th><a href="<c:url value="songs?field=position&direction=${direction}"/>" class="album-link">Position</a>
+                           class="album-link" title="Sort by artist">Artist</a>
+                        <c:if test="${field=='album.artists.name'}">
+                        <span class="arrow-span">
+                        <c:choose>
+                            <c:when test="${direction=='DESC'}">
+                                ↑
+                            </c:when>
+                            <c:otherwise>
+                                ↓
+                            </c:otherwise>
+                        </c:choose>
+                        </span></c:if>
                     </th>
-                    <th><a href="<c:url value="songs?field=duration&direction=${direction}"/>" class="album-link">Duration</a>
+                    <th><a href="<c:url value="songs?field=position&direction=${direction}"/>" class="album-link"
+                           title="Sort by position">Position</a>
+                        <c:if test="${field=='position'}">
+                        <span class="arrow-span">
+                        <c:choose>
+                            <c:when test="${direction=='DESC'}">
+                                ↑
+                            </c:when>
+                            <c:otherwise>
+                                ↓
+                            </c:otherwise>
+                        </c:choose>
+                        </span></c:if>
+                    </th>
+                    <th><a href="<c:url value="songs?field=duration&direction=${direction}"/>" class="album-link"
+                           title="Sort by duration">Duration</a>
+                        <c:if test="${field=='duration'}">
+                        <span class="arrow-span">
+                        <c:choose>
+                            <c:when test="${direction=='DESC'}">
+                                ↑
+                            </c:when>
+                            <c:otherwise>
+                                ↓
+                            </c:otherwise>
+                        </c:choose>
+                        </span></c:if>
                     </th>
                     <th>Option</th>
                 </tr>
@@ -47,7 +107,7 @@
                     <tr style="border: #2196F3 solid 1px">
                         <td>${counter}</td>
                         <td>${s.title}</td>
-                        <td><a href="<c:url value="/details/${s.album.id}"/>" class="album-link">${s.album.title}</a>
+                        <td><a href="<c:url value="/details/${s.album.id}"/>" class="album-link" title="See details">${s.album.title}</a>
                         </td>
                         <td>${s.album.artists_sort}</td>
                         <td>${s.position}</td>

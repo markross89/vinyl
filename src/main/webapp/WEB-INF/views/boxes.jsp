@@ -36,7 +36,7 @@
                             <div class="card-options">
 
                                 <div>
-                                    <a href="<c:url value="/box_delete/${e.id}" />" class="option delete">Delete</a>
+                                    <a href="<c:url value="/box_delete/${e.id}" />" class="option delete" title="Delete box">Delete</a>
                                 </div>
                             </div>
                         </div>

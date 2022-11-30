@@ -2,33 +2,20 @@ package com.zosia.zosia.thumb;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zosia.zosia.pagination.Pagination;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Thumbs {
 	
 	private Pagination pagination;
-	
 	private Result[] results;
-	
-	public Pagination getPagination () {
-		
-		return pagination;
-	}
-	
-	public void setPagination (Pagination pagination) {
-		
-		this.pagination = pagination;
-	}
-	
-	public Result[] getResults () {
-		
-		return results;
-	}
-	
-	public void setResults (Result[] results) {
-		
-		this.results = results;
-	}
 	
 }

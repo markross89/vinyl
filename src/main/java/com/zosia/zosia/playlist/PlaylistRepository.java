@@ -18,6 +18,6 @@ public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
 	
 	boolean existsByName (String name);
 	
-	Playlist findByName(String name);
+	Playlist findByName (String name);
 	
 }

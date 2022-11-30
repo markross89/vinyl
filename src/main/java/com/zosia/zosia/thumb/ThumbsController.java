@@ -26,6 +26,4 @@ public class ThumbsController {
 		model.addAttribute("search", search);
 		return "home";
 	}
-	
-	
 }

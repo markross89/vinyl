@@ -9,6 +9,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
+
 @Getter
 @Setter
 @Builder
@@ -32,6 +33,6 @@ public class Artist {
 		album.addArtist(this);
 		this.albums.add(album);
 	}
-
+	
 	
 }

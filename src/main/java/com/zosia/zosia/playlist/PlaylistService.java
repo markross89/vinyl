@@ -1,6 +1,6 @@
 package com.zosia.zosia.playlist;
 
-import com.zosia.zosia.box.Box;
+
 import com.zosia.zosia.user.User;
 import org.springframework.stereotype.Service;
 

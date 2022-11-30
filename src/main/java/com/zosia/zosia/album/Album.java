@@ -110,11 +110,6 @@ public class Album {
 		box.getAlbums().add(this);
 		
 	}
-	public void removeTracksFromPlaylists () {
-		
-		this.labels.forEach(label -> label.getAlbums().removeIf(album -> album == this));
-		this.labels.clear();
-	}
 	
 	public void saveImage () {
 		

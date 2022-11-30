@@ -21,15 +21,13 @@ public class TrackController {
 	
 	private final TrackRepository trackRepository;
 	private final PlaylistRepository playlistRepository;
-	private final PlaylistService playlistService;
 	private final TrackService trackService;
 	
-	public TrackController (TrackRepository trackRepository, PlaylistRepository playlistRepository, PlaylistService playlistService,
+	public TrackController (TrackRepository trackRepository, PlaylistRepository playlistRepository,
 							TrackService trackService) {
 		
 		this.trackRepository = trackRepository;
 		this.playlistRepository = playlistRepository;
-		this.playlistService = playlistService;
 		this.trackService = trackService;
 	}
 	
@@ -38,17 +36,17 @@ public class TrackController {
 								 @RequestParam(defaultValue = "48") int size,
 								 @RequestParam(defaultValue = "id") String field, @RequestParam(defaultValue = "DESC") String direction) {
 		
-		String drToSend = direction.equals("DESC") ? "ASC" : "DESC";
+		String drToSend = direction.equals("ASC") ? "DESC" : "ASC";
 		PageRequest pr = PageRequest.of(page, size, Sort.by(Sort.Direction.valueOf(direction), field));
 		model.addAttribute("direction", drToSend);
 		model.addAttribute("songs", trackRepository.findByAlbum_Users(customUser.getUser(), pr));
+		model.addAttribute("field", field);
 		model.addAttribute("track", new Track());
 		return "/songs";
 	}
 	
 	@ModelAttribute("playlists")
 	public List<Playlist> playlists (@AuthenticationPrincipal CurrentUser customUser) {
-		
 		return playlistRepository.findPlaylistsByUser(customUser.getUser());
 	}
 	
@@ -57,8 +55,16 @@ public class TrackController {
 									  @RequestParam(defaultValue = "") String name) {
 		
 		trackService.addTrackToMultiplePlaylists(name, customUser.getUser(), id, track);
-		
 		return "redirect:/songs";
+	}
+	
+	@GetMapping("/delete_from_playlist")
+	public String deleteTrackFromPlaylist (@RequestParam Long playlist_id, @RequestParam Long song_id) {
+		
+		Playlist playlist = playlistRepository.findById(playlist_id).get();
+		playlist.removeTrack(trackRepository.findById(song_id).get());
+		playlistRepository.save(playlist);
+		return "redirect:/playlist_details?id="+playlist_id;
 	}
 }
 

@@ -7,7 +7,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -36,12 +35,7 @@ public class Box {
 	public void removeAlbum (Album album) {
 		
 		this.albums.remove(album);
-		
-	}
-	
-	public void addAlbum(Album album){
-		this.albums.add(album);
-		album.getBoxes().add(this);
+		album.getBoxes().remove(this);
 	}
 }
 

@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AlbumRepository extends JpaRepository<Album, Long> {
 	
-	Page<Album> findAlbumsByUsers(User user, Pageable pageable);
+	Page<Album> findAlbumsByUsers (User user, Pageable pageable);
 	
-	Page<Album> findAlbumsByBoxes(Box box, Pageable pageable);
-
+	Page<Album> findAlbumsByBoxes (Box box, Pageable pageable);
+	
 }

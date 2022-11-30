@@ -125,7 +125,7 @@
                 <a href="<c:url value="/playlists"/>" class="menu-button-link">Playlists</a>
             </button>
             <div class="add-remove-content" style="display: none">
-                <button data-modal-target="#modal-addPlaylist" class="menu-button-link">
+                <button data-modal-target="#modal-addPlaylist" class="menu-button-link" title="Add new playlist">
                     <span>Add</span>
                 </button>
 
@@ -136,7 +136,7 @@
                 <a href="<c:url value="/boxes"/>" class="menu-button-link" style="margin-left: 7px">Boxes</a>
             </button>
             <div class="add-remove-content" style="display: none">
-                <button data-modal-target="#modal-addBox" class="menu-button-link">
+                <button data-modal-target="#modal-addBox" class="menu-button-link" title="Add new box">
                     <span>Add</span>
                 </button>
             </div>

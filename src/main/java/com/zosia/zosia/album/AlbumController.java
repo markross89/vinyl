@@ -3,7 +3,6 @@ package com.zosia.zosia.album;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.zosia.zosia.box.Box;
 import com.zosia.zosia.box.BoxRepository;
-import com.zosia.zosia.box.BoxService;
 import com.zosia.zosia.user.CurrentUser;
 import com.zosia.zosia.user.UserRepository;
 import org.springframework.data.domain.PageRequest;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 
 @Controller
@@ -21,17 +19,15 @@ public class AlbumController {
 	private final AlbumService albumService;
 	private final AlbumRepository albumRepository;
 	private final UserRepository userRepository;
-	private final BoxService boxService;
 	private final BoxRepository boxRepository;
 	
 	
-	public AlbumController (AlbumService albumService, AlbumRepository albumRepository, UserRepository userRepository, BoxService boxService,
+	public AlbumController (AlbumService albumService, AlbumRepository albumRepository, UserRepository userRepository,
 							BoxRepository boxRepository) {
 		
 		this.albumService = albumService;
 		this.albumRepository = albumRepository;
 		this.userRepository = userRepository;
-		this.boxService = boxService;
 		this.boxRepository = boxRepository;
 	}
 	
@@ -46,7 +42,7 @@ public class AlbumController {
 	public String saveAlbum (@PathVariable long id, @AuthenticationPrincipal CurrentUser customUser) throws JsonProcessingException {
 		
 		albumService.saveAlbum(id, userRepository.findById(customUser.getUser().getId()).get());
-		return "redirect:/albums";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -60,21 +56,29 @@ public class AlbumController {
 	public String displayAlbums (Model model, @AuthenticationPrincipal CurrentUser customUser, @RequestParam(defaultValue = "0") int page,
 								 @RequestParam(defaultValue = "48") int size) {
 		
-
 		model.addAttribute("albums", albumRepository.findAlbumsByUsers(customUser.getUser(), PageRequest.of(page, size)));
 		model.addAttribute("album", new Album());
 		model.addAttribute("boxes", boxRepository.findBoxesByUser(customUser.getUser()));
 		return "/albums";
 	}
-
+	
 	
 	@PostMapping("/add_to_box")
 	public String addAlbumToBox (@AuthenticationPrincipal CurrentUser customUser, @ModelAttribute Album album, @RequestParam Long id,
-									  @RequestParam(defaultValue = "") String name) {
+								 @RequestParam(defaultValue = "") String name) {
 		
 		albumService.addAlbumToMultipleBoxes(name, customUser.getUser(), id, album);
 		
 		return "redirect:/albums";
+	}
+	
+	@GetMapping("/delete_from_box")
+	public String deleteAlbumsFromBoxes (@RequestParam Long box_id, @RequestParam Long album_id) {
+		
+		Box box = boxRepository.findById(box_id).get();
+		box.removeAlbum(albumRepository.findById(album_id).get());
+		boxRepository.save(box);
+		return "redirect:box_details?id="+box_id;
 	}
 }
 

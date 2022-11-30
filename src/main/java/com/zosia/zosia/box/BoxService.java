@@ -13,12 +13,12 @@ import java.util.HashSet;
 public class BoxService {
 	
 	private final BoxRepository boxRepository;
-
+	
 	
 	public BoxService (BoxRepository boxRepository) {
 		
 		this.boxRepository = boxRepository;
-
+		
 	}
 	
 	public void addBox (String name, User user) {
@@ -31,6 +31,4 @@ public class BoxService {
 				.build();
 		boxRepository.save(box);
 	}
-	
-
 }

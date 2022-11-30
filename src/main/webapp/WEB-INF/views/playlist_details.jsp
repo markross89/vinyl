@@ -12,7 +12,7 @@
 <div class="main-content">
     <div class="content-content">
         <div class="content-title">Playlist details:</div>
-        <jsp:include page="songPagination.jsp"/>
+        <jsp:include page="playlist_detailsPagination.jsp"/>
         <hr
                 style="
               width: 95%;
@@ -29,15 +29,70 @@
                 <tr>
 
                     <th>Nr</th>
-                    <th><a href="<c:url value="songs?field=title&direction=${direction}"/>" class="album-link">Title</a>
+                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=title&direction=${direction}"/>" class="album-link" title="Sort by title">Title</a>
+                        <c:if test="${field=='title'}">
+                        <span class="arrow-span" >
+                        <c:choose>
+                            <c:when test="${direction=='DESC'}">
+                                ↑
+                            </c:when>
+                            <c:otherwise>
+                                ↓
+                            </c:otherwise>
+                        </c:choose>
+                        </span></c:if>
                     </th>
-                    <th><a href="<c:url value="songs?field=album.title&direction=${direction}"/>" class="album-link">Album</a>
+                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=album.title&direction=${direction}"/>" class="album-link" title="Sort by album">Album</a>
+                        <c:if test="${field=='album.title'}">
+                        <span class="arrow-span" >
+                        <c:choose>
+                            <c:when test="${direction=='DESC'}">
+                                ↑
+                            </c:when>
+                            <c:otherwise>
+                                ↓
+                            </c:otherwise>
+                        </c:choose>
+                        </span></c:if>
                     </th>
-                    <th><a href="<c:url value="songs?field=album.artists.name&direction=${direction}"/>"
-                           class="album-link">Artist</a></th>
-                    <th><a href="<c:url value="songs?field=position&direction=${direction}"/>" class="album-link">Position</a>
+                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=album.artists.name&direction=${direction}"/>"
+                           class="album-link">Artist</a>
+                        <c:if test="${field=='album.artists.name'}">
+                        <span class="arrow-span" >
+                        <c:choose>
+                            <c:when test="${direction=='DESC'}">
+                                ↑
+                            </c:when>
+                            <c:otherwise>
+                                ↓
+                            </c:otherwise>
+                        </c:choose>
+                        </span></c:if></th>
+                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=position&direction=${direction}"/>" class="album-link" title="Sort by position">Position</a>
+                        <c:if test="${field=='position'}">
+                        <span class="arrow-span" >
+                        <c:choose>
+                            <c:when test="${direction=='DESC'}">
+                                ↑
+                            </c:when>
+                            <c:otherwise>
+                                ↓
+                            </c:otherwise>
+                        </c:choose>
+                        </span></c:if>
                     </th>
-                    <th><a href="<c:url value="songs?field=duration&direction=${direction}"/>" class="album-link">Duration</a>
+                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=duration&direction=${direction}"/>" class="album-link" title="Sort by duration">Duration</a>
+                        <c:if test="${field=='duration'}">
+                        <span class="arrow-span" >
+                        <c:choose>
+                            <c:when test="${direction=='DESC'}">
+                                ↑
+                            </c:when>
+                            <c:otherwise>
+                                ↓
+                            </c:otherwise>
+                        </c:choose>
+                        </span></c:if>
                     </th>
                     <th>Option</th>
                 </tr>
@@ -47,16 +102,16 @@
                     <tr style="border: #2196F3 solid 1px">
                         <td>${counter}</td>
                         <td>${s.title}</td>
-                        <td><a href="<c:url value="/details/${s.album.id}"/>" class="album-link">${s.album.title}</a>
+                        <td><a href="<c:url value="/details/${s.album.id}"/>" class="album-link" title="See details">${s.album.title}</a>
                         </td>
                         <td>${s.album.artists_sort}</td>
                         <td>${s.position}</td>
                         <td>${s.duration}</td>
                         <td>
-                            <button data-modal-target="#modal-addToPlaylist" class="songs-button-link"
-                                    id="${s.id}" title="Add to playlist" onclick="ggg()">
-                                <span>Add</span>
-                            </button>
+
+                            <div>
+                                <a href="<c:url value="/delete_from_playlist?song_id=${s.id}&playlist_id=${playlist.id}" />" class="songs-button-link-delete" title="Delete from playlist">Delete</a>
+                            </div>
                         </td>
                     </tr>
 
@@ -74,7 +129,7 @@
               border-top: 1px solid rgba(239,175,0,0.8);
             "
         />
-        <jsp:include page="songPagination.jsp"/>
+        <jsp:include page="playlist_detailsPagination.jsp"/>
     </div>
 </div>
 

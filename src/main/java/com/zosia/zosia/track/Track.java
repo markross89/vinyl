@@ -2,7 +2,6 @@ package com.zosia.zosia.track;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zosia.zosia.album.Album;
-import com.zosia.zosia.box.Box;
 import com.zosia.zosia.playlist.Playlist;
 import lombok.*;
 
@@ -27,6 +26,7 @@ public class Track {
 	private String duration;
 	private String position;
 	private String title;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Album album;
 	
@@ -45,5 +45,5 @@ public class Track {
 		this.playlists.add(playlist);
 	}
 	
-
+	
 }
