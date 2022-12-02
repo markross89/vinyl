@@ -48,7 +48,7 @@ public class AlbumController {
 	public String deleteAlbum (Model model, @PathVariable long id, @AuthenticationPrincipal CurrentUser customUser) {
 		
 		model.addAttribute("message", albumService.deleteAlbum(id, userRepository.findById(customUser.getUser().getId()).get()));
-		return "info_page";
+		return "redirect:albums";
 	}
 	
 	@GetMapping("/albums")

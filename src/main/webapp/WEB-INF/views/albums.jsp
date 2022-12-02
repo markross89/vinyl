@@ -41,11 +41,40 @@
                             </button>
                         </div>
                         <div>
-                            <a href="<c:url value="/delete/${e.id}" />" class="option delete"
-                               title="Delete from albums">Delete</a>
+                            <button data-modal-target="#modal-warning-${e.id}"  class="songs-button-link-delete"
+                                    title="Delete from Albums" >
+                                <span>Delete</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <%--    warning message--%>
+                <div class="modal modal-addPlaylist" id="modal-warning-${e.id}">
+                    <div class="modal-header">
+                        <div class="form-title" style="text-decoration: none">Warning</div>
+                        <button data-close-button class="close-button">&times;</button>
+                    </div>
+                    <div class="modal-body-addPlaylist">
+
+                        <div class="contact-description">
+                            <h5>
+                                Deleting this album will result in <br/>
+                                loosing all data associated with it,<br/>
+                                like songs saved in playlists<br/>
+                                or albums saved in boxes.<br/>
+
+                            </h5>
+                            <div>
+                                <a href="<c:url value="/delete/${e.id}" />" class="option delete"
+                                   title="Delete from albums">Continue</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <%--    warning message end--%>
 
 <%--js add form--%>
                 <div class="modal modal-about" id="modal-addToBox-${e.id}" style="width: 400px">
