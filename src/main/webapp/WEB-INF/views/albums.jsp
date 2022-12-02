@@ -51,24 +51,28 @@
                 </div>
 
                 <%--    warning message--%>
-                <div class="modal modal-addPlaylist" id="modal-warning-${e.id}">
+                <div class="modal modal-warning" id="modal-warning-${e.id}">
                     <div class="modal-header">
-                        <div class="form-title" style="text-decoration: none">Warning</div>
+                        <div class="form-title" >Warning !!!</div>
                         <button data-close-button class="close-button">&times;</button>
                     </div>
                     <div class="modal-body-addPlaylist">
 
-                        <div class="contact-description">
+                        <div class="warning-description">
                             <h5>
-                                Deleting this album will result in <br/>
-                                loosing all data associated with it,<br/>
-                                like songs saved in playlists<br/>
-                                or albums saved in boxes.<br/>
+                                Deleting this album will result in removing it and songs linked to it, from associated boxes and playlists.<br/>
 
                             </h5>
-                            <div>
-                                <a href="<c:url value="/delete/${e.id}" />" class="option delete"
-                                   title="Delete from albums">Continue</a>
+                            <div >
+                                <form method="get" action="/delete">
+                                <div class="form-group form-group--buttons">
+                                    <button class="button-add" type="submit"><fmt:message
+                                            key="button.continue.form"/></button>
+                                    <input type="hidden" name="id" value="${e.id}">
+                                </div>
+                                </form>
+<%--                                <a href="<c:url value="/delete/${e.id}" />" class="continue-button"--%>
+<%--                                   title="Delete from albums">Continue</a>--%>
                             </div>
                         </div>
                     </div>

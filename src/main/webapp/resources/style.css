@@ -1254,6 +1254,11 @@ th {
 }
 
 .button-add {
+    text-decoration: none;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
     border-collapse: collapse;
     border: solid #727171 1px;
     color: #414141;
@@ -1311,4 +1316,39 @@ th {
 
 .info-page-message{
     margin-bottom: 60px;
+}
+
+.continue-button{
+    color: #4d4d4d;
+    font-size: medium;
+    text-decoration: none;
+    margin-top: 5px
+}
+.continue-button:hover{
+    font-weight: bold;
+}
+
+.continue-button:active{
+    background-color: #8c7725;
+}
+.modal-warning{
+    min-height: 100px;
+    height: 300px;
+}
+
+.warning-description{
+    width: 400px;
+    text-align: center;
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-add:hover{
+    font-weight: bold;
+}
+.button-add:active{
+    background-color: #c9991f;
+    font-weight: bold;
 }

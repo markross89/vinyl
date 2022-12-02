@@ -44,11 +44,11 @@ public class AlbumController {
 		return "info_page";
 	}
 	
-	@GetMapping("/delete/{id}")
-	public String deleteAlbum (Model model, @PathVariable long id, @AuthenticationPrincipal CurrentUser customUser) {
+	@GetMapping("/delete")
+	public String deleteAlbum ( @RequestParam long id, @AuthenticationPrincipal CurrentUser customUser) {
 		
-		model.addAttribute("message", albumService.deleteAlbum(id, userRepository.findById(customUser.getUser().getId()).get()));
-		return "redirect:albums";
+	 albumService.deleteAlbum(id, userRepository.findById(customUser.getUser().getId()).get());
+		return "redirect:/albums";
 	}
 	
 	@GetMapping("/albums")
