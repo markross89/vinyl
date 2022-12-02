@@ -15,4 +15,5 @@ public interface TrackRepository extends JpaRepository<Track, Long> {
 	Page<Track> findByAlbum_Users (User user, Pageable pageable);
 	
 	Page<Track> findTracksByPlaylists (Playlist playlist, Pageable pageable);
+
 }

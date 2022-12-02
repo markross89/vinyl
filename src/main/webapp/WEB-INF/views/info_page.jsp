@@ -14,9 +14,17 @@
               border-top: 1px solid red;
             "
         />
-        <div class="register-box" >
-            <div class="error-info">${message}</div>
-            <img src="/resources/pictures/beatles.jpg" style="opacity: 0.7; margin-top: 20px" class="cover" alt="Abbey Road">
+        <div class="register-box">
+            <div class="error-info">
+                <div class="info-page-message">${message}</div>
+                <div>
+                    <form>
+                        <input type="button" value="Go back!" class="button-add" onclick="history.back()">
+                    </form>
+                </div>
+            </div>
+            <img src="/resources/pictures/beatles.jpg" style="opacity: 0.7; margin-top: 20px" class="cover"
+                 alt="Abbey Road">
         </div>
         <hr
                 style="

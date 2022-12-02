@@ -113,59 +113,61 @@
                         <td>${s.position}</td>
                         <td>${s.duration}</td>
                         <td>
-                            <button data-modal-target="#modal-addToPlaylist" class="songs-button-link"
+                            <button data-modal-target="#modal-addToPlaylist-${s.id}" class="songs-button-link"
                                     id="${s.id}" title="Add to playlist" onclick="ggg()">
                                 <span>Add</span>
                             </button>
                         </td>
                     </tr>
+                    <div class="modal modal-about" id="modal-addToPlaylist-${s.id}" style="width: 400px">
+                        <div class="modal-header">
+                            <div class="form-title" style="text-decoration: none"><fmt:message
+                                    key="add.or.delete"/></div>
+                            <button data-close-button class="close-button">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <form:form class="add-to-playlist-form" modelAttribute="track" method="post"
+                                           action="add_to_playlist">
+                                    <hr
+                                            style="
+              width: 98%;
+            margin-top: 10px ;
+              border-top: 1px solid rgba(183,134,2,0.99);
+            "
+                                    />
+                                    <div class="playlists-list">
+                                        <c:set target="${track}" property="playlists" value="${s.playlists}"/>
+                                        <form:checkboxes class="checkboxes" items="${playlists}" path="playlists" itemLabel="name"
+                                                         delimiter="<br/>"/>
+                                        <input class="song-id" type="hidden" name="id">
+                                        <br/>
 
+                                    </div>
+                                    <hr
+                                            style="
+              width: 98%;
+            margin: 5px 5px 20px;
+              border-top: 1px solid rgba(183,134,2,0.99);
+            "
+                                    />
+                                    <input class="input" type="text" name="name" placeholder="Add new playlist">
+
+                                    <div class="form-group form-group--buttons">
+                                        <button class="button-add" type="submit"><fmt:message key="admin.table.add"/></button>
+                                    </div>
+                                </form:form>
+
+                            </div>
+
+                        </div>
+                    </div>
 
                 </c:forEach>
             </table>
 
         </div>
-        <div class="modal modal-about" id="modal-addToPlaylist" style="width: 400px">
-            <div class="modal-header">
-                <div class="form-title" style="text-decoration: none">Dodaj do...</div>
-                <button data-close-button class="close-button">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <form:form class="add-to-playlist-form" modelAttribute="track" method="post"
-                               action="add_to_playlist">
-                        <hr
-                                style="
-              width: 98%;
-            margin-top: 10px ;
-              border-top: 1px solid rgba(183,134,2,0.99);
-            "
-                        />
-                        <div class="playlists-list">
-                            <form:checkboxes class="checkboxes" items="${playlists}" path="playlists" itemLabel="name"
-                                             delimiter="<br/>"/>
-                            <input id="song-id" type="hidden" name="id">
-                            <br/>
 
-                        </div>
-                        <hr
-                                style="
-              width: 98%;
-            margin: 5px 5px 20px;
-              border-top: 1px solid rgba(183,134,2,0.99);
-            "
-                        />
-                        <input class="input" type="text" name="name" placeholder="Add new playlist">
-
-                        <div class="form-group form-group--buttons">
-                            <button class="button-add" type="submit"><fmt:message key="admin.table.add"/></button>
-                        </div>
-                    </form:form>
-
-                </div>
-
-            </div>
-        </div>
 
         <hr
                 style="

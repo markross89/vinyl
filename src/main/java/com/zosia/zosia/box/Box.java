@@ -16,6 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class Box {
 	
 	@Id
@@ -36,6 +37,17 @@ public class Box {
 		
 		this.albums.remove(album);
 		album.getBoxes().remove(this);
+	}
+	public void addAlbum (Album album) {
+		
+		this.albums.add(album);
+		album.getBoxes().add(this);
+	}
+	
+	@Override
+	public String toString () {
+		
+		return name;
 	}
 }
 

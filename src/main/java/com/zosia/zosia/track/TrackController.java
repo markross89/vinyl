@@ -42,20 +42,17 @@ public class TrackController {
 		model.addAttribute("songs", trackRepository.findByAlbum_Users(customUser.getUser(), pr));
 		model.addAttribute("field", field);
 		model.addAttribute("track", new Track());
+		model.addAttribute("playlists", playlistRepository.findPlaylistsByUser(customUser.getUser()));
 		return "/songs";
 	}
 	
-	@ModelAttribute("playlists")
-	public List<Playlist> playlists (@AuthenticationPrincipal CurrentUser customUser) {
-		return playlistRepository.findPlaylistsByUser(customUser.getUser());
-	}
-	
 	@PostMapping("/add_to_playlist")
-	public String addTrackToPlaylist (@AuthenticationPrincipal CurrentUser customUser, @ModelAttribute Track track, @RequestParam Long id,
+	public String addTrackToPlaylist (Model model, @AuthenticationPrincipal CurrentUser customUser, @ModelAttribute Track track,
+									  @RequestParam Long id,
 									  @RequestParam(defaultValue = "") String name) {
 		
-		trackService.addTrackToMultiplePlaylists(name, customUser.getUser(), id, track);
-		return "redirect:/songs";
+		model.addAttribute("message", trackService.addTrackToMultiplePlaylists(name, customUser.getUser(), id, track));
+		return "info_page";
 	}
 	
 	@GetMapping("/delete_from_playlist")

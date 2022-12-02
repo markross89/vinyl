@@ -787,6 +787,11 @@ ul {
 }
 
 .error-info {
+    display: flex;
+    flex-direction: column;
+    align-content: space-evenly;
+    align-items: center;
+
     font-size: x-large;
     font-weight: bold;
     text-align: center;
@@ -1300,6 +1305,10 @@ th {
 }
 
 .logo-blurred{
-    opacity: 70%;
+    opacity: 75%;
 
+}
+
+.info-page-message{
+    margin-bottom: 60px;
 }

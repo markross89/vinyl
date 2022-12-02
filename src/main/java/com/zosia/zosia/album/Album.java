@@ -12,6 +12,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -74,7 +75,7 @@ public class Album {
 	
 	public void removeArtist () {
 		
-		this.artists.forEach(artist -> artist.getAlbums().removeIf(album -> album == this));
+		this.artists.forEach(artist -> artist.getAlbums().remove(this));
 		this.artists.clear();
 	}
 	
@@ -96,12 +97,12 @@ public class Album {
 	
 	public void removeLabel () {
 		
-		this.labels.forEach(label -> label.getAlbums().removeIf(album -> album == this));
+		this.labels.forEach(label -> label.getAlbums().remove(this));
 		this.labels.clear();
 	}
 	public void removeBox () {
 		
-		this.boxes.forEach(box -> box.getAlbums().removeIf(album -> album == this));
+		this.boxes.forEach(box -> box.getAlbums().remove(this));
 		this.boxes.clear();
 	}
 	
@@ -119,6 +120,17 @@ public class Album {
 	public void saveTrack () {
 		
 		this.tracklist.forEach(track -> track.setAlbum(this));
+	}
+	
+	public String printBoxes(){
+		List<String> names = new ArrayList<>();
+		this.getBoxes().forEach(box -> names.add(box.getName()));
+		return String.join(", ",names);
+	}
+	
+	public void replaceBoxes(Set<Box> boxes){
+		this.removeBox();
+		boxes.forEach(this::addBox);
 	}
 	
 }

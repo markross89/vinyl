@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-
 @Controller
 public class AlbumController {
 	
@@ -39,21 +38,22 @@ public class AlbumController {
 	}
 	
 	@GetMapping("/save/{id}")
-	public String saveAlbum (@PathVariable long id, @AuthenticationPrincipal CurrentUser customUser) throws JsonProcessingException {
+	public String saveAlbum (Model model, @PathVariable long id, @AuthenticationPrincipal CurrentUser customUser) throws JsonProcessingException {
 		
-		albumService.saveAlbum(id, userRepository.findById(customUser.getUser().getId()).get());
-		return "redirect:/";
+		model.addAttribute("message", albumService.saveAlbum(id, userRepository.findById(customUser.getUser().getId()).get()));
+		return "info_page";
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String deleteAlbum (@PathVariable long id, @AuthenticationPrincipal CurrentUser customUser) {
+	public String deleteAlbum (Model model, @PathVariable long id, @AuthenticationPrincipal CurrentUser customUser) {
 		
-		albumService.deleteAlbum(id, userRepository.findById(customUser.getUser().getId()).get());
-		return "redirect:/albums";
+		model.addAttribute("message", albumService.deleteAlbum(id, userRepository.findById(customUser.getUser().getId()).get()));
+		return "info_page";
 	}
 	
 	@GetMapping("/albums")
-	public String displayAlbums (Model model, @AuthenticationPrincipal CurrentUser customUser, @RequestParam(defaultValue = "0") int page,
+	public String displayAlbums (Model model, @AuthenticationPrincipal CurrentUser customUser,
+								 @RequestParam(defaultValue = "0") int page,
 								 @RequestParam(defaultValue = "48") int size) {
 		
 		model.addAttribute("albums", albumRepository.findAlbumsByUsers(customUser.getUser(), PageRequest.of(page, size)));
@@ -62,22 +62,18 @@ public class AlbumController {
 		return "/albums";
 	}
 	
-	
 	@PostMapping("/add_to_box")
-	public String addAlbumToBox (@AuthenticationPrincipal CurrentUser customUser, @ModelAttribute Album album, @RequestParam Long id,
+	public String addAlbumToBox (Model model, @AuthenticationPrincipal CurrentUser customUser, @ModelAttribute Album album, @RequestParam long id,
 								 @RequestParam(defaultValue = "") String name) {
 		
-		albumService.addAlbumToMultipleBoxes(name, customUser.getUser(), id, album);
-		
-		return "redirect:/albums";
+		model.addAttribute("message", albumService.addAlbumToMultipleBoxes(name, customUser.getUser(), id, album));
+		return "info_page";
 	}
 	
 	@GetMapping("/delete_from_box")
 	public String deleteAlbumsFromBoxes (@RequestParam Long box_id, @RequestParam Long album_id) {
 		
-		Box box = boxRepository.findById(box_id).get();
-		box.removeAlbum(albumRepository.findById(album_id).get());
-		boxRepository.save(box);
+		albumService.deleteAlbumFromBox(box_id, album_id);
 		return "redirect:box_details?id="+box_id;
 	}
 }

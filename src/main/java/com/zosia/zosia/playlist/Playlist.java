@@ -45,6 +45,12 @@ public class Playlist {
 		this.tracks.remove(track);
 		track.getPlaylists().remove(this);
 	}
+	
+	@Override
+	public String toString () {
+		
+		return name;
+	}
 }
 
 

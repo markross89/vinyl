@@ -163,7 +163,10 @@ function validateBox() {
 }
 
 function ggg() {
-    document.getElementById('song-id').value = event.currentTarget.id
+    let inputs = document.querySelectorAll(".song-id");
+    for ( i=0; i<inputs.length; i++){
+        inputs[i].value = event.currentTarget.id
+    }
 }
 
 

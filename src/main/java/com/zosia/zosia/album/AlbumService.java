@@ -10,12 +10,14 @@ import com.zosia.zosia.box.Box;
 import com.zosia.zosia.box.BoxRepository;
 import com.zosia.zosia.box.BoxService;
 import com.zosia.zosia.label.LabelRepository;
+import com.zosia.zosia.playlist.Playlist;
 import com.zosia.zosia.track.Track;
 import com.zosia.zosia.HttpService;
 import com.zosia.zosia.user.User;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 
 
 @Service
@@ -29,6 +31,7 @@ public class AlbumService {
 	private final ArtistRepository artistRepository;
 	private final AlbumRepository albumRepository;
 
+	
 	
 	public AlbumService (HttpService httpService, MessageService messageService, LabelRepository labelRepository,
 						 ArtistRepository artistRepository, AlbumRepository albumRepository,
@@ -51,25 +54,29 @@ public class AlbumService {
 		
 	}
 	
-	public void saveAlbum (long id, User user) throws JsonProcessingException {
+	public String saveAlbum (long id, User user) throws JsonProcessingException {
 		
-		
-		if (albumRepository.findById(id).isEmpty()) {
-			Album album = requestAlbumBuilder(Album.class, id);
-			album.saveImage();
-			album.saveTrack();
-			album.addUser(user);
-			album.setBoxes(new HashSet<>());
-			albumRepository.save(album);
+		Optional<Album> album = albumRepository.findById(id);
+		if (album.isEmpty()) {
+			Album newAlbum = requestAlbumBuilder(Album.class, id);
+			newAlbum.saveImage();
+			newAlbum.saveTrack();
+			newAlbum.addUser(user);
+			newAlbum.setBoxes(new HashSet<>());
+			albumRepository.save(newAlbum);
+		}
+		else if (album.get().getUsers().contains(user)) {
+			
+			return messageService.getMessage("exist.message");
 		}
 		else {
-			Album a = albumRepository.findById(id).get();
-			a.addUser(user);
-			albumRepository.save(a);
+			album.get().addUser(user);
+			albumRepository.save(album.get());
 		}
+		return messageService.getMessage("added.successfully");
 	}
 	
-	public void deleteAlbum (long id, User user) {
+	public String deleteAlbum (long id, User user) {
 		
 		Album album = albumRepository.findById(id).get();
 		album.removeUser(user);
@@ -80,7 +87,6 @@ public class AlbumService {
 		if (album.getUsers().isEmpty()) {
 			album.removeArtist();
 			album.removeLabel();
-			albumRepository.save(album);
 			albumRepository.delete(album);
 			
 			artistRepository.findAll().forEach(artist -> {
@@ -90,16 +96,28 @@ public class AlbumService {
 				if (label.getAlbums().isEmpty()) {labelRepository.delete(label);}
 			});
 		}
+		return messageService.getMessage("deleted.successfully");
 	}
-	public void addAlbumToMultipleBoxes (String name, User user, Long id, Album album) {
-
+	
+	public String addAlbumToMultipleBoxes (String name, User user, Long id, Album album) {
+		Box b = boxRepository.findByName(name);
+		if (b != null) {
+			return messageService.getMessage("exist.message");
+		}
 		Album a = albumRepository.findById(id).get();
+		a.replaceBoxes(album.getBoxes());
 		if (!name.equals("")) {
 			boxService.addBox(name, user);
-			Box newBox = boxRepository.findByName(name);
-			a.addBox(newBox);
+			a.addBox(boxRepository.findByName(name));
 		}
-		album.getBoxes().forEach(a::addBox);
 		albumRepository.save(a);
+		return messageService.getMessage("element.added.to")+" "+a.printBoxes();
+	}
+	
+	public void deleteAlbumFromBox(long box_id, long album_id) {
+		
+		Box box = boxRepository.findById(box_id).get();
+		box.removeAlbum(albumRepository.findById(album_id).get());
+		boxRepository.save(box);
 	}
 }
