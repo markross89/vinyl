@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="content.jsp"/>
 
@@ -34,11 +35,11 @@
                                 </div>
                             </div>
                             <div class="card-options">
-                                <sec:authorize access="isAuthenticated()">
+
                                 <div>
-                                    <a href="<c:url value="/save/${e.id}" />" class="option add" title="Add to albums">Add</a>
+                                    <a href="<c:url value="/save/${e.id}" />" class="option add" title="Add to albums"><fmt:message key="admin.table.add"/></a>
                                 </div>
-                                </sec:authorize>
+
 
                             </div>
                         </div>

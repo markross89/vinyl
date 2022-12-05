@@ -8,7 +8,7 @@
     <!-- main content start -->
     <div class="main-content">
         <div class="content-content">
-            <div class="content-title">Rejestracja:</div>
+            <div class="content-title"><fmt:message key="register.register"/>:</div>
             <hr
                     style="
               width: 95%;

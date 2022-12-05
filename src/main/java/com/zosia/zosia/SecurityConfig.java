@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure (HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers("/users_index").hasRole("ADMIN")
-				.antMatchers("/albums", "/songs", "/boxes", "/playlists").authenticated()
+				.antMatchers("/albums", "/songs", "/boxes", "/playlists", "/save/{id}").authenticated()
 				.antMatchers( "/", "/details/{id}").permitAll()
 				.and().formLogin(formLogin -> formLogin.successHandler(new CustomAuthenticationSuccessHandler()))
 				.formLogin().loginPage("/login")

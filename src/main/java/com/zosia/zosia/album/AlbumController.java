@@ -1,7 +1,6 @@
 package com.zosia.zosia.album;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.zosia.zosia.box.Box;
 import com.zosia.zosia.box.BoxRepository;
 import com.zosia.zosia.user.CurrentUser;
 import com.zosia.zosia.user.UserRepository;
@@ -45,9 +44,9 @@ public class AlbumController {
 	}
 	
 	@GetMapping("/delete")
-	public String deleteAlbum ( @RequestParam long id, @AuthenticationPrincipal CurrentUser customUser) {
+	public String deleteAlbum (@RequestParam long id, @AuthenticationPrincipal CurrentUser customUser) {
 		
-	 albumService.deleteAlbum(id, userRepository.findById(customUser.getUser().getId()).get());
+		albumService.deleteAlbum(id, userRepository.findById(customUser.getUser().getId()).get());
 		return "redirect:/albums";
 	}
 	

@@ -24,19 +24,22 @@
     <div>
         <button data-modal-target="#modal-about" class="list-user-button-small">
             <i class="fas fa-fw fa-table"></i>
-            <span>About Us</span>
+            <span><fmt:message
+                    key="about.us"/></span>
         </button>
     </div>
     <div>
         <button data-modal-target="#modal-contact" class="list-user-button-small">
             <i class="fas fa-fw fa-table"></i>
-            <span>Contact</span>
+            <span><fmt:message
+                    key="contact.us"/></span>
         </button>
     </div>
 
     <div class="search-box">
         <form class="form" method="get" action="/">
-            <input class="search" type="text" placeholder="Search for records" name="search"/>
+            <input class="search" type="text" placeholder="<fmt:message
+                    key="search.records"/>" name="search"/>
             <button class="search-button"></button>
         </form>
     </div>
@@ -56,7 +59,8 @@
                 <button class="list-user-button ">
                     <a class="list-user-button" href="/login">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Login</span>
+                        <span><fmt:message
+                                key="login.login"/></span>
                     </a>
 
                 </button>
@@ -65,7 +69,8 @@
                 <button class="list-user-button ">
                     <a class="list-user-button " href="/register">
                         <i class="fas fa-fw fa-table"></i>
-                        <span>Register</span></a
+                        <span><fmt:message
+                                key="register.register"/></span></a
                     >
                 </button>
             </div>
@@ -79,13 +84,15 @@
                     <sec:authorize access="hasRole('ADMIN')">
                         <li>
                             <div class="list-element">
-                                <a href="<c:url value="/users_index"/>" class="list-link"> Users</a>
+                                <a href="<c:url value="/users_index"/>" class="list-link"><fmt:message
+                                        key="user.users"/></a>
                             </div>
                         </li>
                     </sec:authorize>
                     <li>
                         <div class="list-element">
-                            <a href="<c:url value="/profile"/>" class="list-link"> My profile</a>
+                            <a href="<c:url value="/profile"/>" class="list-link"><fmt:message
+                                    key="my.profile"/></a>
                         </div>
                     </li>
 
@@ -93,7 +100,8 @@
                         <div class="list-element">
                             <form action="<c:url value="/logout"/>" method="post">
                                 <input class="input-logout" type="submit" class="list-link" style="margin-left: -3px"
-                                       value="Logout" style="margin-right: 20px"/>
+                                       value="<fmt:message
+                                key="logout.logout"/>" style="margin-right: 20px"/>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             </form>
                         </div>
@@ -111,33 +119,41 @@
         <div>
             <button class="menu-button">
 
-                <a href="<c:url value="/albums"/>" class="menu-button-link">Albums</a>
+                <a href="<c:url value="/albums"/>" class="menu-button-link"><fmt:message
+                        key="album.albums"/></a>
             </button>
 
         </div>
         <div>
             <button class="menu-button">
-                <a href="<c:url value="/songs"/>" class="menu-button-link">Songs</a>
+                <a href="<c:url value="/songs"/>" class="menu-button-link"><fmt:message
+                        key="song.songs"/></a>
             </button>
         </div>
         <div>
             <button class="menu-button add-remove">
-                <a href="<c:url value="/playlists"/>" class="menu-button-link">Playlists</a>
+                <a href="<c:url value="/playlists"/>" class="menu-button-link"><fmt:message
+                        key="playlist.playlists"/></a>
             </button>
             <div class="add-remove-content" style="display: none">
-                <button data-modal-target="#modal-addPlaylist" class="menu-button-link" title="Add new playlist">
-                    <span>Add</span>
+                <button data-modal-target="#modal-addPlaylist" class="menu-button-link" title="<fmt:message
+                            key="playlist.add"/>">
+                    <span><fmt:message
+                            key="admin.table.add"/></span>
                 </button>
 
             </div>
         </div>
         <div>
             <button class="menu-button add-remove">
-                <a href="<c:url value="/boxes"/>" class="menu-button-link" style="margin-left: 7px">Boxes</a>
+                <a href="<c:url value="/boxes"/>" class="menu-button-link" style="margin-left: 7px"><fmt:message
+                        key="box.boxes"/></a>
             </button>
             <div class="add-remove-content" style="display: none">
-                <button data-modal-target="#modal-addBox" class="menu-button-link" title="Add new box">
-                    <span>Add</span>
+                <button data-modal-target="#modal-addBox" class="menu-button-link" title="<fmt:message
+                            key="box.add"/>">
+                    <span><fmt:message
+                            key="admin.table.add"/></span>
                 </button>
             </div>
         </div>
@@ -159,12 +175,14 @@
 
     <div class="modal modal-contact" id="modal-contact">
         <div class="modal-header">
-            <div class="form-title" style="text-decoration: none">Kontakt</div>
+            <div class="form-title" style="text-decoration: none"><fmt:message
+                    key="contact.us"/></div>
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="modal-body">
             <div class="markus-contact">
-                <h4>Zadzwoń lub napisz</h4>
+                <h4><fmt:message
+                        key="call.email"/></h4>
                 <h4>Vinyl Collection</h4>
                 <h4>+48 781 037 897</h4>
                 <h4>roszak89@gmail.com</h4>
@@ -191,7 +209,8 @@
     <%--    add playlist--%>
     <div class="modal modal-addPlaylist" id="modal-addPlaylist">
         <div class="modal-header">
-            <div class="form-title" style="text-decoration: none">New playlist</div>
+            <div class="form-title" style="text-decoration: none"><fmt:message
+                    key="new.playlist"/></div>
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="modal-body-addPlaylist">
@@ -205,10 +224,10 @@
                             id="playlistName"
                             class="input"
                             type="text"
-                            placeholder="Playlist name"
+                            placeholder="<fmt:message key="playlist.name"/>"
                             name="name"
                     />
-                    <div id="playlistError" class="error-message">Empty field</div>
+                    <div id="playlistError" class="error-message"><fmt:message key="empty.field"/></div>
                 </div>
                 <div class="form-group form-group--buttons">
                     <button class="button-register" type="submit"><fmt:message key="admin.table.add"/></button>
@@ -222,7 +241,7 @@
     <%--    add box--%>
     <div class="modal modal-addPlaylist" id="modal-addBox">
         <div class="modal-header">
-            <div class="form-title" style="text-decoration: none">New box</div>
+            <div class="form-title" style="text-decoration: none"><fmt:message key="new.box"/></div>
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="modal-body-addPlaylist">
@@ -235,10 +254,10 @@
                             id="box-input"
                             class="input input-name"
                             type="text"
-                            placeholder="Box name"
+                            placeholder="<fmt:message key="box.name"/>"
                             name="name"
                     />
-                    <div id="error-message" class="error-message">Empty field</div>
+                    <div id="error-message" class="error-message"><fmt:message key="empty.field"/></div>
                 </div>
 
 
@@ -263,7 +282,7 @@
 
     <div class="modal modal-about" id="modal-about">
         <div class="modal-header">
-            <div class="form-title" style="text-decoration: none">O Nas</div>
+            <div class="form-title" style="text-decoration: none"><fmt:message key="about.us"/></div>
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="modal-body">

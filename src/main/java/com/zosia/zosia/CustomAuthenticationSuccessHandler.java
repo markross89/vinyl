@@ -32,7 +32,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 				return;
 			}
 		}
-		
 		this.userSuccessHandler.onAuthenticationSuccess(request, response, authentication);
 	}
 }

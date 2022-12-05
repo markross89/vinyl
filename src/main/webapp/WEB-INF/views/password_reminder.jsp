@@ -6,7 +6,7 @@
 <!-- main content start -->
 <div class="main-content">
     <div class="content-content">
-        <div class="content-title">Logowanie:</div>
+        <div class="content-title"><fmt:message key="login.login"/>:</div>
         <hr
                 style="
               width: 95%;
@@ -27,7 +27,7 @@
                                 placeholder="Email"
                                 name="username"
                         />
-                        <div id="email-verification-error" class="error-message">Please enter correct email</div>
+                        <div id="email-verification-error" class="error-message"><fmt:message key="correct.email"/></div>
                     </div>
 
 

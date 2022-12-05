@@ -6,7 +6,7 @@
 <!-- main content start -->
 <div class="main-content">
     <div class="content-content">
-        <div class="content-title">Logowanie:</div>
+        <div class="content-title"><fmt:message key="login.login"/>:</div>
         <hr
                 style="
               width: 95%;
@@ -22,21 +22,21 @@
                             id="email"
                             class="input"
                             type="text"
-                            placeholder="Email"
+                            placeholder="<fmt:message key="placeholder.email"/>"
                             name="username"
                     />
-                    <div id="email_error" class="error-message">Please enter correct email</div>
+                    <div id="email_error" class="error-message"><fmt:message key="correct.email"/></div>
                 </div>
                 <div class="error-input">
                     <input
                             id="password"
                             class="input"
                             type="password"
-                            placeholder="Password"
+                            placeholder="<fmt:message key="placeholder.password"/>"
                             name="password"
 
                     />
-                    <div id="password_error" class="error-message">Please enter correct password</div>
+                    <div id="password_error" class="error-message"><fmt:message key="correct.password"/></div>
 
                 </div>
 
@@ -45,7 +45,7 @@
                     <button class="button-register" type="submit"><fmt:message key="login.login"/></button>
                 </div>
 
-                <a href="<c:url value="/password_reminder" />" class="pass-forgot">Zapomniałem hasła</a>
+                <a href="<c:url value="/password_reminder" />" class="pass-forgot"><fmt:message key="forgot.password"/></a>
             </form>
             <img src="<c:url value="/resources/pictures/beatles.jpg" />" style="opacity: 0.7" class="cover" alt="Abbey Road">
         </div>

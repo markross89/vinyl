@@ -7,7 +7,7 @@
 <!-- main content start -->
 <div class="main-content">
     <div class="content-content">
-        <div class="content-title">Users :</div>
+        <div class="content-title"><fmt:message key="user.users"/> :</div>
 
 
 
@@ -28,7 +28,7 @@
                     <tr>
                         <th>No</th>
                         <th>id</th>
-                        <th>First Name</th>
+                        <th><fmt:message key="users.update.title"/></th>
                         <th>Last Name</th>
                         <th>Username/Email</th>
                         <th>Enabled</th>

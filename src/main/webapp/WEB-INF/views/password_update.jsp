@@ -1,13 +1,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="content.jsp"/>
 
 <!-- main content start -->
 <div class="main-content">
     <div class="content-content">
-        <div class="content-title">Logowanie:</div>
+        <div class="content-title"><fmt:message key="login.login"/>:</div>
         <hr
                 style="
               width: 95%;
@@ -31,14 +32,16 @@
                     <form:hidden path="username" value="${user.username}"/>
                     <form:hidden path="enabled" value="${user.enabled}"/>
                     <div class="error-input">
+                        <spring:message code="placeholder.password" var="passwordPlaceholder"/>
                         <form:password path="password" class="input"
-                                       placeholder="Hasło"/>
+                                       placeholder="${passwordPlaceholder}"/>
                         <form:errors path="password" Class="markus-error"/>
                     </div>
 
                     <div class="error-input">
+                        <spring:message code="placeholder.password.repeat" var="repeatPlaceholder"/>
                         <form:password path="passwordRepeat"
-                                       class="input" placeholder="Powtórz hasło"/>
+                                       class="input" placeholder="${repeatPlaceholder}"/>
                         <form:errors path="passwordRepeat" Class="markus-error"/>
                     </div>
 

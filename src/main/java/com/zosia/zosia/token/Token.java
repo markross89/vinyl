@@ -25,7 +25,6 @@ public class Token {
 	@ManyToOne(cascade = {CascadeType.ALL})
 	private User user;
 	
-	
 	public Token (String token, User user) {
 		
 		this.token = token;

@@ -10,7 +10,6 @@ import com.zosia.zosia.box.Box;
 import com.zosia.zosia.box.BoxRepository;
 import com.zosia.zosia.box.BoxService;
 import com.zosia.zosia.label.LabelRepository;
-import com.zosia.zosia.playlist.Playlist;
 import com.zosia.zosia.track.Track;
 import com.zosia.zosia.HttpService;
 import com.zosia.zosia.user.User;
@@ -76,7 +75,7 @@ public class AlbumService {
 		return messageService.getMessage("added.successfully");
 	}
 	
-	public String deleteAlbum (long id, User user) {
+	public void deleteAlbum (long id, User user) {
 		
 		Album album = albumRepository.findById(id).get();
 		album.removeUser(user);
@@ -96,7 +95,7 @@ public class AlbumService {
 				if (label.getAlbums().isEmpty()) {labelRepository.delete(label);}
 			});
 		}
-		return messageService.getMessage("deleted.successfully");
+		messageService.getMessage("deleted.successfully");
 	}
 	
 	public String addAlbumToMultipleBoxes (String name, User user, Long id, Album album) {
