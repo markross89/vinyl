@@ -22,7 +22,7 @@
         <div class="content-elements">
             <c:forEach items="${albums.content}" var="e">
                 <div class="card">
-                    <a href="<c:url value="/details/${e.id}"/>" style="text-decoration: none">
+                    <a href="<c:url value="details/${e.id}"/>" style="text-decoration: none">
                         <div class="title-pic" title="${e.artists_sort} - ${e.title}">
                             <div class="card-title">
                                     ${e.artists_sort} - ${e.title}
@@ -71,8 +71,6 @@
                                     <input type="hidden" name="id" value="${e.id}">
                                 </div>
                                 </form>
-<%--                                <a href="<c:url value="/delete/${e.id}" />" class="continue-button"--%>
-<%--                                   title="Delete from albums">Continue</a>--%>
                             </div>
                         </div>
                     </div>
