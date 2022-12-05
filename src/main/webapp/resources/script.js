@@ -162,6 +162,19 @@ function validateBox() {
     }
 }
 
+function validateOtherBox() {
+    const form = document.getElementById("box-form-other");
+    const emailValue = document.getElementById("box-input-other").value;
+    const emailError = document.getElementById("error-message-other");
+    const regex = /\S+/;
+    if (regex.test(emailValue)) {
+        emailError.style.display = "none";
+        form.submit();
+    } else {
+        emailError.style.display = "block";
+    }
+}
+
 function ggg() {
     let inputs = document.querySelectorAll(".song-id");
     for ( i=0; i<inputs.length; i++){

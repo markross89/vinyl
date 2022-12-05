@@ -2,6 +2,7 @@ package com.zosia.zosia.playlist;
 
 import com.zosia.zosia.MessageService;
 import com.zosia.zosia.track.TrackRepository;
+import com.zosia.zosia.track.TrackService;
 import com.zosia.zosia.user.CurrentUser;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -20,14 +21,16 @@ public class PlaylistController {
 	private final TrackRepository trackRepository;
 	private final PlaylistService playlistService;
 	private final MessageService messageService;
+	private final TrackService trackService;
 	
 	public PlaylistController (PlaylistRepository playlistRepository, TrackRepository trackRepository, PlaylistService playlistService,
-							   MessageService messageService) {
+							   MessageService messageService, TrackService trackService) {
 		
 		this.playlistRepository = playlistRepository;
 		this.trackRepository = trackRepository;
 		this.playlistService = playlistService;
 		this.messageService = messageService;
+		this.trackService = trackService;
 	}
 	
 	@GetMapping("/playlist_details")
@@ -69,5 +72,12 @@ public class PlaylistController {
 		
 		model.addAttribute("playlists", playlistRepository.findPlaylistsByUser(customUser.getUser(), PageRequest.of(page, size)));
 		return "/playlists";
+	}
+	
+	@GetMapping("/playlist_to_box")
+	public String createBoxFromPlaylist (Model model, @RequestParam long id, @AuthenticationPrincipal CurrentUser customUser, @RequestParam String name) {
+		
+		model.addAttribute("message", trackService.getAlbumsBySongs(id, name, customUser.getUser()));
+		return "info_page";
 	}
 }

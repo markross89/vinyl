@@ -26,7 +26,7 @@
                         <div class="card">
                             <div class="title-pic" title="${e.name} - ${e.date}">
                                 <div class="card-title">
-                                        ${e.name} - ${e.date}
+                                        ${e.name} <br/> ${e.date}
                                 </div>
                                 <div class="cover-pic">
                                     <img src="<c:url value="/resources/pictures/box.png" />"
