@@ -1,12 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="content.jsp"/>
 
     <!-- main content start -->
     <div class="main-content">
         <div class="content-content">
-            <div class="content-title">My Boxes :</div>
+            <div class="content-title"><fmt:message key="sort.album"/> :</div>
 
             <jsp:include page="boxPagination.jsp"/>
 
@@ -36,7 +37,7 @@
                             <div class="card-options">
 
                                 <div>
-                                    <a href="<c:url value="/box_delete/${e.id}" />" class="option delete" title="Delete box">Delete</a>
+                                    <a href="<c:url value="/box_delete/${e.id}" />" class="option delete" title="<fmt:message key="delete.box"/>"><fmt:message key="delete"/></a>
                                 </div>
                             </div>
                         </div>

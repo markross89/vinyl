@@ -8,7 +8,7 @@
 <!-- main content start -->
 <div class="main-content">
     <div class="content-content">
-        <div class="content-title">Box details : ${box.name}</div>
+        <div class="content-title"><fmt:message key="box.details"/> : ${box.name}</div>
 
         <jsp:include page="box_detailsPagination.jsp"/>
 
@@ -40,7 +40,7 @@
                         <div class="card-options">
 
                             <div>
-                                <a href="<c:url value="delete_from_box?box_id=${box.id}&album_id=${e.id}" />" class="option delete" title="Delete from box">Delete</a>
+                                <a href="<c:url value="delete_from_box?box_id=${box.id}&album_id=${e.id}" />" class="option delete" title="<fmt:message key="delete.from.box"/>"><fmt:message key="delete"/></a>
                             </div>
                         </div>
                     </div>

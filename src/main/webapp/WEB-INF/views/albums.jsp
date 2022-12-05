@@ -8,7 +8,7 @@
 <!-- main content start -->
 <div class="main-content">
     <div class="content-content">
-        <div class="content-title">My albums :</div>
+        <div class="content-title"><fmt:message key="my.albums"/> :</div>
 
         <jsp:include page="albumPagination.jsp"/>
 
@@ -36,14 +36,14 @@
                     <div class="card-options">
                         <div>
                             <button data-modal-target="#modal-addToBox-${e.id}" class="songs-button-link"
-                                    id="${e.id}" title="Add to playlist" onclick="ggg()">
-                                <span>Box it</span>
+                                    id="${e.id}" title="<fmt:message key="add.to.box"/>" onclick="ggg()">
+                                <span><fmt:message key="box.it"/></span>
                             </button>
                         </div>
                         <div>
                             <button data-modal-target="#modal-warning-${e.id}"  class="songs-button-link-delete"
-                                    title="Delete from Albums" >
-                                <span>Delete</span>
+                                    title="<fmt:message key="delete.from.albums"/>" >
+                                <span><fmt:message key="delete"/></span>
                             </button>
                         </div>
 
@@ -53,14 +53,14 @@
                 <%--    warning message--%>
                 <div class="modal modal-warning" id="modal-warning-${e.id}">
                     <div class="modal-header">
-                        <div class="form-title" >Warning !!!</div>
+                        <div class="form-title" ><fmt:message key="warning"/></div>
                         <button data-close-button class="close-button">&times;</button>
                     </div>
                     <div class="modal-body-addPlaylist">
 
                         <div class="warning-description">
-                            <h5>
-                                Deleting this album will result in removing it and songs linked to it, from associated boxes and playlists.<br/>
+                            <h5><fmt:message key="album.delete.message"/>
+                                <br/>
 
                             </h5>
                             <div >

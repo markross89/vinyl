@@ -56,7 +56,7 @@
                         </span></c:if>
                     </th>
                     <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=album.artists.name&direction=${direction}"/>"
-                           class="album-link">Artist</a>
+                           class="album-link" title="<fmt:message key="sort.artist"/>"><fmt:message key="artist"/></a>
                         <c:if test="${field=='album.artists.name'}">
                         <span class="arrow-span" >
                         <c:choose>
