@@ -11,7 +11,7 @@
 
 <div class="main-content">
     <div class="content-content">
-        <div class="content-title">Playlist details:</div>
+        <div class="content-title"><fmt:message key="playlist.details"/>:</div>
         <jsp:include page="playlist_detailsPagination.jsp"/>
         <hr
                 style="
@@ -29,7 +29,7 @@
                 <tr>
 
                     <th>Nr</th>
-                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=title&direction=${direction}"/>" class="album-link" title="Sort by title">Title</a>
+                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=title&direction=${direction}"/>" class="album-link" title="<fmt:message key="sort.title"/>"><fmt:message key="title"/></a>
                         <c:if test="${field=='title'}">
                         <span class="arrow-span" >
                         <c:choose>
@@ -42,7 +42,7 @@
                         </c:choose>
                         </span></c:if>
                     </th>
-                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=album.title&direction=${direction}"/>" class="album-link" title="Sort by album">Album</a>
+                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=album.title&direction=${direction}"/>" class="album-link" title="<fmt:message key="sort.album"/>">Album</a>
                         <c:if test="${field=='album.title'}">
                         <span class="arrow-span" >
                         <c:choose>
@@ -68,7 +68,7 @@
                             </c:otherwise>
                         </c:choose>
                         </span></c:if></th>
-                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=position&direction=${direction}"/>" class="album-link" title="Sort by position">Position</a>
+                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=position&direction=${direction}"/>" class="album-link" title="<fmt:message key="sort.position"/>"><fmt:message key="position"/></a>
                         <c:if test="${field=='position'}">
                         <span class="arrow-span" >
                         <c:choose>
@@ -81,7 +81,7 @@
                         </c:choose>
                         </span></c:if>
                     </th>
-                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=duration&direction=${direction}"/>" class="album-link" title="Sort by duration">Duration</a>
+                    <th><a href="<c:url value="playlist_details?id=${playlist.id}&field=duration&direction=${direction}"/>" class="album-link" title="<fmt:message key="sort.duration"/>"><fmt:message key="duration"/></a>
                         <c:if test="${field=='duration'}">
                         <span class="arrow-span" >
                         <c:choose>
@@ -102,7 +102,7 @@
                     <tr style="border: #2196F3 solid 1px">
                         <td>${counter}</td>
                         <td>${s.title}</td>
-                        <td><a href="<c:url value="/details/${s.album.id}"/>" class="album-link" title="See details">${s.album.title}</a>
+                        <td><a href="<c:url value="/details/${s.album.id}"/>" class="album-link" title="<fmt:message key="see.details"/>">${s.album.title}</a>
                         </td>
                         <td>${s.album.artists_sort}</td>
                         <td>${s.position}</td>
@@ -110,7 +110,7 @@
                         <td>
 
                             <div>
-                                <a href="<c:url value="/delete_from_playlist?song_id=${s.id}&playlist_id=${playlist.id}" />" class="songs-button-link-delete" title="Delete from playlist">Delete</a>
+                                <a href="<c:url value="/delete_from_playlist?song_id=${s.id}&playlist_id=${playlist.id}" />" class="songs-button-link-delete" title="<fmt:message key="delete.from.playlist"/>"><fmt:message key="delete"/></a>
                             </div>
                         </td>
                     </tr>

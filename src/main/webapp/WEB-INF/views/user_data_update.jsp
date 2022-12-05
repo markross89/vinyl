@@ -8,7 +8,7 @@
     <!-- main content start -->
     <div class="main-content">
         <div class="content-content">
-            <div class="content-title">${user.firstName} ${user.lastName} profil:</div>
+            <div class="content-title">${user.firstName} ${user.lastName} <fmt:message key="profile"/>:</div>
             <hr
                     style="
               width: 95%;

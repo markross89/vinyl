@@ -41,11 +41,12 @@ public class TrackService {
 		if (p != null) {
 			return messageService.getMessage("exist.message");
 		}
+		
 		Track t = trackRepository.findById(id).get();
 		t.replacePlaylists(track.getPlaylists());
 		if (!name.equals("")) {
 			playlistService.addPlaylist(name, user);
-			t.addPlaylist(p);
+			t.addPlaylist(playlistRepository.findByName(name));
 		}
 		trackRepository.save(t);
 		return messageService.getMessage("element.added.to")+" "+t.printPlaylists();

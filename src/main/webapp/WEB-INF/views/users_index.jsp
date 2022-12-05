@@ -28,12 +28,12 @@
                     <tr>
                         <th>No</th>
                         <th>id</th>
-                        <th><fmt:message key="users.update.title"/></th>
-                        <th>Last Name</th>
-                        <th>Username/Email</th>
-                        <th>Enabled</th>
-                        <th>Role</th>
-                        <th>Update</th>
+                        <th><fmt:message key="first.name"/></th>
+                        <th><fmt:message key="last.name"/></th>
+                        <th><fmt:message key="username.email"/></th>
+                        <th><fmt:message key="enabled"/></th>
+                        <th><fmt:message key="role"/></th>
+                        <th><fmt:message key="options"/></th>
                     </tr>
                     </thead>
                     <tbody>

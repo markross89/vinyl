@@ -11,7 +11,7 @@
 
 <div class="main-content">
     <div class="content-content">
-        <div class="content-title">Songs:</div>
+        <div class="content-title"><fmt:message key="song.songs"/>:</div>
         <jsp:include page="songPagination.jsp"/>
         <hr
                 style="
@@ -23,14 +23,14 @@
 
 
         <div class="tracks">
-            <div class="album-details-title">My songs:</div>
+            <div class="album-details-title"><fmt:message key="my.songs"/>:</div>
             <table class="tracklist-table">
                 <thead>
                 <tr>
 
                     <th>Nr</th>
                     <th><a href="<c:url value="songs?field=title&direction=${direction}"/>" class="album-link"
-                           title="Sort by title"> Title </a>
+                           title="Sort by title"> <fmt:message key="title"/> </a>
                         <c:if test="${field=='title'}">
                         <span class="arrow-span" >
                         <c:choose>
@@ -58,7 +58,7 @@
                         </span></c:if>
                     </th>
                     <th><a href="<c:url value="songs?field=album.artists.name&direction=${direction}"/>"
-                           class="album-link" title="Sort by artist">Artist</a>
+                           class="album-link" title="Sort by artist"><fmt:message key="artist"/></a>
                         <c:if test="${field=='album.artists.name'}">
                         <span class="arrow-span">
                         <c:choose>
@@ -72,7 +72,7 @@
                         </span></c:if>
                     </th>
                     <th><a href="<c:url value="songs?field=position&direction=${direction}"/>" class="album-link"
-                           title="Sort by position">Position</a>
+                           title="Sort by position"><fmt:message key="position"/></a>
                         <c:if test="${field=='position'}">
                         <span class="arrow-span">
                         <c:choose>
@@ -86,7 +86,7 @@
                         </span></c:if>
                     </th>
                     <th><a href="<c:url value="songs?field=duration&direction=${direction}"/>" class="album-link"
-                           title="Sort by duration">Duration</a>
+                           title="Sort by duration"><fmt:message key="duration"/></a>
                         <c:if test="${field=='duration'}">
                         <span class="arrow-span">
                         <c:choose>
@@ -99,7 +99,7 @@
                         </c:choose>
                         </span></c:if>
                     </th>
-                    <th>Option</th>
+                    <th><fmt:message key="options"/></th>
                 </tr>
                 </thead>
                 <c:forEach items="${songs.content}" var="s">

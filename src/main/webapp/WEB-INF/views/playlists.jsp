@@ -7,7 +7,7 @@
 <!-- main content start -->
 <div class="main-content">
     <div class="content-content">
-        <div class="content-title">My playlists :</div>
+        <div class="content-title"><fmt:message key="my.playlists"/> :</div>
 
         <jsp:include page="playlistPagination.jsp"/>
 
@@ -41,12 +41,12 @@
                             <button data-modal-target="#modal-boxIt" class="songs-button-link"
                                     id="${e.id}" title="Create a box from albums linked to this playlist"
                                     onclick="ggg()">
-                                <span>Box it</span>
+                                <span><fmt:message key="box.it"/></span>
                             </button>
                         </div>
                         <div>
                             <a href="<c:url value="/playlist_delete/${e.id}" />" class="option delete"
-                               title="Delete playlist">Delete</a>
+                               title="Delete playlist"><fmt:message key="delete"/></a>
                         </div>
 
                     </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="modal modal-addPlaylist" id="modal-boxIt">
             <div class="modal-header">
-                <div class="form-title" style="text-decoration: none">New box</div>
+                <div class="form-title" style="text-decoration: none"><fmt:message key="new.box"/></div>
                 <button data-close-button class="close-button">&times;</button>
             </div>
             <div class="modal-body-addPlaylist">
@@ -73,11 +73,11 @@
                                 id="box-input-other"
                                 class="input input-name"
                                 type="text"
-                                placeholder="Box name"
+                                placeholder="<fmt:message key="box.name"/>"
                                 name="name"
                         />
                         <input class="song-id" type="hidden" name="id">
-                        <div id="error-message-other" class="error-message">Empty field</div>
+                        <div id="error-message-other" class="error-message"><fmt:message key="empty.field"/></div>
                     </div>
 
 
