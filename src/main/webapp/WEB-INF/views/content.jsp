@@ -287,18 +287,8 @@
         </div>
         <div class="modal-body">
             <div class="contact-description">
-                <h5>
-                    We are proud to offer you <br/>
-                    a service that allow you <br/>
-                    to catalog your beloved records.<br/>
-                    Keep track of your albums, create playlists<br/>
-                    and prepare boxes for your events.<br/>
-                    As a programmer and vinyl enthusiast<br/>
-                    I've decided to develop tool that with <br/>
-                    support of new technology will help<br/>
-                    you mange your record collection. <br/>
-                    Enjoy! Don't hesitate to leave a comment<br/>
-                    or contact us. <br/>KEEP IT OLD SCHOOL
+                <h5 style="padding: 10px">
+                    <fmt:message key="about.us.message"/>
                 </h5>
                 <div class="about-logo">
                     <img src="<c:url value="/resources/pictures/logo.png" />" style="width: 150px; height: 150px"/>

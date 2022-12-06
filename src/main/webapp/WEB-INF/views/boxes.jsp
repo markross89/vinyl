@@ -7,7 +7,7 @@
     <!-- main content start -->
     <div class="main-content">
         <div class="content-content">
-            <div class="content-title"><fmt:message key="sort.album"/> :</div>
+            <div class="content-title"><fmt:message key="my.boxes"/> :</div>
 
             <jsp:include page="boxPagination.jsp"/>
 

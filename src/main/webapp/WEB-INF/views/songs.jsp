@@ -30,7 +30,7 @@
 
                     <th>Nr</th>
                     <th><a href="<c:url value="songs?field=title&direction=${direction}"/>" class="album-link"
-                           title="Sort by title"> <fmt:message key="title"/> </a>
+                           title="<fmt:message key="sort.title"/>"> <fmt:message key="title"/> </a>
                         <c:if test="${field=='title'}">
                         <span class="arrow-span" >
                         <c:choose>
@@ -44,7 +44,7 @@
                         </span></c:if>
                     </th>
                     <th><a href="<c:url value="songs?field=album&direction=${direction}"/>" class="album-link"
-                           title="Sort by album">Album</a>
+                           title="<fmt:message key="sort.album"/>">Album</a>
                         <c:if test="${field=='album'}">
                         <span class="arrow-span">
                         <c:choose>
@@ -58,7 +58,7 @@
                         </span></c:if>
                     </th>
                     <th><a href="<c:url value="songs?field=album.artists.name&direction=${direction}"/>"
-                           class="album-link" title="Sort by artist"><fmt:message key="artist"/></a>
+                           class="album-link" title="<fmt:message key="sort.artist"/>"><fmt:message key="artist"/></a>
                         <c:if test="${field=='album.artists.name'}">
                         <span class="arrow-span">
                         <c:choose>
@@ -72,7 +72,8 @@
                         </span></c:if>
                     </th>
                     <th><a href="<c:url value="songs?field=position&direction=${direction}"/>" class="album-link"
-                           title="Sort by position"><fmt:message key="position"/></a>
+                           title="
+"><fmt:message key="position"/></a>
                         <c:if test="${field=='position'}">
                         <span class="arrow-span">
                         <c:choose>
@@ -86,7 +87,7 @@
                         </span></c:if>
                     </th>
                     <th><a href="<c:url value="songs?field=duration&direction=${direction}"/>" class="album-link"
-                           title="Sort by duration"><fmt:message key="duration"/></a>
+                           title="<fmt:message key="duration"/>"><fmt:message key="duration"/></a>
                         <c:if test="${field=='duration'}">
                         <span class="arrow-span">
                         <c:choose>
