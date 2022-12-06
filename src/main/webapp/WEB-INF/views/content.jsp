@@ -272,12 +272,6 @@
     </div>
     <%--    add box end--%>
 
-    <%--    add to playlist--%>
-
-
-    <%--    add to playlist end--%>
-
-
     <!-- about us -->
 
     <div class="modal modal-about" id="modal-about">
