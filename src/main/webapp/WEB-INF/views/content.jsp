@@ -15,100 +15,103 @@
 <body>
 <!-- topbar start -->
 <div class="topbar">
-    <a href="<c:url value="/"/>" class="logo-title">
-        <div class="logo-blurred">
-            <div class="logo"><img src="<c:url value="/resources/pictures/logo.png" />"/></div>
-            <div class="title">VINYL <br/>COLLECTION</div>
+    <div class="logo-logo">
+        <a href="<c:url value="/"/>" class="logo-title">
+            <img style="width: 70px; height: 65px" src="<c:url value="/resources/pictures/logo.png" />"/>
+                <div class="title">VINYL <br/>COLLECTION</div>
+        </a>
+    </div>
+    <div class="topbar-options">
+        <div>
+            <button data-modal-target="#modal-about" class="list-user-button-small">
+                <i class="fas fa-fw fa-table"></i>
+                <span><fmt:message
+                        key="about.us"/></span>
+            </button>
         </div>
-    </a>
-    <div>
-        <button data-modal-target="#modal-about" class="list-user-button-small">
-            <i class="fas fa-fw fa-table"></i>
-            <span><fmt:message
-                    key="about.us"/></span>
-        </button>
-    </div>
-    <div>
-        <button data-modal-target="#modal-contact" class="list-user-button-small">
-            <i class="fas fa-fw fa-table"></i>
-            <span><fmt:message
-                    key="contact.us"/></span>
-        </button>
-    </div>
+        <div>
+            <button data-modal-target="#modal-contact" class="list-user-button-small">
+                <i class="fas fa-fw fa-table"></i>
+                <span><fmt:message
+                        key="contact.us"/></span>
+            </button>
+        </div>
 
-    <div class="search-box">
-        <form class="form" method="get" action="/">
-            <input class="search" type="text" placeholder="<fmt:message
+        <div class="search-box">
+            <form class="form" method="get" action="/">
+                <input class="search" type="text" placeholder="<fmt:message
                     key="search.records"/>" name="search"/>
-            <button class="search-button"></button>
-        </form>
-    </div>
+                <button class="search-button"></button>
+            </form>
+        </div>
 
-    <div class="custom-select">
-        <select id="locales" class="select-box">
-            <option value="" disabled selected hidden><fmt:message key="lang.change"/></option>
-            <option value="en"><fmt:message key="lang.eng"/></option>
-            <option value="pl"><fmt:message key="lang.pl"/></option>
-        </select>
-    </div>
+        <div class="custom-select">
+            <select id="locales" class="select-box">
+                <option value="" disabled selected hidden><fmt:message key="lang.change"/></option>
+                <option value="en"><fmt:message key="lang.eng"/></option>
+                <option value="pl"><fmt:message key="lang.pl"/></option>
+            </select>
+        </div>
 
 
-    <div class="user" style="width: 250px">
-        <sec:authorize access="isAnonymous()">
-            <div>
-                <button class="list-user-button ">
-                    <a class="list-user-button" href="/login">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span><fmt:message
-                                key="login.login"/></span>
-                    </a>
+        <div class="user" style="width: 250px">
+            <sec:authorize access="isAnonymous()">
+                <div>
+                    <button class="list-user-button ">
+                        <a class="list-user-button" href="/login">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span><fmt:message
+                                    key="login.login"/></span>
+                        </a>
 
-                </button>
-            </div>
-            <div>
-                <button class="list-user-button ">
-                    <a class="list-user-button " href="/register">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span><fmt:message
-                                key="register.register"/></span></a
-                    >
-                </button>
-            </div>
-        </sec:authorize>
-        <sec:authorize access="isAuthenticated()">
+                    </button>
+                </div>
+                <div>
+                    <button class="list-user-button ">
+                        <a class="list-user-button " href="/register">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span><fmt:message
+                                    key="register.register"/></span></a
+                        >
+                    </button>
+                </div>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
 
-            <button type="button" class="collapsible"><sec:authentication
-                    property="principal.username"/></button>
-            <div class="content" style="display: none">
-                <ul style=" margin: 0;padding: 0; justify-content: right ">
-                    <sec:authorize access="hasRole('ADMIN')">
+                <button type="button" class="collapsible"><sec:authentication
+                        property="principal.username"/></button>
+                <div class="content" style="display: none">
+                    <ul style=" margin: 0;padding: 0; justify-content: right ">
+                        <sec:authorize access="hasRole('ADMIN')">
+                            <li>
+                                <div class="list-element">
+                                    <a href="<c:url value="/users_index"/>" class="list-link"><fmt:message
+                                            key="user.users"/></a>
+                                </div>
+                            </li>
+                        </sec:authorize>
                         <li>
                             <div class="list-element">
-                                <a href="<c:url value="/users_index"/>" class="list-link"><fmt:message
-                                        key="user.users"/></a>
+                                <a href="<c:url value="/profile"/>" class="list-link"><fmt:message
+                                        key="my.profile"/></a>
                             </div>
                         </li>
-                    </sec:authorize>
-                    <li>
-                        <div class="list-element">
-                            <a href="<c:url value="/profile"/>" class="list-link"><fmt:message
-                                    key="my.profile"/></a>
-                        </div>
-                    </li>
 
-                    <li>
-                        <div class="list-element">
-                            <form action="<c:url value="/logout"/>" method="post">
-                                <input class="input-logout" type="submit" class="list-link" style="margin-left: -3px"
-                                       value="<fmt:message
+                        <li>
+                            <div class="list-element">
+                                <form action="<c:url value="/logout"/>" method="post">
+                                    <input class="input-logout" type="submit" class="list-link"
+                                           style="margin-left: -3px"
+                                           value="<fmt:message
                                 key="logout.logout"/>" style="margin-right: 20px"/>
-                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </sec:authorize>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </sec:authorize>
+        </div>
     </div>
 </div>
 <div id="user-overlay"></div>
