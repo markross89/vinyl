@@ -17,7 +17,7 @@
 <div class="topbar">
     <div class="logo-logo">
         <a href="<c:url value="/"/>" class="logo-title">
-            <img style="width: 70px; height: 65px" src="<c:url value="/resources/pictures/logo.png" />"/>
+            <img style="width: 50px; height: 45px" src="<c:url value="/resources/pictures/logo.png" />"/>
                 <div class="title">VINYL <br/>COLLECTION</div>
         </a>
     </div>

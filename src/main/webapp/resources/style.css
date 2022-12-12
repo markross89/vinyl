@@ -7,7 +7,7 @@
 .topbar {
     display: flex;
     justify-content: space-between;
-    justify-items: center;
+    align-items: center;
     padding: 2px;
     height: 80px;
     background-color: rgb(240, 240, 240);
@@ -143,6 +143,7 @@ input:focus {
     align-items: center;
     text-decoration: none;
     opacity: 0.8;
+
 }
 
 .logo-title:hover {
@@ -152,7 +153,7 @@ input:focus {
 .title {
     text-align: left;
     color: rgb(48, 48, 48);
-    font-size: xx-large !important;
+    font-size: large !important;
     font-weight: bolder;
     text-shadow: 3px 3px 5px rgb(117, 117, 117);
     margin-left: 5px;
