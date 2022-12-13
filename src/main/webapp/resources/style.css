@@ -61,7 +61,7 @@
 .sidebar-main-content {
     display: flex;
     justify-content: center;
-    min-height: 815px;
+    height: 100%;
 }
 
 .footer {

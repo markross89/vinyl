@@ -28,6 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().logout().logoutSuccessUrl("/")
 				.permitAll()
 				.and().exceptionHandling().accessDeniedPage("/403");
+		http.requiresChannel()
+				.requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+				.requiresSecure();
 		http.csrf().disable();
 	}
 	
@@ -42,4 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		return new SpringDataUserDetailsService();
 	}
+	
+
+	
 }
