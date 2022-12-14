@@ -12,11 +12,7 @@
 
 
         <hr
-                style="
-              width: 95%;
-              margin-right: 25px;
-              border-top: 1px solid rgba(239,175,0,0.8);
-            "
+
         />
         <div class="content-elements">
 
@@ -66,11 +62,7 @@
 
         </div>
         <hr
-                style="
-              width: 95%;
-              margin-right: 25px;
-              border-top: 1px solid rgba(239,175,0,0.8);
-            "
+
         />
 
     </div>

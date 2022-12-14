@@ -331,6 +331,7 @@ ul {
     height: auto;
     display: flex;
     flex-wrap: wrap;
+    margin: 10px;
 
 }
 
@@ -1028,8 +1029,8 @@ th {
 }
 
 .users-pic {
-    margin-top: 50px;
-    width: 60%;
+
+    width: 50%;
     height: 100%;
 }
 
@@ -1517,4 +1518,12 @@ th {
     height: 90px;
     width: 500px;
     margin: 20px 20px 50px;
+}
+.fresh-albums{
+    text-decoration: none;
+    color: #28859b;
+}
+.fresh-albums:hover{
+
+    color: #0c597e;
 }

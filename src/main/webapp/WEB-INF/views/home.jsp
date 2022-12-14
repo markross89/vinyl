@@ -30,7 +30,7 @@
         </div>
 
 
-        <div class="element-name"><h3><fmt:message key="fresh.albums"/></h3>
+        <div class="element-name"><a href="<c:url value="/thumbs" />" class="fresh-albums" title="<fmt:message key="release"/>"><h3>>> <fmt:message key="fresh.albums"/> <<</h3></a>
 
             <div class="content-element">
 
