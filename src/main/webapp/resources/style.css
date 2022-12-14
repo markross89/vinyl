@@ -303,7 +303,7 @@ ul {
 
 .content-content {
     display: flex;
-  align-items: center;
+    align-items: center;
     width: 100%;
     flex-direction: column;
     height: auto;
@@ -631,7 +631,7 @@ ul {
 .register-box {
     height: 80%;
     display: flex;
-
+    width: 95%;
     justify-content: space-evenly;
     align-items: center;
     margin: 10px;
