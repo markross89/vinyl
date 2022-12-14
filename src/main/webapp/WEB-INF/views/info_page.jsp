@@ -7,9 +7,6 @@
 
         <hr
                 style="
-              width: 95%;
-              margin-right: 50px;
-              margin-bottom: 40px;
               margin-top: 90px;
               border-top: 1px solid red;
             "
@@ -28,9 +25,8 @@
         </div>
         <hr
                 style="
-              width: 95%;
-              margin-right: 50px;
-              margin-top: 75px;
+
+              margin-top: 30px;
               border-top: 1px solid red
             "
         />
