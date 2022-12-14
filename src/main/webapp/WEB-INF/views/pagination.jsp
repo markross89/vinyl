@@ -11,10 +11,10 @@
                 <a href="" class="pagButtonDisabled" type="button"> << </a>
             </c:when>
             <c:otherwise>
-                <a href="<c:url value="/?page=1&size=${thumbs.pagination.per_page}&search=${search}"/>"
+                <a href="<c:url value="/thumbs?page=1&size=${thumbs.pagination.per_page}&search=${search}"/>"
                    class="pagButton"
                    style="font-size: small; margin-top: 2px" type="button"><fmt:message key="first"/></a>
-                <a href="<c:url value="/?page=${thumbs.pagination.page-1}&size=${thumbs.pagination.per_page}&search=${search}"/>"
+                <a href="<c:url value="/thumbs?page=${thumbs.pagination.page-1}&size=${thumbs.pagination.per_page}&search=${search}"/>"
                    class="pagButton" type="button"> << </a>
             </c:otherwise>
         </c:choose>
@@ -28,16 +28,16 @@
                 <a href="" class="pagButtonDisabled" style="font-size: small; margin-top: 2px" type="button"><fmt:message key="last"/></a>
             </c:when>
             <c:otherwise>
-                <a href="<c:url value="/?page=${thumbs.pagination.page+1}&size=${thumbs.pagination.per_page}&search=${search}"/>"
+                <a href="<c:url value="/thumbs?page=${thumbs.pagination.page+1}&size=${thumbs.pagination.per_page}&search=${search}"/>"
                    class="pagButton" type="button"> >> </a>
-                <a href="<c:url value="/?page=${thumbs.pagination.pages}&size=${thumbs.pagination.per_page}&search=${search}"/>"
+                <a href="<c:url value="/thumbs?page=${thumbs.pagination.pages}&size=${thumbs.pagination.per_page}&search=${search}"/>"
                    class="pagButton" style="font-size: small; margin-top: 2px" type="button"><fmt:message key="last"/></a>
             </c:otherwise>
         </c:choose>
 
     </div>
     <div class="pagSelect">
-        <form action="/" method="get">
+        <form action="/thumbs" method="get">
             <select class="pagSelect" name="size" onchange="this.form.submit()">
                 <option value="" disabled selected hidden>${thumbs.pagination.per_page}</option>
                 <option value="24">24</option>
