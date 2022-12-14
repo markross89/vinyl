@@ -95,7 +95,7 @@
                                 <br/>
                             </div>
                             <hr style=" width: 98%;   margin: 5px 5px 20px; border-top: 1px solid rgba(183,134,2,0.99);  "/>
-                            <input class="input" type="text" name="name" placeholder="Add new box">
+                            <input class="input-album-song" type="text" name="name" placeholder="Add new box">
                             <div class="form-group form-group--buttons">
                                 <button class="button-add" type="submit"><fmt:message
                                         key="admin.table.add"/></button>

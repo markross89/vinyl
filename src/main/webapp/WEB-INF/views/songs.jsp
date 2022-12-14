@@ -151,7 +151,7 @@
               border-top: 1px solid rgba(183,134,2,0.99);
             "
                                 />
-                                <input class="input" type="text" name="name" placeholder="Add new playlist">
+                                <input class="input-album-song" type="text" name="name" placeholder="Add new playlist">
 
                                 <div class="form-group form-group--buttons">
                                     <button class="button-add" type="submit"><fmt:message
