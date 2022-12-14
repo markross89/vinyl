@@ -8,10 +8,7 @@
     <div class="content-content">
         <div class="content-title"><fmt:message key="login.login"/>:</div>
         <hr
-                style="
-              width: 95%;
-              border-top: 1px solid rgba(239,175,0,0.8);
-            "
+
         />
         <div class="register-box">
 

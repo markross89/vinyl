@@ -6,17 +6,13 @@
 
     <!-- main content start -->
     <div class="main-content">
-        <div class="content-content">
+
             <div class="content-title"><fmt:message key="my.boxes"/> :</div>
-
+        <div class="pag-align">
             <jsp:include page="boxPagination.jsp"/>
-
+        </div>
             <hr
-                    style="
-              width: 95%;
-              margin-right: 50px;
-              border-top: 1px solid rgba(239,175,0,0.8);
-            "
+
             />
             <div class="content-elements">
 
@@ -47,12 +43,9 @@
 
             </div>
             <hr
-                    style="
-              width: 95%;
-              margin-right: 50px;
-              border-top: 1px solid rgba(239,175,0,0.8);
-            "
+
             />
+        <div class="pag-align">
             <jsp:include page="boxPagination.jsp"/>
         </div>
     </div>

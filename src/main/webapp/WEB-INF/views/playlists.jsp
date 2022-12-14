@@ -6,99 +6,92 @@
 
 <!-- main content start -->
 <div class="main-content">
-    <div class="content-content">
-        <div class="content-title"><fmt:message key="my.playlists"/> :</div>
 
-        <jsp:include page="playlistPagination.jsp"/>
+    <div class="content-title"><fmt:message key="my.playlists"/> :</div>
+    <div class="pag-align">
+    <jsp:include page="playlistPagination.jsp"/>
+    </div>
+    <hr
 
-        <hr
-                style="
-              width: 95%;
-              margin-right: 50px;
-              border-top: 1px solid rgba(239,175,0,0.8);
-            "
-        />
-        <div class="content-elements">
+    />
+    <div class="content-elements">
 
 
-            <c:forEach items="${playlists.content}" var="e">
+        <c:forEach items="${playlists.content}" var="e">
 
-                <div class="card">
-                    <a href="<c:url value="/playlist_details?id=${e.id}"/>" style="text-decoration: none"
-                    >
-                        <div class="title-pic" title="${e.name} - ${e.date}">
-                            <div class="card-title">
-                                    ${e.name} <br/> ${e.date}
-                            </div>
-                            <div class="cover-pic">
-                                <img src="<c:url value="/resources/pictures/playlist.png" />"
-                                     style="width: 160px; height: 160px"/>
-                            </div>
+            <div class="card">
+                <a href="<c:url value="/playlist_details?id=${e.id}"/>" style="text-decoration: none"
+                >
+                    <div class="title-pic" title="${e.name} - ${e.date}">
+                        <div class="card-title">
+                                ${e.name} <br/> ${e.date}
                         </div>
-                    </a>
-                    <div class="card-options">
-                        <div>
-                            <button data-modal-target="#modal-boxIt" class="songs-button-link"
-                                    id="${e.id}" title="Create a box from albums linked to this playlist"
-                                    onclick="ggg()">
-                                <span><fmt:message key="box.it"/></span>
-                            </button>
+                        <div class="cover-pic">
+                            <img src="<c:url value="/resources/pictures/playlist.png" />"
+                                 style="width: 160px; height: 160px"/>
                         </div>
-                        <div>
-                            <a href="<c:url value="/playlist_delete/${e.id}" />" class="option delete"
-                               title="Delete playlist"><fmt:message key="delete"/></a>
-                        </div>
-
                     </div>
+                </a>
+                <div class="card-options">
+                    <div>
+                        <button data-modal-target="#modal-boxIt" class="songs-button-link"
+                                id="${e.id}" title="Create a box from albums linked to this playlist"
+                                onclick="ggg()">
+                            <span><fmt:message key="box.it"/></span>
+                        </button>
+                    </div>
+                    <div>
+                        <a href="<c:url value="/playlist_delete/${e.id}" />" class="option delete"
+                           title="Delete playlist"><fmt:message key="delete"/></a>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </c:forEach>
+
+
+    </div>
+    <div class="modal modal-addPlaylist" id="modal-boxIt">
+        <div class="modal-header">
+            <div class="form-title" style="text-decoration: none"><fmt:message key="new.box"/></div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body-addPlaylist">
+            <img src="<c:url value="resources/pictures/box.png" />"
+                 style="height: 300px;width: 300px;margin-top: 30px" class="cover" alt="box">
+            <form class="form-form markus-name-form" action="<c:url value="playlist_to_box"/>" method="get"
+                  id="box-form-other"
+                  onsubmit="event.preventDefault(); validateOtherBox();">
+                <div class="error-input">
+                    <input
+                            id="box-input-other"
+                            class="input input-name"
+                            type="text"
+                            placeholder="<fmt:message key="box.name"/>"
+                            name="name"
+                    />
+                    <input class="song-id" type="hidden" name="id">
+                    <div id="error-message-other" class="error-message"><fmt:message key="empty.field"/></div>
                 </div>
 
 
-            </c:forEach>
+                <div class="form-group form-group--buttons">
+                    <button class="button-register" type="submit"><fmt:message
+                            key="admin.table.add"/></button>
+                </div>
 
+
+            </form>
 
         </div>
-        <div class="modal modal-addPlaylist" id="modal-boxIt">
-            <div class="modal-header">
-                <div class="form-title" style="text-decoration: none"><fmt:message key="new.box"/></div>
-                <button data-close-button class="close-button">&times;</button>
-            </div>
-            <div class="modal-body-addPlaylist">
-                <img src="<c:url value="resources/pictures/box.png" />"
-                     style="height: 300px;width: 300px;margin-top: 30px" class="cover" alt="box">
-                <form class="form-form markus-name-form" action="<c:url value="playlist_to_box"/>" method="get"
-                      id="box-form-other"
-                      onsubmit="event.preventDefault(); validateOtherBox();">
-                    <div class="error-input">
-                        <input
-                                id="box-input-other"
-                                class="input input-name"
-                                type="text"
-                                placeholder="<fmt:message key="box.name"/>"
-                                name="name"
-                        />
-                        <input class="song-id" type="hidden" name="id">
-                        <div id="error-message-other" class="error-message"><fmt:message key="empty.field"/></div>
-                    </div>
+    </div>
+    <hr
 
-
-                    <div class="form-group form-group--buttons">
-                        <button class="button-register" type="submit"><fmt:message
-                                key="admin.table.add"/></button>
-                    </div>
-
-
-                </form>
-
-            </div>
-        </div>
-        <hr
-                style="
-              width: 95%;
-              margin-right: 50px;
-              border-top: 1px solid rgba(239,175,0,0.8);
-            "
-        />
-        <jsp:include page="playlistPagination.jsp"/>
+    />
+    <div class="pag-align">
+    <jsp:include page="playlistPagination.jsp"/>
     </div>
 </div>
 

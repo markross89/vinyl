@@ -7,55 +7,48 @@
 
 <!-- main content start -->
 <div class="main-content">
-    <div class="content-content">
-        <div class="content-title"><fmt:message key="box.details"/> : ${box.name}</div>
 
-        <jsp:include page="box_detailsPagination.jsp"/>
-
-        <hr
-                style="
-              width: 95%;
-              margin-right: 50px;
-              border-top: 1px solid rgba(239,175,0,0.8);
-            "
-        />
-        <div class="content-elements">
+    <div class="content-title"><fmt:message key="box.details"/> : ${box.name}</div>
+<div class="pag-align">
+    <jsp:include page="box_detailsPagination.jsp"/>
+</div>
+    <hr/>
+    <div class="content-elements">
 
 
-            <c:forEach items="${albums.content}" var="e">
+        <c:forEach items="${albums.content}" var="e">
 
-                    <div class="card">
-                        <a href="<c:url value="/details/${e.id}"/>" style="text-decoration: none"
-                        >
-                        <div class="title-pic" title="${e.artists_sort} - ${e.title}">
-                            <div class="card-title">
-                                    ${e.artists_sort} - ${e.title}
-                            </div>
-                            <div class="cover-pic">
-                                <img src="${e.images[0].resource_url}"
-                                     style="width: 160px; height: 160px" alt="${e.images[0].resource_url}"/>
-                            </div>
+            <div class="card">
+                <a href="<c:url value="/details/${e.id}"/>" style="text-decoration: none"
+                >
+                    <div class="title-pic" title="${e.artists_sort} - ${e.title}">
+                        <div class="card-title">
+                                ${e.artists_sort} - ${e.title}
                         </div>
-                        </a>
-                        <div class="card-options">
-
-                            <div>
-                                <a href="<c:url value="delete_from_box?box_id=${box.id}&album_id=${e.id}" />" class="option delete" title="<fmt:message key="delete.from.box"/>"><fmt:message key="delete"/></a>
-                            </div>
+                        <div class="cover-pic">
+                            <img src="${e.images[0].resource_url}"
+                                 style="width: 160px; height: 160px" alt="${e.images[0].resource_url}"/>
                         </div>
                     </div>
+                </a>
+                <div class="card-options">
 
-            </c:forEach>
-        </div>
+                    <div>
+                        <a href="<c:url value="delete_from_box?box_id=${box.id}&album_id=${e.id}" />"
+                           class="option delete" title="<fmt:message key="delete.from.box"/>"><fmt:message
+                                key="delete"/></a>
+                    </div>
+                </div>
+            </div>
 
-        <hr
-                style="
-              width: 95%;
-              margin-right: 50px;
-              border-top: 1px solid rgba(239,175,0,0.8);
-            "
-        />
-        <jsp:include page="box_detailsPagination.jsp"/>
+        </c:forEach>
+    </div>
+
+    <hr
+
+    />
+    <div class="pag-align">
+    <jsp:include page="box_detailsPagination.jsp"/>
     </div>
 </div>
 

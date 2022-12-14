@@ -6,7 +6,7 @@
 <jsp:include page="content.jsp"/>
 
 <!-- main content start -->
-<div class="main-content">
+<div class="main-home">
     <div class="description-main">
         <div class="main-description">
             <div class="logo-logo">

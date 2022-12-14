@@ -7,7 +7,7 @@
         <c:choose>
             <c:when test="${boxes.first==true}">
                 <a href="" class="pagButtonDisabled" style="font-size: small; margin-top: 2px"
-                   type="button">title=<fmt:message key="first"/></a>
+                   type="button"><fmt:message key="first"/></a>
                 <a href="" class="pagButtonDisabled" type="button"> << </a>
             </c:when>
             <c:otherwise>
