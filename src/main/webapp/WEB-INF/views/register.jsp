@@ -62,7 +62,7 @@
                     </div>
 
                 </form:form>
-                <img src="/resources/pictures/pinkFloyd.jpg" class="cover" alt="Abbey Road">
+                <img src="/resources/pictures/pinkFloyd.jpg"  style="opacity: 0.7" class="cover" alt="Abbey Road">
             </div>
             <hr
                     style="
