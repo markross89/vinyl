@@ -38,7 +38,7 @@
         </div>
 
         <div class="search-box">
-            <form class="form" method="get" action="/">
+            <form class="form" method="get" action="/thumbs">
                 <input class="search" type="text" placeholder="<fmt:message
                     key="search.records"/>" name="search"/>
                 <button class="search-button"></button>

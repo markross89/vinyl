@@ -10,7 +10,6 @@
         <hr
                 style="
               width: 95%;
-              margin-right: 50px;
               border-top: 1px solid rgba(239,175,0,0.8);
             "
         />
@@ -45,19 +44,24 @@
                     <button class="button-register" type="submit"><fmt:message key="login.login"/></button>
                 </div>
 
-                <a href="<c:url value="/password_reminder" />" class="pass-forgot"><fmt:message key="forgot.password"/></a>
+                <a href="<c:url value="/password_reminder" />" class="pass-forgot"><fmt:message
+                        key="forgot.password"/></a>
             </form>
-            <img src="<c:url value="/resources/pictures/beatles.jpg" />" style="opacity: 0.7" class="cover" alt="Abbey Road">
+            <img src="<c:url value="/resources/pictures/beatles.jpg" />" style="opacity: 0.7" class="cover"
+                 alt="Abbey Road">
+
         </div>
+
         <hr
                 style="
               width: 95%;
-              margin-right: 50px;
+
               border-top: 1px solid rgba(239,175,0,0.8);
             "
         />
     </div>
 </div>
+
 <!-- main content end -->
 
 <!-- main container end -->

@@ -174,6 +174,22 @@ function validateOtherBox() {
         emailError.style.display = "block";
     }
 }
+function validateMessage() {
+    const form = document.getElementById("markus-form");
+    const nameMessage = document.getElementById("name-input").value;
+    const surnameMessage = document.getElementById("surname-input").value;
+    const messageMessage = document.getElementById("message-input").value;
+
+    const messageError = document.getElementById("message-error")
+
+    if (nameMessage==="" || surnameMessage==="" || messageMessage==="") {
+        messageError.style.display = "block";
+    } else {
+        messageError.style.display = "none";
+        form.submit();
+    }
+
+}
 
 function ggg() {
     let inputs = document.querySelectorAll(".song-id");

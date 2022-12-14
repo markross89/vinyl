@@ -4,13 +4,27 @@
     box-sizing: border-box;
 }
 
+body {
+    height: 95vh;
+    width: auto;
+    padding: 0;
+}
+
+body {
+    min-height: 95vh;
+    min-width: auto;
+    padding: 0;
+}
+
+
 .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2px;
+    margin-bottom: 10px;
     height: 80px;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(218, 218, 218);
 
 }
 
@@ -53,15 +67,22 @@
 
 .main-content {
     display: flex;
-    width: 75%;
+    flex-direction: column;
+    height: auto;
+    width: 85%;
     padding: 2px;
     background-color: rgb(247, 247, 247);
+
+
+
 }
 
 .sidebar-main-content {
     display: flex;
     justify-content: center;
-    height: 100%;
+    min-height: 84vh;
+
+
 }
 
 .footer {
@@ -72,6 +93,7 @@
     justify-content: center;
     justify-items: center;
     height: 5%;
+    margin-top: 10px;
     background-color: rgb(240, 240, 240);
     box-shadow: 0 3px 8px 1px rgb(219, 219, 219);
 }
@@ -137,7 +159,6 @@ input:focus {
 }
 
 
-
 .logo-title {
     display: flex;
     align-items: center;
@@ -162,7 +183,8 @@ input:focus {
 }
 
 .search-box {
-
+    margin-left: 10px;
+    margin-right: 10px;
     height: 35px;
 
 }
@@ -267,14 +289,13 @@ ul {
 }
 
 .content-content {
-    top: 11%;
-    left: 16%;
-    width: 100%;
+display: flex;
+    flex-direction: column;
+
     height: auto;
+    max-height: 800px;
     padding: 5px;
 
-    margin-left: 5px;
-    margin-right: 5px;
 }
 
 .content-title {
@@ -286,6 +307,7 @@ ul {
     font-size: large;
     font-weight: bold;
     color: #494949;
+
 }
 
 .content-elements {
@@ -473,13 +495,11 @@ ul {
 
 .form-form {
     display: flex;
+
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: center;
     padding: 10px;
-    margin-top: 50px;
-    height: 600px;
-
 
 }
 
@@ -594,19 +614,21 @@ ul {
 }
 
 .register-box {
+    height: 80%;
     display: flex;
 
     justify-content: space-evenly;
     align-items: center;
-    margin-left: 50px;
-
+    margin: 10px;
 }
 
+
 .cover {
-    width: 600px;
-    height: 550px;
+    width: 40%;
+    height: 90%;
     opacity: 80%;
     box-shadow: 5px 5px 8px 1px rgb(133, 133, 133);
+
 }
 
 .markus-error {
@@ -642,7 +664,7 @@ ul {
 
 .select-box {
     border: solid 0px white;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(218, 218, 218);
     color: rgb(120, 120, 120);
     font-weight: bold;
     width: 90px;
@@ -1370,4 +1392,99 @@ th {
 .button-add:active {
     background-color: #c9991f;
     font-weight: bold;
+}
+
+.description-main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgb(247, 247, 247);
+
+}
+
+.description-album {
+    padding: 5px;
+    display: flex;
+    height: 40%;
+    align-items: center;
+    margin: 20px;
+}
+
+.paragraph {
+
+    color: #525252;
+    text-align: left;
+    font-size: larger;
+    padding: 5px 15px 5px 15px;
+    width: 40%;
+
+}
+
+.markus-paragraph {
+    color: #525252;
+    text-align: left;
+    font-size: larger;
+    padding: 5px 15px 5px 15px;
+
+}
+
+.text-description {
+    font-weight: bold;
+}
+
+.img-details {
+    height: 100%;
+    width: 100%;
+}
+
+.img-box {
+
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.35);;
+    border-radius: 4px;
+    height: 100%;
+    width: 60%;
+}
+
+.title-main {
+    font-size: 90px;
+    margin-left: 10px;
+    text-align: left;
+    color: rgb(48, 48, 48);
+    font-weight: bolder;
+    text-shadow: 3px 3px 5px rgb(117, 117, 117);
+}
+
+.element-name {
+    text-align: center;
+    color: #525252;
+    font-size: larger;
+}
+
+.content-element {
+    padding: 5px;
+    margin-top: 5px;
+    margin-left: 30px;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    background-color: #f3e1c6;
+}
+
+.contact {
+    text-align: center;
+    color: #4d4d4d;
+}
+
+.markus-input {
+
+    margin: 20px;
+    height: 30px;
+    width: 300px;
+}
+
+.markus-text {
+    height: 90px;
+    width: 500px;
+    margin: 20px 20px 50px;
 }
