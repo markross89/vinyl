@@ -13,7 +13,7 @@
 
     <div class="content-title"><fmt:message key="song.songs"/>:</div>
     <div class="pag-align">
-    <jsp:include page="songPagination.jsp"/>
+        <jsp:include page="songPagination.jsp"/>
     </div>
     <hr
 
@@ -118,6 +118,7 @@
                         </button>
                     </td>
                 </tr>
+
                 <div class="modal modal-about" id="modal-addToPlaylist-${s.id}" style="width: 400px">
                     <div class="modal-header">
                         <div class="form-title" style="text-decoration: none"><fmt:message
@@ -129,11 +130,6 @@
                             <form:form class="add-to-playlist-form" modelAttribute="track" method="post"
                                        action="add_to_playlist">
                                 <hr
-                                        style="
-              width: 98%;
-            margin-top: 10px ;
-              border-top: 1px solid rgba(183,134,2,0.99);
-            "
                                 />
                                 <div class="playlists-list">
                                     <c:set target="${track}" property="playlists" value="${s.playlists}"/>
@@ -145,11 +141,6 @@
 
                                 </div>
                                 <hr
-                                        style="
-              width: 98%;
-            margin: 5px 5px 20px;
-              border-top: 1px solid rgba(183,134,2,0.99);
-            "
                                 />
                                 <input class="input-album-song" type="text" name="name" placeholder="Add new playlist">
 
@@ -174,7 +165,7 @@
 
     />
     <div class="pag-align">
-    <jsp:include page="songPagination.jsp"/>
+        <jsp:include page="songPagination.jsp"/>
     </div>
 </div>
 

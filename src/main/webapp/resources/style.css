@@ -1335,7 +1335,7 @@ th {
 .add-to-playlist-form {
 
     margin: 2px;
-    overflow: scroll;
+
 }
 
 .button-add {
@@ -1366,7 +1366,9 @@ th {
 
 .playlists-list {
     height: 380px;
-    overflow: scroll;
+    width: 300px;
+    overflow-x: scroll;
+    overflow-y: scroll;
 
 }
 
