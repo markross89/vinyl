@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="content.jsp"/>
 <!-- main content start -->
@@ -14,11 +15,6 @@
         <div class="register-box">
             <div class="error-info">
                 <div class="info-page-message">${message}</div>
-                <div>
-                    <form>
-                        <input type="button" value="Go back!" class="button-add" onclick="history.back()">
-                    </form>
-                </div>
             </div>
             <img src="/resources/pictures/beatles.jpg" style="opacity: 0.7; margin-top: 20px" class="cover"
                  alt="Abbey Road">

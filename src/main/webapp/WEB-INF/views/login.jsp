@@ -41,8 +41,12 @@
                     <button class="button-register" type="submit"><fmt:message key="login.login"/></button>
                 </div>
 
+
                 <a href="<c:url value="/password_reminder" />" class="pass-forgot"><fmt:message
                         key="forgot.password"/></a>
+                <p class="paragraph-color">Nie masz jeszcze konta?</p>
+                <a href="<c:url value="/register" />" class="no-account"><fmt:message
+                        key="register.register"/></a>
             </form>
             <img src="<c:url value="/resources/pictures/beatles.jpg" />" style="opacity: 0.7" class="cover"
                  alt="Abbey Road">

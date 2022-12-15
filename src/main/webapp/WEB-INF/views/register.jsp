@@ -21,7 +21,7 @@
                 <form:form class="form-form" modelAttribute="user" method="post">
                     <div class="error-input">
                         <spring:message code="placeholder.name" var="namePlaceholder"/>
-                        <form:input class="input" path="firstName"
+                        <form:input class="input-album-song" path="firstName"
                                     placeholder="${namePlaceholder}"/>
 
                         <form:errors path="firstName" Class="markus-error"/>
@@ -29,28 +29,28 @@
                     <div class="error-input">
                         <spring:message code="placeholder.surname" var="lastNamePlaceholder"/>
                         <form:input path="lastName"
-                                    class="input" placeholder="${lastNamePlaceholder}"/>
+                                    class="input-album-song" placeholder="${lastNamePlaceholder}"/>
 
                         <form:errors path="lastName" Class="markus-error"/>
                     </div>
                     <div class="error-input">
                         <spring:message code="placeholder.email" var="emailPlaceholder"/>
                         <form:input path="username"
-                                    class="input" placeholder="${emailPlaceholder}"/>
+                                    class="input-album-song" placeholder="${emailPlaceholder}"/>
 
                         <form:errors path="username" Class="markus-error"/>
                     </div>
                     <div class="error-input">
                         <spring:message code="placeholder.password" var="passwordPlaceholder"/>
                         <form:password path="password"
-                                       class="input" placeholder="${passwordPlaceholder}"/>
+                                       class="input-album-song" placeholder="${passwordPlaceholder}"/>
 
                         <form:errors path="password" Class="markus-error"/>
                     </div>
                     <div class="error-input">
                         <spring:message code="placeholder.password.repeat" var="passwordRepeatPlaceholder"/>
                         <form:password path="passwordRepeat"
-                                       class="input"
+                                       class="input-album-song"
                                        placeholder="${passwordRepeatPlaceholder}"/>
 
                         <form:errors path="passwordRepeat" Class="markus-error"/>

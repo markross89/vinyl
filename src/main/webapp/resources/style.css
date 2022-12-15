@@ -870,14 +870,31 @@ ul {
 }
 
 .pass-forgot {
-    color: #494949;
-    margin-top: 40%;
+    color: #0000cc;
+    margin-top: 20%;
+    margin-bottom: 20px;
     text-decoration: none;
+}
+
+.no-account{
+    color: #0000cc;
+
+    text-decoration: none;
+
+}
+.no-account:hover {
+    cursor: pointer;
+    color: darkblue;
+}
+
+.no-account:active {
+    font-weight: bold;
+
 }
 
 .pass-forgot:hover {
     cursor: pointer;
-    color: blue;
+    color: darkblue;
 }
 
 .pass-forgot:active {
@@ -1526,4 +1543,8 @@ th {
 .fresh-albums:hover{
 
     color: #0c597e;
+}
+
+.paragraph-color{
+    color: #4d4d4d;
 }

@@ -30,7 +30,7 @@
         </div>
 
 
-        <div class="element-name"><a href="<c:url value="/thumbs" />" class="fresh-albums" title="<fmt:message key="release"/>"><h3>>> <fmt:message key="fresh.albums"/> <<</h3></a>
+        <div class="element-name"><a href="<c:url value="/thumbs" />" class="fresh-albums" title="<fmt:message key="release"/>"><h1> <fmt:message key="fresh.albums"/> </h1></a>
 
             <div class="content-element">
 
@@ -66,7 +66,7 @@
 
         </div>
 
-        <div class="element-name"><h3><fmt:message key="how.work"/></h3></div>
+        <div class="element-name"><h1><fmt:message key="how.work"/>?</h1></div>
         <div class="description-album">
 
 
